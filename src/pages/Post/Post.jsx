@@ -61,8 +61,6 @@ const Post = () => {
   const [typeSignal, setTypeSignal] = useState('');
   const [subtypeSignal, setSubtypeSignal] = useState('');
 
-
-
   const handleResetFilters = () => {
     setFilterTime('');
     setIdentif('imei');
