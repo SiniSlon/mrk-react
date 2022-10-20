@@ -3,10 +3,19 @@ import { useState } from "react";
 
 
 const Labels = () => {
+    const [views,setViews]=useState('creates')
+    
     return(
         <NavBarLabel>
-            <p>1</p>
-            <p>2</p>
+            <LabelsSet onClick={()=>setViews('creates')}>Create labels</LabelsSet>
+            <LabelsSet onClick={()=>setViews('uses')}>USe labels</LabelsSet>
+            
+            {views === 'creates' &&
+            <form>
+                <p>Create</p></form>}    
+            {views ==='uses' &&
+            <form><p>Uses</p></form>}    
+            
         </NavBarLabel>
     )
 }
@@ -16,4 +25,11 @@ const NavBarLabel = styled.div`
     display:flex;
     width: 100%;
     background-color: #00000050;
+`;
+
+const LabelsSet = styled.button`
+    display:flex;
+    width: 50%;
+    background-color: #1f1fc9;
+    color: white;
 `;
