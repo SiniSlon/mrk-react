@@ -4,6 +4,7 @@ import PaginationBlock from "../../../components/Pagination";
 import Loader from "../../../components/Loader";
 import { useState } from "react";
 import Labels from './Labels'
+import SettingsFilter from './SettingsFilter'
 
 const SettingsTable = (props) => {
   const [main,setMain]=useState('');
@@ -14,16 +15,16 @@ const SettingsTable = (props) => {
     <Body>
         <Aside>
           <OneColumn>
-            <p onClick={()=>setMain('main')}>Общие настройки</p>
-            <p onClick={()=>setMain('filter')}>Фильтр</p>
-            <p onClick={()=>setMain('info')}>Info</p>
-            <p onClick={()=>setMain('spr')}>spr</p>
-            <p onClick={()=>setMain('geo')}>Geo</p>
-            <p onClick={()=>setMain('view')}>view</p>
-            <p onClick={()=>setMain('map')}>map</p>
-            <p onClick={()=>setMain('news')}>news</p>
-            <p onClick={()=>setMain('serv')}>serv</p>
-            <p onClick={()=>setMain('labels')}>labels</p>
+            <p onClick={()=>setMain('main')} className={main==='main' ? 'test':'teste'}>Общие настройки</p>
+            <p onClick={()=>setMain('filter')} className={main==='filter' ? 'test':'teste'}>Фильтр</p>
+            <p onClick={()=>setMain('info')} className={main==='info' ? 'test':'teste'}>Info</p>
+            <p onClick={()=>setMain('spr')} className={main==='spr' ? 'test':'teste'}>spr</p>
+            <p onClick={()=>setMain('geo')} className={main==='geo' ? 'test':'teste'}>Geo</p>
+            <p onClick={()=>setMain('view')} className={main==='view' ? 'test':'teste'}>view</p>
+            <p onClick={()=>setMain('map')} className={main==='map' ? 'test':'teste'}>map</p>
+            <p onClick={()=>setMain('news')} className={main==='news' ? 'test':'teste'}>news</p>
+            <p onClick={()=>setMain('serv')} className={main==='serv' ? 'test':'teste'}>serv</p>
+            <p onClick={()=>setMain('labels')} className={main==='labels' ? 'test':'teste'}>labels</p>
           </OneColumn>
           <TwoColumns>
             {main === 'main' && 
@@ -61,115 +62,7 @@ const SettingsTable = (props) => {
                   <input type='checkbox'/>
                 </div>
               </form>}
-            {main === 'filter' && 
-              <form>
-                <fieldset>
-                  <legend>Системы связи</legend>
-                    
-                    <div>
-                      <label>Irridium</label>
-                      <input type='checkbox'/>
-                    </div>
-                    
-                    <div>
-                      <label>Thuraya</label>
-                      <input type='checkbox'/>
-                    </div>
-                   
-                    <div>
-                      <label>PTT</label>
-                      <input type='checkbox'/>
-                    </div>
-                    
-                    <div>
-                      <label>GSM</label>
-                      <input type='checkbox'/>
-                    </div>
-                    
-                    <div>
-                      <label>KB</label>
-                      <input type='checkbox'/>
-                    </div>
-                   
-                    <div>
-                      <label>YKB</label>
-                      <input type='checkbox'/>
-                    </div>
-                   
-                    <div>
-                      <label>WIFI</label>
-                      <input type='checkbox'/>
-                    </div>
-
-                </fieldset>
-                <fieldset>
-                  <legend>Система связи поумолчанию</legend>
-                    <div>
-                      <label>Irridium</label>
-                      <input type='checkbox'/>
-                    </div>
-                    <div>
-                      <label>Thuraya</label>
-                      <input type='checkbox'/>
-                    </div>
-                    <div>
-                      <label>PTT</label>
-                      <input type='checkbox'/>
-                    </div>
-                    <div>
-                      <label>GSM</label>
-                      <input type='checkbox'/>
-                    </div>
-                    <div>
-                      <label>KB</label>
-                      <input type='checkbox'/>
-                    </div>
-                    <div>
-                      <label>YKB</label>
-                      <input type='checkbox'/>
-                    </div>
-                    <div>
-                      <label>WIFI</label>
-                      <input type='checkbox'/>
-                    </div>
-                </fieldset>
-                <div>
-                  <label>форматы данных</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>форматы текстового поиска</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>речевые форматы</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>список языков речи</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>приоритет обнаружения</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>пост регистрации</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>Стандарты СС</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>Тип шифрования трафика</label>
-                  <button></button>
-                </div>
-                <div>
-                  <label>Типы ГРЗ</label>
-                  <button></button>
-                </div>
-              </form>}
+            {main === 'filter' && <SettingsFilter/>}
             {main === 'info' && <form>
                 <div>
                   <label>Информация об абоненте</label>
@@ -197,7 +90,7 @@ const SettingsTable = (props) => {
             {main === 'map' && <p>555</p>}
             {main === 'news' && <p>666</p>}
             {main === 'serv' && <p>777</p>}
-            {main === 'labels' && <Labels/>}
+            {main === 'labels' && <Labels/ >}
             {main === 'spr' && 
             <form>
               <div>
@@ -247,7 +140,9 @@ const SettingsTable = (props) => {
             </form>}
         </TwoColumns>
         <ThreeColumns>
-          <button></button>
+          <button>Save</button>
+          <button>Cancel</button>
+          <button>Default</button>
         </ThreeColumns>
         </Aside>
 
@@ -281,15 +176,34 @@ const Aside = styled.div`
   "c c";
 `;
 
-const OneColumn = styled.div`
+const OneColumn = styled.div` 
   grid-area:a;
+  height:70%;
+  width:40%;
+  p:hover{
+    background-color:rgba(28, 138, 212, 0.1);
+    cursor:pointer;
+    border-radius: 5px;;
+  } 
+    .test{
+      background-color:rgba(28, 138, 212, 0.1);
+      border-radius: 5px;};
+    .teste{
+      background-color:white;
+      border-radius: 5px;;}
+      label{
+        padding-left: 5px;
+        padding-bottom:25px;  
+      }
   `;
 
 const TwoColumns =  styled.div`
   grid-area:b;
+  height:70%;
 `;
 
 const ThreeColumns = styled.div`
   grid-area:c;
+  height:25%;
 `;
 

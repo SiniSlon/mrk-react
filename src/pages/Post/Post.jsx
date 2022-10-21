@@ -9,7 +9,7 @@ import PostTable from './components/PostTable';
 import Filters from './components/Filters';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-
+import { Bar } from "react-chartjs-2";
 const Post = () => {
   const [ready, setReady] = useState(false);
   const [filter, setFilter] = useState(false);
