@@ -1,36 +1,63 @@
 import styled from "styled-components";
 import { useState } from "react";
 import ModalWindow from './ModalWindow'
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { putSettingsFilter, putSettingsFilterDefault,defaultSettings } from "../../../store/reducers/settings";
 
 const SettingsFilter = () => {
     const [settings,setSettings] = useState('')
-    const [ir,setIr]=useState(false)
-    const [th,setTh]=useState(false)
-    const [gsm,setGsm]=useState(false)
-    const [kv,setKv]=useState(false)
-    const [ykv,setYkv]=useState(false)
-    const [ptt,setPtt]=useState(false)
-    const [wifi,setWifi]=useState(false)
-    const [ird,setIrd]=useState(false)
-    const [thd,setThd]=useState(false)
-    const [gsmd,setGsmd]=useState(false)
-    const [kvd,setKvd]=useState(false)
-    const [ykvd,setYkvd]=useState(false)
-    const [pttd,setPttd]=useState(false)
-    const [wifid,setWifid]=useState(false)
+    const dispatch = useAppDispatch();
+    const set = useAppSelector((state)=>state.settingsSlice.settings); 
     
-    const FilterDefault = async ()=>{
-        const dataFilter ={
-            iridium: ird,
-            thuraya: thd,
-            ptt: pttd,
-            gsm: gsmd,
-            kv: kvd,
-            ukv: ykvd,
-            wifi: wifid
+    const [ir,setIr]=useState(set.settingsFilter.ir)
+    const [th,setTh]=useState(set.settingsFilter.th)
+    const [gsm,setGsm]=useState(set.settingsFilter.gsm)
+    const [kv,setKv]=useState(set.settingsFilter.kv)
+    const [ykv,setYkv]=useState(set.settingsFilter.ykv)
+    const [ptt,setPtt]=useState(set.settingsFilter.ptt)
+    const [wifi,setWifi]=useState(set.settingsFilter.wifi)
+    const [ird,setIrd]=useState(set.settingsFilterDefault.ird)
+    const [thd,setThd]=useState(set.settingsFilterDefault.thd)
+    const [gsmd,setGsmd]=useState(set.settingsFilterDefault.gsmd)
+    const [kvd,setKvd]=useState(set.settingsFilterDefault.kvd)
+    const [ykvd,setYkvd]=useState(set.settingsFilterDefault.ykvd)
+    const [pttd,setPttd]=useState(set.settingsFilterDefault.pttd)
+    const [wifid,setWifid]=useState(set.settingsFilterDefault.wifid)
+    //const [peleng,setPeleng]=useState(setting.settingsFilterDefault.)
+
+    console.log(ir)
+
+
+    const SaveSettings = async (e)=>{
+        e.preventDefault();
+        const data ={
+            ir,
+            th,
+            gsm,
+            kv,
+            ykv,
+            ptt,
+            wifi 
         }
-        console.log(dataFilter)
+        console.log(data)
+        dispatch(putSettingsFilter(data))
     }
+
+    const SaveSettingsDefault =async (e)=>{
+        e.preventDefault();
+        const data ={
+            ird,
+            thd,
+            gsmd,
+            kvd,
+            ykvd,
+            pttd,
+            wifid
+        } 
+        dispatch(putSettingsFilterDefault(data))
+    }
+
+  
 
     /*add ViewsFilterSystemS*/ 
     return(
@@ -52,8 +79,9 @@ const SettingsFilter = () => {
                                 </tr>
                             </tbody>
                         </Table>
-                    </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    </div>  
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
                   </ModalWindow>  
         }
         {settings === 'text' && 
@@ -74,7 +102,8 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
                   </ModalWindow>  
         }
         {settings === 'talk' && 
@@ -95,9 +124,35 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
                   </ModalWindow>  
         }
+
+        {settings === 'peleng' && 
+                <ModalWindow>
+                            <div>
+                                <Table>
+                                    <thead>
+                                        <tr>
+                                            <th>N</th>
+                                            <th>Name</th>
+                                            <th>Extencion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td><input type='color'/> </td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </div>
+                            <CancelButton>Ok</CancelButton>
+                            <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
+                        </ModalWindow>  
+                }
         {settings === 'prior' && 
            <ModalWindow>
                     <div>
@@ -115,7 +170,8 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
                   </ModalWindow>  
         }
         {settings === 'postreg' && 
@@ -135,7 +191,8 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
                   </ModalWindow>  
         }
         {settings === 'standart' && 
@@ -155,7 +212,8 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
                   </ModalWindow>  
         }
          {settings === 'cod' && 
@@ -175,7 +233,8 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
                   </ModalWindow>  
         }
         {settings === 'grz' && 
@@ -196,7 +255,10 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
-                    <button onClick={()=>setSettings('')}>Cancel</button>
+                    <div>
+                    <CancelButton>Ok</CancelButton>
+                    <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
+                    </div>
                   </ModalWindow>  
         }
         {settings === 'lang' && 
@@ -217,86 +279,93 @@ const SettingsFilter = () => {
                             </tbody>
                         </Table>
                     </div>
+                    <div>
+                    <CancelButton>Ok</CancelButton>
                     <CancelButton onClick={()=>setSettings('')}>Cancel</CancelButton>
+                    </div>
                   </ModalWindow>  
         }
-        <fieldset>
+        <CustomField>
                   <legend>Системы связи</legend>
                     <div>
-                      <label>Irridium</label>
-                      <input type='checkbox' value={ir} onChange={()=>setIr(s=>!s)}/>
+                      <input type='checkbox' id='ir' checked={ir} onChange={()=>setIr(s=>!s)}/>
+                      <label htmlFor="ir">Irridium</label>
                     </div>
                     
                     <div>
-                      <label>Thuraya</label>
-                      <input type='checkbox' value={th} onChange={()=>setTh(s=>!s)}/>
+                      <input type='checkbox' id='th' checked={th} onChange={()=>setTh(s=>!s)}/>
+                      <label htmlFor="th">Thuraya</label>
                     </div>
                    
                     <div>
-                      <label>PTT</label>
-                      <input type='checkbox' value={ptt} onChange={()=>setPtt(s=>!s)}/>
+                      <input type='checkbox' id='ptt' checked={ptt} onChange={()=>setPtt(s=>!s)}/>
+                      <label htmlFor="ptt">PTT</label>
                     </div>
                     
                     <div>
-                      <label>GSM</label>
-                      <input type='checkbox' value={gsm} onChange={()=>setGsm(s=>!s)}/>
+                      <input type='checkbox' id='gsm' checked={gsm} onChange={()=>setGsm(s=>!s)}/>
+                      <label htmlFor="gsm">GSM</label>
                     </div>
                     
                     <div>
-                      <label>KB</label>
-                      <input type='checkbox' value={kv} onChange={()=>setKv(s=>!s)}/>
+                      <input type='checkbox' id='kv' checked={kv} onChange={()=>setKv(s=>!s)}/>
+                      <label htmlFor="kv">KB</label>
                     </div>
                    
                     <div>
-                      <label>YKB</label>
-                      <input type='checkbox' value={ykv} onChange={()=>setYkv(s=>!s)}/>
+                      <input type='checkbox' id='ykv' checked={ykv} onChange={()=>setYkv(s=>!s)}/>
+                      <label htmlFor="ykv">YKB</label>
                     </div>
                    
                     <div>
-                      <label>WIFI</label>
-                      <input type='checkbox' value={wifi} onChange={()=>setWifi(s=>!s)}/>
+                      <input type='checkbox' id='wifi' checked={wifi} onChange={()=>setWifi(s=>!s)}/>
+                      <label htmlFor="wifi">WIFI</label>
                     </div>
-                    <CancelButton>Make</CancelButton>
-                </fieldset>
+                    <div>
+                    <ButtonSet onClick={SaveSettings}>Save</ButtonSet>
+                    </div>
+                </CustomField>
 
-                <fieldset>
+                <CustomField>
                   <legend>Система связи поумолчанию</legend>
                     <div>
-                      <label>Irridium</label>
-                      <input type='checkbox' value={ird} onChange={()=>setIrd(s=>!s)}/>
+                      <input type='checkbox' id='ird' checked={ird} onChange={()=>setIrd(s=>!s)}/>
+                      <label htmlFor="ird">Irridium</label>
                     </div>
                     
                     <div>
-                      <label>Thuraya</label>
-                      <input type='checkbox' value={thd} onChange={()=>setThd(s=>!s)}/>
+                      <input type='checkbox' id='thd' checked={thd} onChange={()=>setThd(s=>!s)}/>
+                      <label htmlFor="thd">Thuraya</label>
                     </div>
 
                     <div>
-                      <label>PTT</label>
-                      <input type='checkbox' value={pttd} onChange={()=>setPttd(s=>!s)}/>
+                      <input type='checkbox' id='pttd' checked={pttd} onChange={()=>setPttd(s=>!s)}/>
+                      <label htmlFor="pttd">PTT</label>
                     </div>
 
                     <div>
-                      <label>GSM</label>
-                      <input type='checkbox' value={gsmd} onChange={()=>setGsmd(s=>!s)}/>
+                      <input type='checkbox' id='gsmd' checked={gsmd} onChange={()=>setGsmd(s=>!s)}/>
+                      <label htmlFor="gsmd">GSM</label>
                     </div>
 
                     <div>
-                      <label>KB</label>
-                      <input type='checkbox' value={kvd} onChange={()=>setKvd(s=>!s)}/>
+                      <input type='checkbox' id='kvd' checked={kvd} onChange={()=>setKvd(s=>!s)}/>
+                      <label htmlFor="kvd">KB</label>
                     </div>
 
                     <div>
-                      <label>YKB</label>
-                      <input type='checkbox' value={ykvd} onChange={()=>setYkvd(s=>!s)}/>
+                      <input type='checkbox' id='ykvd' checked={ykvd} onChange={()=>setYkvd(s=>!s)}/>
+                      <label htmlFor="ykvd">YKB</label>
                     </div>
 
                     <div>
-                      <label>WIFI</label>
-                      <input type='checkbox' value={wifid} onChange={()=>setWifid(s=>!s)}/>
+                      <input type='checkbox' id='wifid' checked={wifid} onChange={()=>setWifid(s=>!s)}/>
+                      <label htmlFor="wifid">WIFI</label>
                     </div>
-                    <CancelButton onClick={FilterDefault}>Make</CancelButton>
-                </fieldset>
+                    <div>
+                    <ButtonSet onClick={SaveSettingsDefault}>Save</ButtonSet>
+                    </div>
+                </CustomField>
 
                 <DivLabel>
                   <label onClick={()=>setSettings('datas')}>форматы данных</label>
@@ -312,6 +381,10 @@ const SettingsFilter = () => {
 
                 <DivLabel>
                   <label onClick={()=>setSettings('lang')}>список языков речи</label>
+                </DivLabel>
+                
+                <DivLabel>
+                  <label onClick={()=>setSettings('peleng')}>пеленг</label>
                 </DivLabel>
 
                 <DivLabel>
@@ -333,15 +406,21 @@ const SettingsFilter = () => {
                 <DivLabel>
                   <label onClick={()=>setSettings('grz')}>Типы ГРЗ</label>
                 </DivLabel>
+                <div>
+                    
+                    <ButtonSet>Default</ButtonSet>
+                </div>
     </div>)
 };
 export default SettingsFilter
 
 const DivLabel = styled.div`
-    margin-bottom: 5px;
-    text-align: right;
+    margin-top: 10px;
+    text-align: left;
+    padding-left: 5px;
+    font-size:12pt;
     label:hover{
-        background-color: rgba(8, 79, 161,0.2);
+        background-color: rgba(136, 173, 218, 0.2);
         cursor:pointer;
         border-radius:12px;
     }
@@ -351,20 +430,45 @@ const Table = styled.table`
     border-collapse: collapse;
     border-bottom: 1.5px solid #020069;
     padding: auto;
-    thead{
-        background-color: rgba(12,114,234,0.8);
-        
-    }
+    font-size:11pt;
+    margin:auto;
     th{
-        font-weight: 200;
+        font-weight: 400;
     }
-    tbody{background-color:rgba(12,114,234,0.2);}
+    tbody:hover{background-color:rgba(12,114,234,0.2);}
     `;
 
 const CancelButton =styled.button`
-    margin-top: 20px;
+    margin: auto;
     color:white;
-    background-color: #020069;
+    
+    background-color: #267bc5   ;
     cursor:pointer;
     border-radius:12px;
+    width: 75px;
+    height: 30px;
+    
     `;    
+
+const CustomField=styled.fieldset`
+   
+    display:inline-block;
+    margin-top:5px;
+`;
+
+const ButtonSet = styled.button`
+    width:110px;
+    height: 30px;
+    margin-top: 20px;
+    margin-right: 10px;
+    background-color:#559ddb ;
+    border-radius: 5px;
+    border: none;
+    color :white;
+    text-align: center;
+  :hover{
+    cursor:pointer;
+    background-color: #5b93c5 ;
+    color:white;}
+  `;
+

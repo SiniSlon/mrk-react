@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { mainFontFamily } from "../../../utils/stylesSettings";
 import ClearIcon from '@mui/icons-material/Clear';
 
+
 const Filters = (props) => {
+  
+  
   const handleClearFormat = () => {
     props.setFormatData([]);
   }
@@ -590,6 +593,7 @@ const Filters = (props) => {
 
 
   return (
+    
     <Body >
 
       <MiniFilter>
@@ -618,7 +622,7 @@ const Filters = (props) => {
         <fieldset className='filter'>
           <legend className='filter__title'>По системам связи</legend>
           <div className='input-wrapper'>
-            <input id='irridium' type='checkbox' checked={props.iridium} 
+            <input id='irridium' type='checkbox' checked={props.irridium} 
             onChange={() => props.setIridium(s => !s)}/><label htmlFor='irridium'>Irridium</label>
           </div>
 

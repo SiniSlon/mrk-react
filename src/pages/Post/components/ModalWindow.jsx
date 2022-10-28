@@ -30,7 +30,8 @@ const Content =styled.div`
     padding: 20px;
     border-radius: 12px;
     background-color:white;
-    height:35%;
-    width:20%;
+    height:20%;
+    width:25%;
     font-size: 11pt;
+    overflow-y: scroll;
     `; 

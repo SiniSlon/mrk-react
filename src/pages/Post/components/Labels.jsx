@@ -30,32 +30,32 @@ const Labels = () => {
             {delet === 'label' && 
                 <Modals>
                     <ContentDelete>
-                        <p>Delete label?</p>
-                        <Buttons>Yes</Buttons>
-                        <Buttons onClick={()=>setDelet('')}>No</Buttons>
+                        <p>Удалить метку?</p>
+                        <Buttons>Да</Buttons>
+                        <Buttons onClick={()=>setDelet('')}>Нет</Buttons>
                     </ContentDelete>
                 </Modals>}
             {delet === 'labelm' && 
                 <Modals>
                     <ContentDelete>
-                        <p>Delete sample?</p>
-                        <Buttons>Yes</Buttons>
-                        <Buttons onClick={()=>setDelet('')}>No</Buttons>
+                        <p>Удалить шаблон метки</p>
+                        <Buttons>Да</Buttons>
+                        <Buttons onClick={()=>setDelet('')}>Нет</Buttons>
                     </ContentDelete>
                 </Modals>}
             {create === 'label' && 
                 <Modals>
                     <ContentLabel>
                         <ContentIn>
-                            <label>Name</label>
+                            <label>Название</label>
                             <input type='text' value={nameLabel} onChange={(e)=>setNameLabel(e.target.value)}/>
                         </ContentIn>
                         <ContentIn>
-                            <label>Comment</label>
+                            <label>Комментарий</label>
                             <input type='text' value={commentLabel} onChange={(e)=>setCommentLabel(e.target.value)}/>
                         </ContentIn>
                         <ContentIn>
-                            <label>Color</label>
+                            <label>Цвет</label>
                             <input type='color' value={colorLabel} onChange={(e)=>setColorLabel(e.target.value)}/>
                         </ContentIn>
                         <Buttons onClick={CreateLabel}>Save</Buttons>
@@ -66,41 +66,41 @@ const Labels = () => {
                 <Modals>
                     <Content>
                         <ContentIn>
-                            <label>Name</label>
+                            <label>Название</label>
                             <input type='text'/>
                         </ContentIn>
                         <ContentIn>
-                            <label>Type</label>
+                            <label>Тип</label>
                             <select>
                                 <option></option>
                             </select>
                         </ContentIn>
                         <ContentIn>
-                            <label>Number</label>
+                            <label>Номер приоритета</label>
                             <input type='text'/>
                         </ContentIn>
                         <ContentIn>
-                            <label>Labeled</label>
+                            <label>Отмеченно</label>
                             <input type='checkbox'/>
                             <input type='checkbox'/>
                             <input type='checkbox'/>
                         </ContentIn>
                         <ContentIn>
-                            <label>Label</label>
+                            <label>Метка</label>
                             <select>
                                 <option></option>
                             </select>
                         </ContentIn>
                         <ContentIn>
-                            <label>Name Abonent</label>
+                            <label>Имя</label>
                             <input type='text'/>
                         </ContentIn>
                         <ContentIn>
-                            <label>Comment Abonent</label>
+                            <label>Комментарий</label>
                             <input type='text'/>
                         </ContentIn>
-                        <Buttons>Create</Buttons>
-                        <Buttons onClick={()=>setCreate('')}>Delete</Buttons>
+                        <Buttons>Создать</Buttons>
+                        <Buttons onClick={()=>setCreate('')}>Удалить</Buttons>
                     </Content>
                 </Modals>}
 
@@ -108,17 +108,17 @@ const Labels = () => {
             <Menu >
                 <div>
                     <div>
-                        <Buttons onClick={()=>setCreate('label')}>Create</Buttons>
-                        <Buttons onClick={()=>setDelet('label')}>Delete</Buttons>
+                        <Buttons onClick={()=>setCreate('label')}>Создать</Buttons>
+                        <Buttons onClick={()=>setDelet('label')}>Удалить</Buttons>
                     </div>
                     <Table>
                         <HeadT>
                             <tr>
-                                <td>Author</td>
-                                <td>Name</td>
-                                <td>Comment</td>
-                                <td>Vision</td>
-                                <td>Color</td>
+                                <th>Автор</th>
+                                <th>Название</th>
+                                <th>Комментарий</th>
+                                <th>Отображение</th>
+                                <th>Цвет</th>
                             </tr>
                         </HeadT>
                         <BodyT>
@@ -144,14 +144,14 @@ const Labels = () => {
                     <Table>
                         <HeadT>
                             <tr>
-                                <th>Author</th>
-                                <th>Label</th>
-                                <th>Type</th>
-                                <th>Sample</th>
-                                <th>Name sample</th>
-                                <th>Name abonent</th>
-                                <th>Comment</th>
-                                <th>Metka</th>
+                                <th>Автор</th>
+                                <th>Метка</th>
+                                <th>Тип</th>
+                                <th>Шаблон метки</th>
+                                <th>Название шаблона метки</th>
+                                <th>Имя абонента</th>
+                                <th>Комментарий</th>
+                                <th>Обозначение</th>
                             </tr>
                         </HeadT>
                         <BodyT>
@@ -186,6 +186,7 @@ export default Labels
 
 const NavBarLabel = styled.div`
     display:grid;
+    padding-top:10px;
     width:100%;
     grid-template-columns: repeat(2 1fr);
     grid-template-areas:
@@ -195,25 +196,28 @@ const NavBarLabel = styled.div`
 
 const LabelsA = styled.div`
     grid-area: a;
-    
-    :hover{
-        background-color: rgba(8, 79, 161,0.7);
+  button{
+		border:none;
+	}
+  :hover{
+		background-color: rgba(8, 79, 161,0.7);
+		border-radius: 5px;
+  }
+  .test{
+		background-color: rgba(8, 79, 161,0.6);
+		height:30px;
+		width   :100% ;
+		cursor:pointer;
+		color: white;
+		border-radius: 5px;
     }
-    .test{
-        background-color: rgba(8, 79, 161,0.6);
-        height:30px;
-        width   :100% ;
-        cursor:pointer;
-        color: white;
-        border-radius: 5px;
-    }
-    .tests{
-        background-color: rgb(8, 79, 161); 
-        height:30px;
-        cursor:pointer;
-        width   :100% ;
-        color: white;
-        border-radius: 5px;
+	.tests{
+		background-color: rgb(8, 79, 161); 
+		height:30px;
+		cursor:pointer;
+		width   :100%  ;
+		color: white;
+		border-radius: 5px;
     }
 `;
 
@@ -221,25 +225,28 @@ const LabelsB = styled.div`
     grid-area: b; 
     color: white;
     height:30px;
-    cursor:pointer;
-    :hover{ 
-        background-color: rgba(8, 79, 161,0.7);
+  button{
+		border:none;}
+  	cursor:pointer;
+  :hover{ 
+		background-color: rgba(8, 79, 161,0.7);
+		border-radius: 5px;
     }
-    .test{
-        background-color: rgba(8, 79, 161,0.6);
-        height:30px;
-        width   :100% ;
-        cursor:pointer;
-        color: white;
-        border-radius: 5px;;
+	.test{
+		background-color: rgba(8, 79, 161,0.6);
+		height:30px;
+		width   :100%  ;
+		cursor:pointer;
+		color: white;
+		border-radius: 5px;
     }
-    .tests{
-        background-color: rgb(8, 79, 161); 
-        height:30px;
-        cursor:pointer;
-        width   :100% ;
-        color: white;
-        border-radius: 5px;
+	.tests{
+		background-color: rgb(8, 79, 161); 
+		height:30px;
+		cursor:pointer;
+		width   :100%  ;
+		color: white;
+		border-radius: 5px;
     }
 `;
 
@@ -253,21 +260,26 @@ const Buttons = styled.button`
     background-color: rgb(12,114,234);
     color:white;
     cursor:pointer;
-    :hover{
-        background-color: rgba(12,114,234,0.8);
+    margin-top: 10px;
+    margin-right: 5px;;
+    border:none;
+    border-radius: 5px;
+  :hover{
+    background-color: rgba(12,114,234,0.8);
     }
 `;
 
 const Table = styled.table`
     width:100%;
+    margin-top: 20px;
     border-collapse: collapse;
     text-align: center;
-    th{
-        font-weight: 300;
-    }
-    tbody :hover{
-        background-color: #aad1ff;
-        cursor:pointer;
+	th{
+		font-weight: 700;
+	}
+  tbody :hover{
+		background-color: #aad1ff;
+		cursor:pointer;
     }
 `;
 
@@ -315,12 +327,10 @@ const ContentLabel =styled.div`
     font-size: 11pt;
     `;
 
-
 const ContentIn = styled.div`
     padding:10px;
-    
-    label {
-        padding-right:10px;
+  label {
+    padding-right:10px;
     }
     `;
 

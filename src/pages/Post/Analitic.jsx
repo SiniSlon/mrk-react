@@ -4,11 +4,12 @@ import Header from "../../components/Header";
 import { mainBackground, mainFontFamily } from "../../utils/stylesSettings";
 import PostNavBar from "./components/PostNavBar";
 import { Bar } from "react-chartjs-2";
+import Chart from 'chart.js/auto';
 
 
 
 const Analitic = () => {
-  const [filter, setFilter] = useState(false);
+ // const [filter, setFilter] = useState(false);
 
   let data_pars ={
     "ssn" : [
@@ -52,10 +53,10 @@ const Analitic = () => {
 let billing_info = data_pars.ssn.map(function(e){return e.billing_count; });
 let traffic_info = data_pars.ssn.map(function(e){return e.trafic_count;});
 let labels = data_pars.ssn.map(function(e) {return e.date_load;})
-console.log(billing_info)
-console.log(traffic_info)
+
 const ChartData = {
     labels: labels,
+    
     datasets :[
         {
             data: billing_info,
@@ -80,10 +81,25 @@ const ChartData = {
   return (
     <Body>
       <Header/>
-
       <Main>
         <PostNavBar/>
-        
+        <form>
+        <table>
+            <thead>
+              <tr>
+                <th>Тест</th>
+                <th>2Тест</th>
+                <th>3Тест</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td>
+              <td>2</td>
+              <td>3</td></tr>
+            </tbody>
+          </table>
+          </form>
+          <TooMain>
         <Bar
         type="bar"
         width={160}
@@ -91,21 +107,17 @@ const ChartData = {
         options={{
           title: {
             display: true,
-            text: "test",
+            text: "test1",
             fontSize: 20
           },
           legend: {
-            display: true, //Is the legend shown?
+            display: false, //Is the legend shown?
             position: "top" //Position of the legend.
           }
         }}
         data={ChartData}
-      />
+      /></TooMain>
       </Main>
-
-      <Footer>
-        Фууутер
-      </Footer>
     </Body>
   )
 }
@@ -134,3 +146,18 @@ const Footer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+const TooMain =styled.div`
+  background-color: aliceblue;
+  margin:10px;
+  border-radius: 5px;
+    table{
+      border-bottom: 0.5px solid darkblue;
+    }
+    th{
+      font-weight: 500;
+      font-size: 16px;
+    }
+  `;
+
+  
