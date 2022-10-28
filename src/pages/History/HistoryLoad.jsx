@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useAppSelector } from '../../store/hooks'
 import Header from '../../components/Header';
 import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
 import TableUpload from './components/TableUpload';
@@ -7,17 +8,22 @@ import TableUpload from './components/TableUpload';
 const HistoryLoad = () => {
   const [section, setSection] = useState('');
 
+  const map = useAppSelector((state) => state.mapsSlice.map);
+  console.log('Init map >>> ', map)
+
   return (
     <Body>
       <Header/>
 
       <Main>
-        <TableUpload/>
+        {/* <TableUpload/> */}
+        <div>{map}</div>
+
       </Main>
 
-      <Footer>
-        Фууутер
-      </Footer>
+      {/* <Footer> */}
+        {/* Фууутер */}
+      {/* </Footer> */}
     </Body>
   )
 }
@@ -29,6 +35,7 @@ const Main = styled.div`
   flex-direction: column;
   height: calc(100vh - 100px);
   padding: 10px;
+  color: white;
 `;
 
 const Footer = styled.div`

@@ -49,10 +49,22 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
-      const response = await loginUser(data);
-      dispatch(putUser(response.data[0]));
-      console.log('Response Login >> ', response);
+      console.log('Login data >>> ', data);
+
+      const tempUser = {
+        userName: 'Albert Enshtein',
+        authtoriry: 'admin',
+      }
+      
+      dispatch(putUser(tempUser));
+
+      console.log('Response Login >> ', tempUser);
+
+      // const response = await loginUser(data);
+      // dispatch(putUser(response.data[0]));
+      // dispatch(putSettings(response.data[1]));
+
+      // console.log('Response Login >> ', response);
 
       navigate(from.from.pathname, { replace: true });
     } catch (e) {

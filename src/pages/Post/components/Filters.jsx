@@ -1,594 +1,10 @@
 import styled from "styled-components";
 import { mainFontFamily } from "../../../utils/stylesSettings";
 import ClearIcon from '@mui/icons-material/Clear';
+import * as func from '../../../utils/formFunctions';
 
 const Filters = (props) => {
-  const handleClearFormat = () => {
-    props.setFormatData([]);
-  }
-
-  const handleFormTxt = () => {
-    if (props.formatData.includes('txt')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('txt');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'txt'])
-    }
-  }
-
-  const handleFormHtm = () => {
-    if (props.formatData.includes('htm')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('htm');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'htm'])
-    }
-  }
-
-  const handleFormHtmlx = () => {
-    if (props.formatData.includes('htmlx')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('htmlx');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'htmlx'])
-    }
-  }
-
-  const handleFormRft = () => {
-    if (props.formatData.includes('rtf')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('rtf');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'rtf'])
-    }
-  }
-
-  const handleFormOdt = () => {
-    if (props.formatData.includes('odt')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('odt');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'odt'])
-    }
-  }
-
-  const handleFormXml = () => {
-    if (props.formatData.includes('xml')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('xml');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'xml'])
-    }
-  }
-  
-  const handleFormEml = () => {
-    if (props.formatData.includes('eml')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('eml');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'eml'])
-    }
-  }
-
-  const handleFormGsm = () => {
-    if (props.formatData.includes('gsm')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('gsm');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'gsm'])
-    }
-  }
-  const handleFormIbs = () => {
-    if (props.formatData.includes('ibs')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('ibs');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'ibs'])
-    }
-  }
-
-  const handleFormAlaw = () => {
-    if (props.formatData.includes('alaw')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('alaw');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'alaw'])
-    }
-  }
-
-  const handleFormUlaw = () => {
-    if (props.formatData.includes('ulaw')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('ulaw');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'ulaw'])
-    }
-  }
-
-  const handleFormSgn = () => {
-    if (props.formatData.includes('sgn')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('sgn');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'sgn'])
-    }
-  }
-
-  const handleFormCdma = () => {
-    if (props.formatData.includes('cdma')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('cdma');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'cdma'])
-    }
-  }
-
-  const handleFormEdem = () => {
-    if (props.formatData.includes('edem')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('edem');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'edem'])
-    }
-  }
-
-  const handleFormDect = () => {
-    if (props.formatData.includes('dect')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('dect');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'dect'])
-    }
-  }
-
-  const handleFormWav = () => {
-    if (props.formatData.includes('wav')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('wav');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'wav'])
-    }
-  }
-
-  const handleFormQcelp8 = () => {
-    if (props.formatData.includes('qcelp8')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('qcelp8');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'qcelp8'])
-    }
-  }
-
-  const handleFormPcm = () => {
-    if (props.formatData.includes('pcm')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('pcm');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'pcm'])
-    }
-  }
-
-  const handleFormMp3 = () => {
-    if (props.formatData.includes('mp3')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('mp3');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'mp3'])
-    }
-  }
-
-  const handleFormAmbe4k8 = () => {
-    if (props.formatData.includes('ambe4k8')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('ambe4k8');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'ambe4k8'])
-    }
-  }
-
-  const handleFormAmbe4kplus = () => {
-    if (props.formatData.includes('ambe4kplus')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('ambe4kplus');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'ambe4kplus'])
-    }
-  }
-
-  const handleFormMpg = () => {
-    if (props.formatData.includes('mpg')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('mpg');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'mpg'])
-    }
-  }
-
-  const handleFormMpeg = () => {
-    if (props.formatData.includes('mpeg')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('mpeg');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'mpeg'])
-    }
-  }
-
-  const handleFormFlv = () => {
-    if (props.formatData.includes('flv')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('flv');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'flv'])
-    }
-  }
-
-  const handleFormBz2 = () => {
-    if (props.formatData.includes('bz2')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('bz2');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'bz2'])
-    }
-  }
-
-  const handleFormJava = () => {
-    if (props.formatData.includes('java')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('java');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'java'])
-    }
-  }
-
-  const handleFormExe = () => {
-    if (props.formatData.includes('exe')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('exe');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'exe'])
-    }
-  }
-
-  const handleFormSwf= () => {
-    if (props.formatData.includes('swf')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('swf');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'swf'])
-    }
-  }
-
-  const handleFormBin = () => {
-    if (props.formatData.includes('bin')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('bin');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'bin'])
-    }
-  }
-
-  const handleFormZip = () => {
-    if (props.formatData.includes('zip')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('zip');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'zip'])
-    }
-  }
-
-  const handleFormRar = () => {
-    if (props.formatData.includes('rar')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('rar');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'rar'])
-    }
-  }
-
-  const handleFormTar= () => {
-    if (props.formatData.includes('tar')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('tar');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'tar'])
-    }
-  }
-
-  const handleFormGzip = () => {
-    if (props.formatData.includes('gzip')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('gzip');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'gzip'])
-    }
-  }
-
-  const handleForm7z = () => {
-    if (props.formatData.includes('7z')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('7z');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, '7z'])
-    }
-  }
-
-  const handleFormPdf = () => {
-    if (props.formatData.includes('pdf')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('pdf');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'pdf'])
-    }
-  }
-
-  const handleFormPptx = () => {
-    if (props.formatData.includes('pptx')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('pptx');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'pptx'])
-    }
-  }
-
-  const handleFormPpt = () => {
-    if (props.formatData.includes('ppt')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('ppt');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'ppt'])
-    }
-  }
-
-  const handleFormPs = () => {
-    if (props.formatData.includes('ps')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('ps');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'ps'])
-    }
-  }
-
-  const handleFormXlsx = () => {
-    if (props.formatData.includes('xlsx')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('xlsx');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'xlsx'])
-    }
-  }
-
-  const handleFormXls = () => {
-    if (props.formatData.includes('xls')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('xls');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'xls'])
-    }
-  }
-
-  const handleFormDocx = () => {
-    if (props.formatData.includes('docx')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('docx');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'docx'])
-    }
-  }
-
-  const handleFormDoc = () => {
-    if (props.formatData.includes('doc')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('doc');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'doc'])
-    }
-  }
-  const handleFormFax = () => {
-    if (props.formatData.includes('fax')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('fax');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'fax'])
-    }
-  }
-
-  const handleFormTiff = () => {
-    if (props.formatData.includes('tiff')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('tiff');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'tiff'])
-    }
-  }
-
-  const handleFormBmp = () => {
-    if (props.formatData.includes('bmp')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('bmp');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'bmp'])
-    }
-  }
-
-  const handleFormGif = () => {
-    if (props.formatData.includes('gif')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('gif');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'gif'])
-    }
-  }
-
-  const handleFormPng= () => {
-    if (props.formatData.includes('png')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('png');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'png'])
-    }
-  }
-
-  const handleFormJpeg = () => {
-    if (props.formatData.includes('jpeg')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('jpeg');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'jpeg'])
-    }
-  }
-
-  const handleFormThuraya = () => {
-    if (props.formatData.includes('thuraya')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('thuraya');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'thuraya'])
-    }
-  }
-
-  const handleFormG722 = () => {
-    if (props.formatData.includes('g722')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('g722');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'g722'])
-    }
-  }
-
-  const handleFormG723 = () => {
-    if (props.formatData.includes('g723')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('g723');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'g723'])
-    }
-  }
-
-  const handleFormG729 = () => {
-    if (props.formatData.includes('g729')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('g729');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'g729'])
-    }
-  }
-
-  const handleFormOgg = () => {
-    if (props.formatData.includes('ogg')) {
-      const temp = [...props.formatData];
-      const index = temp.indexOf('ogg');
-      temp.splice(index, 1)
-      props.setFormatData(temp)
-    } else {
-      props.setFormatData(s => [...s, 'ogg'])
-    }
-  }
-
-
+ 
   return (
     <Body >
 
@@ -600,58 +16,7 @@ const Filters = (props) => {
         </fieldset>
 
         <fieldset className='filter'>
-          <legend className='filter__title'>По идентификаторам абонентов</legend>
-          <select className='select' value={props.identif} onChange={(e) => {
-            props.setIdentif(e.target.value)}}>
-            <option value='imei'>IMEI</option>
-            <option value='imsi'>IMSI</option>
-            <option value='tfop'>ТФОП</option>
-            <option value='tmsi'>TMSI</option>
-            <option value='ip'>IP-адрес</option>
-            <option value='erbd'>№ЕРБД</option>
-            <option value='pid'>PID</option>
-          </select>
-          <input placeholder='Значение' value={props.identifValue} onChange={(e) => {
-            props.setIdentifValue(e.target.value)}}/>
-        </fieldset>
-
-        <fieldset className='filter'>
-          <legend className='filter__title'>По системам связи</legend>
-          <div className='input-wrapper'>
-            <input id='irridium' type='checkbox' checked={props.iridium} 
-            onChange={() => props.setIridium(s => !s)}/><label htmlFor='irridium'>Irridium</label>
-          </div>
-
-          <div className='input-wrapper'>
-            <input id='thuraya' type='checkbox' checked={props.thuraya} 
-            onChange={() => props.setThuraya(s => !s)}/><label htmlFor='thuraya'>Thuraya</label>
-          </div>
-
-          <div className='input-wrapper'>
-            <input id='ptt' type='checkbox' checked={props.ptt} 
-            onChange={() => props.setPtt(s => !s)}/><label htmlFor='ptt'>PTT</label>
-          </div>
-
-          <div className='input-wrapper'>
-            <input id='gsm' type='checkbox' checked={props.gsm} 
-            onChange={() => props.setGsm(s => !s)}/><label htmlFor='gsm'>GSM</label>
-          </div>
-
-          <div className='input-wrapper'>
-            <input id='kv' type='checkbox' checked={props.kv} 
-            onChange={() => props.setKv(s => !s)}/><label htmlFor='kv'>КВ</label>
-          </div>
-
-          <div className='input-wrapper'>
-            <input id='ukv' type='checkbox' checked={props.ukv} 
-            onChange={() => props.setUkv(s => !s)}/><label htmlFor='ukv'>УКВ</label>
-          </div>
-
-          <div className='input-wrapper'>
-            <input id='wifi' type='checkbox' checked={props.wifi} 
-            onChange={() => props.setWifi(s => !s)}/><label htmlFor='wifi'>Wi-Fi</label>
-          </div>
-
+          <legend className='filter__title'>По параметрам</legend>
           <div className='input-wrapper'>
             <input id='duration' type='checkbox' checked={props.duration} 
             onChange={() => props.setDuration(s => !s)}/><label htmlFor='duration'>Продолжительность</label>
@@ -710,8 +75,132 @@ const Filters = (props) => {
           props.setFilter(s => !s)}}
         >Применить</button>
       </MiniFilter>
-      
-      {(props.iridium || props.thuraya || props.ptt || props.gsm || props.kv || props.ukv || props.wifi) &&
+
+      <SecondFilter>
+        <fieldset className='filter'>
+          <legend className='filter__title'>По системам связи</legend>
+          <div className='input-wrapper'>
+            <input id='irridium' type='checkbox' checked={props.iridium} 
+            onChange={() => props.setIridium(s => !s)}/><label htmlFor='irridium'>Irridium</label>
+          </div>
+
+          <div className='input-wrapper'>
+            <input id='thuraya' type='checkbox' checked={props.thuraya} 
+            onChange={() => props.setThuraya(s => !s)}/><label htmlFor='thuraya'>Thuraya</label>
+          </div>
+
+          <div className='input-wrapper'>
+            <input id='ptt' type='checkbox' checked={props.ptt} 
+            onChange={() => props.setPtt(s => !s)}/><label htmlFor='ptt'>PTT</label>
+          </div>
+
+          <div className='input-wrapper'>
+            <input id='gsm' type='checkbox' checked={props.gsm} 
+            onChange={() => props.setGsm(s => !s)}/><label htmlFor='gsm'>GSM</label>
+          </div>
+
+          <div className='input-wrapper'>
+            <input id='kv' type='checkbox' checked={props.kv} 
+            onChange={() => props.setKv(s => !s)}/><label htmlFor='kv'>КВ</label>
+          </div>
+
+          <div className='input-wrapper'>
+            <input id='ukv' type='checkbox' checked={props.ukv} 
+            onChange={() => props.setUkv(s => !s)}/><label htmlFor='ukv'>УКВ</label>
+          </div>
+
+          <div className='input-wrapper'>
+            <input id='wifi' type='checkbox' checked={props.wifi} 
+            onChange={() => props.setWifi(s => !s)}/><label htmlFor='wifi'>Wi-Fi</label>
+          </div>
+        </fieldset>
+
+        <fieldset className='filter' style={{overflowY: 'scroll'}}>
+          <legend className='filter__title'>По идентификаторам абонентов</legend>
+
+          {(props.iridium || props.thuraya || props.gsm || props.ptt) && 
+          <div vlaue={props.imeiValue} onChange={(e) => props.setImeiValue(e.target.value)} className="filter__string">IMEI<input type='text' placeholder="Значение"/></div>}
+
+          {(props.iridium || props.thuraya || props.gsm) && 
+          <div className="filter__string">IMSI <input type='text' placeholder="Значение"/></div>}
+
+          {(props.iridium || props.thuraya || props.gsm) && 
+          <div className="filter__string">ТФОП <input type='text' placeholder="Значение"/></div>}
+
+          {(props.iridium || props.thuraya || props.gsm) && 
+          <div className="filter__string">TMSI <input type='text' placeholder="Значение"/></div>}
+
+          {(props.wifi) && 
+          <div className="filter__string">SSID <input type='text' placeholder="Значение"/></div>}
+
+          {(props.thuraya || props.gsm || props.wifi) && 
+          <div className="filter__string">Ключ шифр. <input type='text' placeholder="Значение"/></div>}
+
+          {(props.wifi) && 
+          <div className="filter__string">BSSID <input type='text' placeholder="Значение"/></div>}
+
+          {(props.gsm) && 
+          <div className="filter__string">Оператор <input type='text' placeholder="Значение"/></div>}
+
+          {(props.wifi) && 
+          <div className="filter__string">Название аб. уст. <input type='text' placeholder="Значение"/></div>}
+
+          {(props.gsm) && 
+          <div className="filter__string">Модель уст. <input type='text' placeholder="Значение"/></div>}
+
+          {(props.wifi) && 
+          <div className="filter__string">DNS-имя аб. <input type='text' placeholder="Значение"/></div>}
+
+          {(props.gsm || props.ukv || props.kv) && 
+          <div className="filter__string">Номер аппар. част. <input type='text' placeholder="Значение"/></div>}
+
+          {(props.wifi) && 
+          <div className="filter__string">Email <input type='text' placeholder="Значение"/></div>}
+
+          {/* {(props.thuraya) && 
+          <div className="filter__string">GPS-dis<input type='text' placeholder="Значение"/></div>} */}
+
+          {(props.wifi) && 
+          <div className="filter__string">MAC-адрес <input type='text' placeholder="Значение"/></div>}
+
+          {/* {(props.thuraya) && 
+          <div className="filter__string">RAND <input type='text' placeholder="Значение"/></div>} */}
+
+          {(props.wifi) && 
+          <div className="filter__string">Порт <input type='text' placeholder="Значение"/></div>}
+
+          {(props.thuraya || props.wifi) && 
+          <div className="filter__string">IP-адрес<input type='text' placeholder="Значение"/></div>}
+
+          {(props.ukv || props.kv) && 
+          <div className="filter__string">Номер частот. канала <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ukv || props.kv) && 
+          <div className="filter__string">Позывной <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ukv || props.kv) && 
+          <div className="filter__string">Позывной от <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ukv || props.kv) && 
+          <div className="filter__string">Позывной кому <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ukv || props.kv) && 
+          <div className="filter__string">Приоритет  <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ukv || props.kv) && 
+          <div className="filter__string">№ ЕРБД <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ptt) && 
+          <div className="filter__string">Имя группы <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ptt) && 
+          <div className="filter__string">ID группы <input type='text' placeholder="Значение"/></div>}
+
+          {(props.ptt) && 
+          <div className="filter__string">Имя АТ <input type='text' placeholder="Значение"/></div>}
+        </fieldset>
+      </SecondFilter>
+
       <FullFilter>
         Расширенный фильтр   
 
@@ -719,173 +208,168 @@ const Filters = (props) => {
           <fieldset className='filter'>
             <legend className='filter__title'>Формат данных</legend>
             <FormatDatas>
-            <div className='input-wrapper'>
-              <input id='txt' type='checkbox' checked={props.formatData.includes('txt')} onChange={handleFormTxt}/><label htmlFor='txt'>txt; ini; nfo</label>
-            </div>
-
-            <div className='input-wrapper'>
-              <input id='htm' type='checkbox' checked={props.formatData.includes('htm')} onChange={handleFormHtm}/><label htmlFor='htm'>htm,html,mht</label>
-            </div>
-
-            <div className='input-wrapper'>
-              <input id='htmlx' type='checkbox' checked={props.formatData.includes('htmlx')} onChange={handleFormHtmlx}/><label htmlFor='htmlx'>htmlx</label>
-            </div>
-
-            <div className='input-wrapper'>
-              <input id='rtf' type='checkbox' checked={props.formatData.includes('rtf')} onChange={handleFormRft}/><label htmlFor='rtf'>rtf</label>
-            </div>
-
-            <div className='input-wrapper'>
-              <input id='odt' type='checkbox' checked={props.formatData.includes('odt')} onChange={handleFormOdt}/><label htmlFor='odt'>odt</label>
+              <div className='input-wrapper'>
+                <input id='txt' type='checkbox' checked={props.formatData.includes('txt')} onChange={() => func.handleFormTxt(props)}/><label htmlFor='txt'>txt; ini; nfo</label>
               </div>
-            
-            <div className='input-wrapper'>
-              <input id='xml' type='checkbox' checked={props.formatData.includes('xml')} onChange={handleFormXml}/><label htmlFor='xml'>xml</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='eml' type='checkbox' checked={props.formatData.includes('eml')} onChange={handleFormEml}/><label htmlFor='eml'>eml</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='gsm' type='checkbox' checked={props.formatData.includes('gsm')} onChange={handleFormGsm}/><label htmlFor='gsm'>gsm</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='ibs' type='checkbox' checked={props.formatData.includes('ibs')} onChange={handleFormIbs}/><label htmlFor='ibs'>ibs</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='alaw' type='checkbox' checked={props.formatData.includes('alaw')} onChange={handleFormAlaw}/><label htmlFor='alaw'>alaw</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='ulaw' type='checkbox' checked={props.formatData.includes('ulaw')} onChange={handleFormUlaw}/><label htmlFor='ulaw'>ulaw</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='sgn' type='checkbox' checked={props.formatData.includes('sgn')} onChange={handleFormSgn}/><label htmlFor='sgn'>sgn</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='cdma' type='checkbox' checked={props.formatData.includes('cdma')} onChange={handleFormCdma}/><label htmlFor='cdma'>cdma</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='edem' type='checkbox' checked={props.formatData.includes('edem')} onChange={handleFormEdem}/><label htmlFor='edem'>edem</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='dect' type='checkbox' checked={props.formatData.includes('dect')} onChange={handleFormDect}/><label htmlFor='dect'>dect</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='wav' type='checkbox' checked={props.formatData.includes('wav')} onChange={handleFormWav}/><label htmlFor='wav'>wav</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='qcelp8' type='checkbox' checked={props.formatData.includes('qcelp8')} onChange={handleFormQcelp8}/><label htmlFor='qcelp8'>qcelp8</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='pcm' type='checkbox' checked={props.formatData.includes('pcm')} onChange={handleFormPcm}/><label htmlFor='pcm'>pcm</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='mp3' type='checkbox' checked={props.formatData.includes('mp3')} onChange={handleFormMp3}/><label htmlFor='mp3'>mp3</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='ambe4k8' type='checkbox' checked={props.formatData.includes('ambe4k8')} onChange={handleFormAmbe4k8}/><label htmlFor='ambe4k8'>ambe4k8</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='ambe4kplus' type='checkbox' checked={props.formatData.includes('ambe4kplus')} onChange={handleFormAmbe4kplus}/><label htmlFor='ambe4kplus'>ambe4kplus</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='thuraya' type='checkbox' checked={props.formatData.includes('thuraya')} onChange={handleFormThuraya}/><label htmlFor='thuraya'>thuraya</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='g722' type='checkbox' checked={props.formatData.includes('g722')} onChange={handleFormG722}/><label htmlFor='g722'>g722</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='g723' type='checkbox' checked={props.formatData.includes('g723')} onChange={handleFormG723}/><label htmlFor='g723'>g723</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='g729' type='checkbox' checked={props.formatData.includes('g729')} onChange={handleFormG729}/><label htmlFor='g729'>g729</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='ogg' type='checkbox' checked={props.formatData.includes('ogg')} onChange={handleFormOgg}/><label htmlFor='ogg'>ogg</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='jpeg' type='checkbox' checked={props.formatData.includes('jpeg')} onChange={handleFormJpeg}/><label htmlFor='jpeg'>jpeg;jpg</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='png' type='checkbox' checked={props.formatData.includes('png')} onChange={handleFormPng}/><label htmlFor='png'>png</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='gif' type='checkbox' checked={props.formatData.includes('gif')} onChange={handleFormGif}/><label htmlFor='gif'>gif</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='bmp' type='checkbox' checked={props.formatData.includes('bmp')} onChange={handleFormBmp}/><label htmlFor='bmp'>bmp</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='tiff' type='checkbox' checked={props.formatData.includes('tiff')} onChange={handleFormTiff}/><label htmlFor='tiff'>tiff</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='fax' type='checkbox' checked={props.formatData.includes('fax')} onChange={handleFormFax}/><label htmlFor='fax'>fax</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='doc' type='checkbox' checked={props.formatData.includes('doc')} onChange={handleFormDoc}/><label htmlFor='doc'>doc</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='docx' type='checkbox' checked={props.formatData.includes('docx')} onChange={handleFormDocx}/><label htmlFor='docx'>docx</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='xls' type='checkbox' checked={props.formatData.includes('xls')} onChange={handleFormXls}/><label htmlFor='xls'>xls</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='xlsx' type='checkbox' checked={props.formatData.includes('xlsx')} onChange={handleFormXlsx}/><label htmlFor='xlsx'>xlsx</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='ps' type='checkbox' checked={props.formatData.includes('ps')} onChange={handleFormPs}/><label htmlFor='ps'>ps</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='ppt' type='checkbox' checked={props.formatData.includes('ppt')} onChange={handleFormPpt}/><label htmlFor='ppt'>ppt</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='pptx' type='checkbox' checked={props.formatData.includes('pptx')} onChange={handleFormPptx}/><label htmlFor='pptx'>pptx</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='pdf' type='checkbox' checked={props.formatData.includes('pdf')} onChange={handleFormPdf}/><label htmlFor='pdf'>pdf</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='7z' type='checkbox' checked={props.formatData.includes('7z')} onChange={handleForm7z}/><label htmlFor='7z'>7z</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='gzip' type='checkbox' checked={props.formatData.includes('gzip')} onChange={handleFormGzip}/><label htmlFor='gzip'>gzip</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='tar' type='checkbox' checked={props.formatData.includes('tar')} onChange={handleFormTar}/><label htmlFor='tar'>tar</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='rar' type='checkbox' checked={props.formatData.includes('rar')} onChange={handleFormRar}/><label htmlFor='rar'>rar</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='zip' type='checkbox' checked={props.formatData.includes('zip')} onChange={handleFormZip}/><label htmlFor='zip'>zip</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='bin' type='checkbox' checked={props.formatData.includes('bin')} onChange={handleFormBin}/><label htmlFor='bin'>bin</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='swf' type='checkbox' checked={props.formatData.includes('swf')} onChange={handleFormSwf}/><label htmlFor='swf'>swf</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='exe' type='checkbox' checked={props.formatData.includes('exe')} onChange={handleFormExe}/><label htmlFor='exe'>exe</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='java' type='checkbox' checked={props.formatData.includes('java')} onChange={handleFormJava}/><label htmlFor='java'>java</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='bz2' type='checkbox' checked={props.formatData.includes('bz2')} onChange={handleFormBz2}/><label htmlFor='bz2'>bz2</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='flv' type='checkbox' checked={props.formatData.includes('flv')} onChange={handleFormFlv}/><label htmlFor='flv'>flv</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='mpeg' type='checkbox' checked={props.formatData.includes('mpeg')} onChange={handleFormMpeg}/><label htmlFor='mpeg'>mpeg</label>
-            </div>
-            <div className='input-wrapper'>
-              <input id='mpg' type='checkbox' checked={props.formatData.includes('mpg')} onChange={handleFormMpg}/><label htmlFor='mpg'>mpg</label>
-            </div>
+              <div className='input-wrapper'>
+                <input id='htm' type='checkbox' checked={props.formatData.includes('htm')} onChange={() => func.handleFormHtm(props)}/><label htmlFor='htm'>htm,html,mht</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='htmlx' type='checkbox' checked={props.formatData.includes('htmlx')} onChange={() => func.handleFormHtmlx(props)}/><label htmlFor='htmlx'>htmlx</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='rtf' type='checkbox' checked={props.formatData.includes('rtf')} onChange={() => func.handleFormRft(props)}/><label htmlFor='rtf'>rtf</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='odt' type='checkbox' checked={props.formatData.includes('odt')} onChange={() => func.handleFormOdt(props)}/><label htmlFor='odt'>odt</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='xml' type='checkbox' checked={props.formatData.includes('xml')} onChange={() => func.handleFormXml(props)}/><label htmlFor='xml'>xml</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='eml' type='checkbox' checked={props.formatData.includes('eml')} onChange={() => func.handleFormEml(props)}/><label htmlFor='eml'>eml</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='gsmF' type='checkbox' checked={props.formatData.includes('gsm')} onChange={() => func.handleFormGsm(props)}/><label htmlFor='gsmF'>gsm</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='ibs' type='checkbox' checked={props.formatData.includes('ibs')} onChange={() => func.handleFormIbs(props)}/><label htmlFor='ibs'>ibs</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='alaw' type='checkbox' checked={props.formatData.includes('alaw')} onChange={() => func.handleFormAlaw(props)}/><label htmlFor='alaw'>alaw</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='ulaw' type='checkbox' checked={props.formatData.includes('ulaw')} onChange={() => func.handleFormUlaw(props)}/><label htmlFor='ulaw'>ulaw</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='sgn' type='checkbox' checked={props.formatData.includes('sgn')} onChange={() => func.handleFormSgn(props)}/><label htmlFor='sgn'>sgn</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='cdma' type='checkbox' checked={props.formatData.includes('cdma')} onChange={() => func.handleFormCdma(props)}/><label htmlFor='cdma'>cdma</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='edem' type='checkbox' checked={props.formatData.includes('edem')} onChange={() => func.handleFormEdem(props)}/><label htmlFor='edem'>edem</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='dect' type='checkbox' checked={props.formatData.includes('dect')} onChange={() => func.handleFormDect(props)}/><label htmlFor='dect'>dect</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='wav' type='checkbox' checked={props.formatData.includes('wav')} onChange={() => func.handleFormWav(props)}/><label htmlFor='wav'>wav</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='qcelp8' type='checkbox' checked={props.formatData.includes('qcelp8')} onChange={() => func.handleFormQcelp8(props)}/><label htmlFor='qcelp8'>qcelp8</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='pcm' type='checkbox' checked={props.formatData.includes('pcm')} onChange={() => func.handleFormPcm(props)}/><label htmlFor='pcm'>pcm</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='mp3' type='checkbox' checked={props.formatData.includes('mp3')} onChange={() => func.handleFormMp3(props)}/><label htmlFor='mp3'>mp3</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='ambe4k8' type='checkbox' checked={props.formatData.includes('ambe4k8')} onChange={() => func.handleFormAmbe4k8(props)}/><label htmlFor='ambe4k8'>ambe4k8</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='ambe4kplus' type='checkbox' checked={props.formatData.includes('ambe4kplus')} onChange={() => func.handleFormAmbe4kplus(props)}/><label htmlFor='ambe4kplus'>ambe4kplus</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='thurayaF' type='checkbox' checked={props.formatData.includes('thuraya')} onChange={() => func.handleFormThuraya(props)}/><label htmlFor='thurayaF'>thuraya</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='g722' type='checkbox' checked={props.formatData.includes('g722')} onChange={() => func.handleFormG722(props)}/><label htmlFor='g722'>g722</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='g723' type='checkbox' checked={props.formatData.includes('g723')} onChange={() => func.handleFormG723(props)}/><label htmlFor='g723'>g723</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='g729' type='checkbox' checked={props.formatData.includes('g729')} onChange={() => func.handleFormG729(props)}/><label htmlFor='g729'>g729</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='ogg' type='checkbox' checked={props.formatData.includes('ogg')} onChange={() => func.handleFormOgg(props)}/><label htmlFor='ogg'>ogg</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='jpeg' type='checkbox' checked={props.formatData.includes('jpeg')} onChange={() => func.handleFormJpeg(props)}/><label htmlFor='jpeg'>jpeg;jpg</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='png' type='checkbox' checked={props.formatData.includes('png')} onChange={() => func.handleFormPng(props)}/><label htmlFor='png'>png</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='gif' type='checkbox' checked={props.formatData.includes('gif')} onChange={() => func.handleFormGif(props)}/><label htmlFor='gif'>gif</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='bmp' type='checkbox' checked={props.formatData.includes('bmp')} onChange={() => func.handleFormBmp(props)}/><label htmlFor='bmp'>bmp</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='tiff' type='checkbox' checked={props.formatData.includes('tiff')} onChange={() => func.handleFormTiff(props)}/><label htmlFor='tiff'>tiff</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='fax' type='checkbox' checked={props.formatData.includes('fax')} onChange={() => func.handleFormFax(props)}/><label htmlFor='fax'>fax</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='doc' type='checkbox' checked={props.formatData.includes('doc')} onChange={() => func.handleFormDoc(props)}/><label htmlFor='doc'>doc</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='docx' type='checkbox' checked={props.formatData.includes('docx')} onChange={() => func.handleFormDocx(props)}/><label htmlFor='docx'>docx</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='xls' type='checkbox' checked={props.formatData.includes('xls')} onChange={() => func.handleFormXls(props)}/><label htmlFor='xls'>xls</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='xlsx' type='checkbox' checked={props.formatData.includes('xlsx')} onChange={() => func.handleFormXlsx(props)}/><label htmlFor='xlsx'>xlsx</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='ps' type='checkbox' checked={props.formatData.includes('ps')} onChange={() => func.handleFormPs(props)}/><label htmlFor='ps'>ps</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='ppt' type='checkbox' checked={props.formatData.includes('ppt')} onChange={() => func.handleFormPpt(props)}/><label htmlFor='ppt'>ppt</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='pptx' type='checkbox' checked={props.formatData.includes('pptx')} onChange={() => func.handleFormPptx(props)}/><label htmlFor='pptx'>pptx</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='pdf' type='checkbox' checked={props.formatData.includes('pdf')} onChange={() => func.handleFormPdf(props)}/><label htmlFor='pdf'>pdf</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='7z' type='checkbox' checked={props.formatData.includes('7z')} onChange={() => func.handleForm7z(props)}/><label htmlFor='7z'>7z</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='gzip' type='checkbox' checked={props.formatData.includes('gzip')} onChange={() => func.handleFormGzip(props)}/><label htmlFor='gzip'>gzip</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='tar' type='checkbox' checked={props.formatData.includes('tar')} onChange={() => func.handleFormTar(props)}/><label htmlFor='tar'>tar</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='rar' type='checkbox' checked={props.formatData.includes('rar')} onChange={() => func.handleFormRar(props)}/><label htmlFor='rar'>rar</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='zip' type='checkbox' checked={props.formatData.includes('zip')} onChange={() => func.handleFormZip(props)}/><label htmlFor='zip'>zip</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='bin' type='checkbox' checked={props.formatData.includes('bin')} onChange={() => func.handleFormBin(props)}/><label htmlFor='bin'>bin</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='swf' type='checkbox' checked={props.formatData.includes('swf')} onChange={() => func.handleFormSwf(props)}/><label htmlFor='swf'>swf</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='exe' type='checkbox' checked={props.formatData.includes('exe')} onChange={() => func.handleFormExe(props)}/><label htmlFor='exe'>exe</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='java' type='checkbox' checked={props.formatData.includes('java')} onChange={() => func.handleFormJava(props)}/><label htmlFor='java'>java</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='bz2' type='checkbox' checked={props.formatData.includes('bz2')} onChange={() => func.handleFormBz2(props)}/><label htmlFor='bz2'>bz2</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='flv' type='checkbox' checked={props.formatData.includes('flv')} onChange={() => func.handleFormFlv(props)}/><label htmlFor='flv'>flv</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='mpeg' type='checkbox' checked={props.formatData.includes('mpeg')} onChange={() => func.handleFormMpeg(props)}/><label htmlFor='mpeg'>mpeg</label>
+              </div>
+              <div className='input-wrapper'>
+                <input id='mpg' type='checkbox' checked={props.formatData.includes('mpg')} onChange={() => func.handleFormMpg(props)}/><label htmlFor='mpg'>mpg</label>
+              </div>
             </FormatDatas>
 
-            <button className='clear-btn' onClick={handleClearFormat}>Очистить</button>
+            <button className='clear-btn' onClick={() => func.handleClearFormat(props)}>Очистить</button>
           </fieldset>
         }
 
@@ -1075,7 +559,7 @@ const Filters = (props) => {
           </fieldset>
         }
       </FullFilter>
-      }
+      
     </Body>
   )
 }          
@@ -1090,7 +574,7 @@ const Body = styled.div`
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-  max-height: 814px;
+  max-height: 754px;
 
   @media screen and (max-width: 900px) {
     flex-direction: column;
@@ -1132,13 +616,12 @@ const MiniFilter = styled.div`
   display: flex;
   flex-direction: column;
 
-
   .submit-btn {
     display: flex;
     width: 140px;
     padding: 5px;
     justify-content: center;
-    margin: 10px auto;
+    margin: 20px auto;
     font-size: 18px;
     font-family: ${mainFontFamily};
     border: none;
@@ -1146,6 +629,25 @@ const MiniFilter = styled.div`
     background-color: #1d1d87;
     color: white;
     cursor: pointer;
+  }
+`;
+
+const SecondFilter = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  /* overflow-y: scroll; */
+  /* width: 290px; */
+
+  .filter__string {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      outline: none;
+      width: 160px;
+    }
   }
 `;
 
@@ -1172,7 +674,6 @@ const FullFilter = styled.div`
     outline: none;
   }
 `;
-
 
 const FormatDatas = styled.div`
   overflow-y: scroll;
