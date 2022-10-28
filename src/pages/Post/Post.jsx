@@ -61,6 +61,12 @@ const Post = () => {
   const [typeSignal, setTypeSignal] = useState('');
   const [subtypeSignal, setSubtypeSignal] = useState('');
 
+  const [imeiValue, setImeiValue] = useState('');
+
+
+
+
+
   const handleResetFilters = () => {
     setFilterTime('');
     setIdentif('imei');
@@ -107,6 +113,8 @@ const Post = () => {
     setRadioset('');
     setTypeSignal('');
     setSubtypeSignal('');
+
+    setImeiValue('')
   }
 
 
@@ -207,8 +215,9 @@ const Post = () => {
       radioset: radioset,
       typeSignal: typeSignal,
       subTypeSignal: subtypeSignal,
+      imei: imeiValue
     }
-    console.log('Submit!!! Data >> ', data);
+    console.log('Submit!!! Sended data >> ', data);
 
   }
 
@@ -313,6 +322,9 @@ const Post = () => {
           setTypeSignal={setTypeSignal}
           subtypeSignal={subtypeSignal}
           setSubtypeSignal={setSubtypeSignal}
+
+          imeiValue={imeiValue}
+          setImeiValue={setImeiValue}
         />}
       </Main>
 
@@ -354,7 +366,7 @@ const Main = styled.div`
   }
 
   .active-btn {
-    background-color: #051b9b;
+    background-color: #0054bd;
     color: white;
   }
 `;
