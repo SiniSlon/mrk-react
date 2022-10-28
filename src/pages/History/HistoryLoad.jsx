@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Header from '../../components/Header';
 import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
 import TableUpload from './components/TableUpload';
+import LoadNavBar from './components/LoadNavBar';
+
 
 const HistoryLoad = () => {
   const [section, setSection] = useState('');
@@ -12,6 +14,8 @@ const HistoryLoad = () => {
       <Header/>
 
       <Main>
+        {/*<TableUpload/>*/}
+        <LoadNavBar/>
         <TableUpload/>
       </Main>
 
@@ -28,7 +32,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 100px);
-  padding: 10px;
+  padding: 20px;
 `;
 
 const Footer = styled.div`

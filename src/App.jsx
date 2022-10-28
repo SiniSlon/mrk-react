@@ -22,6 +22,9 @@ import AdminPanel from './pages/AdminPanel/AdminPanel';
 import LogsAdmin from './pages/AdminPanel/LogsAdmin';
 import AddUser from './pages/AdminPanel/AddUser';
 import EditUser from './pages/AdminPanel/EditUser';
+import Queque from './pages/History/components/QueueLoad';
+import SettingsReport from './pages/AdminPanel/SettingsReports';
+
 
 const App = () => {
 
@@ -37,14 +40,17 @@ const App = () => {
       <Route path='/post/media' element={<Media/>}/>
       <Route path='/post/maps' element={<Map/>}/>
       <Route path='/post/analitic' element={<Analitic/>}/>
+    
 
       <Route path='/upload' element={<LoadData/>}/>
+      <Route path='/upload/queue' element={<Queque/>}/>
       <Route path='/database' element={<Database/>}/>
 
       <Route path='/adminpanel' element={<AdminPanel/>}/>
       <Route path='/adminpanel/logs' element={<LogsAdmin/>}/>
       <Route path='/adminpanel/adduser' element={<AddUser/>}/>
       <Route path='/adminpanel/edituser/:userName' element={<EditUser/>}/>
+      <Route path='/adminpanel/reports' element={<SettingsReport/>}/>
     </Routes>
   );
 }
