@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { mainFontFamily } from "../../../utils/stylesSettings";
 import ClearIcon from '@mui/icons-material/Clear';
-
+import { useAppSelector } from "../../../store/hooks";
 
 const Filters = (props) => {
-  
+  const set = useAppSelector((state) => state.settingsSlice.settings);
   
   const handleClearFormat = () => {
     props.setFormatData([]);
@@ -621,40 +621,40 @@ const Filters = (props) => {
 
         <fieldset className='filter'>
           <legend className='filter__title'>По системам связи</legend>
-          <div className='input-wrapper'>
-            <input id='irridium' type='checkbox' checked={props.irridium} 
+          {set.settingsFilter.ir &&<div className='input-wrapper'>
+            <input id='irridium' type='checkbox' checked={set.settingsFilterDefault.ird} 
             onChange={() => props.setIridium(s => !s)}/><label htmlFor='irridium'>Irridium</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='thuraya' type='checkbox' checked={props.thuraya} 
+          {set.settingsFilter.th &&<div className='input-wrapper'>
+            <input id='thuraya' type='checkbox' checked={set.settingsFilterDefault.thd} 
             onChange={() => props.setThuraya(s => !s)}/><label htmlFor='thuraya'>Thuraya</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='ptt' type='checkbox' checked={props.ptt} 
+          {set.settingsFilter.ptt &&<div className='input-wrapper'>
+            <input id='ptt' type='checkbox' checked={set.settingsFilterDefault.pttd} 
             onChange={() => props.setPtt(s => !s)}/><label htmlFor='ptt'>PTT</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='gsm' type='checkbox' checked={props.gsm} 
+          {set.settingsFilter.gsm &&<div className='input-wrapper'>
+            <input id='gsm' type='checkbox' checked={set.settingsFilterDefault.gsmd} 
             onChange={() => props.setGsm(s => !s)}/><label htmlFor='gsm'>GSM</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='kv' type='checkbox' checked={props.kv} 
+          {set.settingsFilter.kv &&<div className='input-wrapper'>
+            <input id='kv' type='checkbox' checked={set.settingsFilterDefault.kvd} 
             onChange={() => props.setKv(s => !s)}/><label htmlFor='kv'>КВ</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='ukv' type='checkbox' checked={props.ukv} 
+          {set.settingsFilter.ykv &&<div className='input-wrapper'>
+            <input id='ukv' type='checkbox' checked={set.settingsFilterDefault.ykvd} 
             onChange={() => props.setUkv(s => !s)}/><label htmlFor='ukv'>УКВ</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='wifi' type='checkbox' checked={props.wifi} 
+          {set.settingsFilter.wifi &&<div className='input-wrapper'>
+            <input id='wifi' type='checkbox' checked={set.settingsFilterDefault.wifid} 
             onChange={() => props.setWifi(s => !s)}/><label htmlFor='wifi'>Wi-Fi</label>
-          </div>
+          </div>}
 
           <div className='input-wrapper'>
             <input id='duration' type='checkbox' checked={props.duration} 
@@ -715,11 +715,11 @@ const Filters = (props) => {
         >Применить</button>
       </MiniFilter>
       
-      {(props.iridium || props.thuraya || props.ptt || props.gsm || props.kv || props.ukv || props.wifi) &&
+      {(set.settingsFilter.ir || set.settingsFilter.th ||set.settingsFilter.ptt || set.settingsFilter.gsm || set.settingsFilter.kv || set.settingsFilter.ykv || set.settingsFilter.wifi) &&
       <FullFilter>
         Расширенный фильтр   
 
-        {(props.iridium || props.thuraya) && 
+        {(set.settingsFilter.ir|| set.settingsFilter.th ) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Формат данных</legend>
             <FormatDatas>
@@ -893,7 +893,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.ptt|| props.thuraya) && 
+        {(set.settingsFilter.ptt || set.settingsFilter.th) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Координаты</legend>
             Широта
@@ -930,7 +930,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.ptt|| props.thuraya) && 
+        {(set.settingsFilter.ptt|| set.settingsFilter.th) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Координаты комплекса</legend>
             Широта
@@ -967,7 +967,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {props.gsm && 
+        {set.settingsFilter.gsm && 
           <fieldset className='filter'>
             <legend className='filter__title'>№ аппаратного канала</legend>
             <div className='input-wrapper'>
@@ -979,7 +979,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv || props.wifi) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv || set.settingsFilter.wifi) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Несущая полоса частоты</legend>
             <div className='input-wrapper'>
@@ -1011,7 +1011,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Полоса частоты</legend>
             <div className='input-wrapper'>
@@ -1043,7 +1043,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Радиосеть</legend>
             <div className='input-wrapper'>
@@ -1055,7 +1055,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Тип сигнала</legend>
             <div className='input-wrapper'>
@@ -1067,7 +1067,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Подтип сигнала</legend>
             <div className='input-wrapper'>
