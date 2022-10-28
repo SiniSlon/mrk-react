@@ -40,7 +40,7 @@ const initialState={
             ptt:false,
             wifi:false,},    
         settingsFilterDefault:{
-            ird:false,
+            ird:true,
             thd:false,
             gsmd:false,
             kvd:false,
