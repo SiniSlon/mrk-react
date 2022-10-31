@@ -9,10 +9,12 @@ import PostTable from './components/PostTable';
 import Filters from './components/Filters';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-
+import TaskIcon from '@mui/icons-material/Task';
+import { Bar } from "react-chartjs-2";
 const Post = () => {
   const [ready, setReady] = useState(false);
   const [filter, setFilter] = useState(false);
+  const [taskm,setTaskM]=useState(false);
   const [postList, setPostList] = useState([]);
 
   const [filterTime, setFilterTime] = useState('');
@@ -117,7 +119,7 @@ const Post = () => {
     setImeiValue('')
   }
 
-
+  
   useEffect(() => {
     (async() => {
       try {
@@ -234,7 +236,7 @@ const Post = () => {
         </div>
 
         <PostTable postList={postList}/>
-
+        
         {filter && <Filters
           findByFilter={findByFilter}
           setFilter={setFilter}
@@ -327,7 +329,7 @@ const Post = () => {
           setImeiValue={setImeiValue}
         />}
       </Main>
-
+      
       {/* <Footer> */}
         {/* Фууутер */}
       {/* </Footer> */}

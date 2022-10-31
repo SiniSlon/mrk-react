@@ -4,6 +4,8 @@ import { useAppSelector } from '../../store/hooks'
 import Header from '../../components/Header';
 import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
 import TableUpload from './components/TableUpload';
+import LoadNavBar from './components/LoadNavBar';
+
 
 const HistoryLoad = () => {
   const [section, setSection] = useState('');
@@ -16,9 +18,9 @@ const HistoryLoad = () => {
       <Header/>
 
       <Main>
-        {/* <TableUpload/> */}
-        <div>{map}</div>
-
+        {/*<TableUpload/>*/}
+        <LoadNavBar/>
+        <TableUpload/>
       </Main>
 
       {/* <Footer> */}
@@ -34,8 +36,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 100px);
-  padding: 10px;
-  color: white;
+  padding: 20px;
 `;
 
 const Footer = styled.div`

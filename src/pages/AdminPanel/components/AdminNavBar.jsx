@@ -10,6 +10,7 @@ const AdminNavBar = () => {
     <Body>
       <Link to='/adminpanel' className={path == '/adminpanel' || path == '/adminpanel/adduser' ? 'button__active' : 'button'} >Управление пользователями</Link>
       <Link to='/adminpanel/logs' className={path == '/adminpanel/logs' ? 'button__active' : 'button'}>Логи</Link>
+      <Link to='/adminpanel/reports' className={path == '/adminpanel/reports' ? 'button__active' : 'button'}>Отчеты</Link>
       {path == '/adminpanel' && <Link to='adduser' className='adduser-btn'><PersonAddAltIcon style={{marginRight: '10px'}}/>Добавить пользователя</Link>}
     </Body>
   )

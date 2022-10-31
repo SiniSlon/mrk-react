@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { mainFontFamily } from "../../../utils/stylesSettings";
 import ClearIcon from '@mui/icons-material/Clear';
+import { useAppSelector } from "../../../store/hooks";
 import * as func from '../../../utils/formFunctions';
 
 const Filters = (props) => {
  
   return (
+    
     <Body >
 
       <MiniFilter>
@@ -204,7 +206,7 @@ const Filters = (props) => {
       <FullFilter>
         Расширенный фильтр   
 
-        {(props.iridium || props.thuraya) && 
+        {(set.settingsFilter.ir|| set.settingsFilter.th ) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Формат данных</legend>
             <FormatDatas>
@@ -373,7 +375,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.ptt|| props.thuraya) && 
+        {(set.settingsFilter.ptt || set.settingsFilter.th) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Координаты</legend>
             Широта
@@ -410,7 +412,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.ptt|| props.thuraya) && 
+        {(set.settingsFilter.ptt|| set.settingsFilter.th) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Координаты комплекса</legend>
             Широта
@@ -447,7 +449,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {props.gsm && 
+        {set.settingsFilter.gsm && 
           <fieldset className='filter'>
             <legend className='filter__title'>№ аппаратного канала</legend>
             <div className='input-wrapper'>
@@ -459,7 +461,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv || props.wifi) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv || set.settingsFilter.wifi) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Несущая полоса частоты</legend>
             <div className='input-wrapper'>
@@ -491,7 +493,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Полоса частоты</legend>
             <div className='input-wrapper'>
@@ -523,7 +525,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Радиосеть</legend>
             <div className='input-wrapper'>
@@ -535,7 +537,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Тип сигнала</legend>
             <div className='input-wrapper'>
@@ -547,7 +549,7 @@ const Filters = (props) => {
           </fieldset>
         }
 
-        {(props.kv || props.ukv) && 
+        {(set.settingsFilter.kv || set.settingsFilter.ykv) && 
           <fieldset className='filter'>
             <legend className='filter__title'>Подтип сигнала</legend>
             <div className='input-wrapper'>

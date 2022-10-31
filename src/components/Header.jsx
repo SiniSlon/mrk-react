@@ -38,7 +38,7 @@ const Header = () => {
             }
           >Пост обработки
           </Link>
-          <Link to='/upload' className={path == '/upload' ? 'active-link' : 'link'}>История загрузок</Link>
+          <Link to='/upload' className={path == '/upload' || path == '/upload/queue'  ? 'active-link' : 'link'}>Загрузка данных</Link>
           <Link to='/database' className={path == '/database'  ? 'active-link' : 'link'}>Настройка БД</Link>
           <Link to='/adminpanel' className={path == '/adminpanel' || path == '/adminpanel/logs' || path == '/adminpanel/adduser' ? 'active-link' : 'link'}>Панель администратора</Link>
         </div>

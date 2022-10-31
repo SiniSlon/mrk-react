@@ -6,6 +6,7 @@ import { mainFontFamily } from "../../../utils/stylesSettings";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import PaginationBlock from "../../../components/Pagination";
+import ModalWindow from "../../Post/components/ModalWindow";
 
 const TableUpload = () => {
   const [ready, setReady] = useState(false);
@@ -21,7 +22,7 @@ const TableUpload = () => {
       } catch (e) {
         console.error('Error Users Table >>> ', e.response);
       } finally {
-        setReady(true);
+          setReady(true);
       }
     })();
   }, []);
@@ -30,12 +31,16 @@ const TableUpload = () => {
     <>
     {ready && <Table>
       <div className="table-item">
-        <div className="tabe-title__name">time</div>
-        <div className="tabe-title__name">ssnCount</div>
-        <div className="tabe-title__name">attrCount</div>
-        <div className="tabe-title__name">zonesCount</div>
-        <div className="tabe-title__name">trafficCount</div>
-        <div className="tabe-title__name">condition</div>
+        <div className="tabe-title__name">Исходный файл</div>
+        <div className="tabe-title__name">Дата загрузки</div>
+        <div className="tabe-title__name">Биллинг</div>
+        <div className="tabe-title__name">Трафик</div>
+        <div className="tabe-title__name">Первый сеанс</div>
+        <div className="tabe-title__name">Последний сеанс</div>
+        <div className="tabe-title__name">Статус загрузки</div>
+        <div className="tabe-title__name">Журнал загрузки</div>
+        <div className="tabe-title__name">Персонализация</div>
+        <div className="tabe-title__name">Удалить</div>
       </div>
 
       {usersList.map((item) => (
@@ -46,6 +51,9 @@ const TableUpload = () => {
           <div className="tabe-title__name">4</div>
           <div className="tabe-title__name">5</div>
           <div className="tabe-title__name">6</div>
+          <div className="tabe-title__name">7</div>
+          <div className="tabe-title__name">9</div> 
+          <div className="tabe-title__name"><button>Delete</button></div>
           {/* <div className="table-info__id">{item.id}</div>
           <div className="table-info__name">{item.userName}</div>
           <div className="table-info__name">{item.authority}</div>
@@ -53,7 +61,7 @@ const TableUpload = () => {
           <div className="table-info__name"><DeleteIcon onClick={handleDelete} id={item.userName} style={{cursor: 'pointer', width: '27px'}}/></div> */}
         </div>
       ))}
-
+    
       <PaginationBlock />
 
     </Table>}
