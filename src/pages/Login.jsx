@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { mainBackground, mainFontFamily } from '../utils/stylesSettings';
 import * as yup from 'yup';
@@ -25,6 +25,11 @@ const loginSchema = yup.object({
   password: yup.string().required(warningPassword.required),
 });
 
+const tempUser = {
+  userName: 'Albert Enshtein',
+  authtoriry: 'admin',
+}
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -32,12 +37,9 @@ const Login = () => {
 
   const from = location.state || { from: { pathname: '/' } };
 
-  console.log(from);
-
   const {
     handleSubmit,
     register,
-    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(loginSchema),
@@ -50,14 +52,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       console.log('Login data >>> ', data);
-
-      const tempUser = {
-        userName: 'Albert Enshtein',
-        authtoriry: 'admin',
-      }
-      
       dispatch(putUser(tempUser));
-
       console.log('Response Login >> ', tempUser);
 
       // const response = await loginUser(data);
@@ -76,53 +71,39 @@ const Login = () => {
     <Body>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FormTitle>Вход</FormTitle>
+        
+        <FormWrapper >
+        <label className="form-label"> 
+          {errors.userName ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите логин'}
+        </label>
 
-        <Controller 
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <FormWrapper errorState={!!errors.userName}>
-              <label className="form-label" htmlFor='userName'>{errors.userName ? <span style={{color: 'red'}}>{errors.userName.message}</span> : 'Введите логин'}</label>
+          <div className="input-wrapper">
+            <PersonIcon/>
 
-              <div className="input-wrapper">
-                <PersonIcon/>
+            <input className='login-input'
+              type="text"
+              placeholder='Логин'
+              {...register('userName')}
+            />
+          </div>
+        </FormWrapper>
+      
+        <FormWrapper>       
+          <label className="form-label"> 
+            {errors.password ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите пароль'}
+          </label>
 
-                <input className='login-input'
-                  type="text"
-                  id="userName"
-                  placeholder='Логин'
-                  value={value}
-                  {...register('userName')}
-                />
-              </div>
-            </FormWrapper>
-          )}
-          name="userName"
-          rules={{ required: true }}
-        />
+          <div className="input-wrapper">
+            <LockIcon/>
 
-        <Controller 
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <FormWrapper errorState={!!errors.password}>
-              <label className="form-label" htmlFor='password'>{errors.password ? <span style={{color: 'red'}}>{errors.password.message}</span> : 'Введите пароль'}</label>
-
-              <div className="input-wrapper">
-                <LockIcon/>
-
-                <input className='password-input'
-                  type="password"
-                  id="password"
-                  placeholder='Пароль'
-                  value={value}
-                  {...register('password')}
-                />
-              </div>
-            </FormWrapper>
-          )}
-          name="password"
-          rules={{ required: true }}
-        />
-
+            <input className='password-input'
+              type="password"
+              placeholder='Пароль'
+              {...register('password')}
+            />
+          </div>
+        </FormWrapper>
+          
         <button className="button" type='submit'>Войти</button>
 
       </Form>
@@ -167,12 +148,11 @@ const FormWrapper = styled.div`
     font-size: 16px;
   }
 
-
   input:-webkit-autofill,
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus, 
   input:-webkit-autofill:active{
-      -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
   }
 `;
 
@@ -215,7 +195,11 @@ const Form = styled.form`
   }
 `;
 
-const Body = styled.div`
+const ErrMessage = styled.span `
+  color: red;
+`;
+
+const Body = styled.main`
   display: flex;
   width: 100%;
   height: 100vh;

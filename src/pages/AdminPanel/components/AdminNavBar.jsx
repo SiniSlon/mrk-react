@@ -18,25 +18,10 @@ const AdminNavBar = () => {
 
 export default AdminNavBar;
 
-const Body = styled.div`
+const Body = styled.nav`
   display: flex;
   width: 100%;
   background-color: #00000050;
-
-  .button__active {
-    color: #005aff;
-    font-family: ${mainFontFamily};
-    font-size: 18px; 
-    font-weight: 500;
-    cursor: pointer;
-    padding: 10px 15px;
-    border: 1px solid black;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #ffffff;
-    border: none;
-    text-decoration: none;
-  }
 
   .button {
     color: white;
@@ -46,6 +31,21 @@ const Body = styled.div`
     padding: 10px 15px;
     border-radius: 10px;
     text-decoration: none;
+    
+    &__active {
+      color: #005aff;
+      font-family: ${mainFontFamily};
+      font-size: 18px; 
+      font-weight: 500;
+      cursor: pointer;
+      padding: 10px 15px;
+      border: 1px solid black;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background-color: #ffffff;
+      border: none;
+      text-decoration: none;
+    }
   }
 
   .adduser-btn {

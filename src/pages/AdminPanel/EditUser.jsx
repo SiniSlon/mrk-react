@@ -19,25 +19,26 @@ const warningLogin = {
   required: 'Введите логин',
 };
 
-// const warningOldPassword = {
-//   required: 'Введите пароль',
-// };
-
 const warningPassword = {
   matches: 'Password must contain at least 1 lowercase letter, at least 1 uppercase letter, and 1 special character',
   min: 'Пароль должен быть минимум 4 символа',
   required: 'Введите пароль',
 };
 
+const warningAuthority = {
+  required: 'Выберете роль',
+};
+
 const signupSchema = yup.object().shape({
   userName: yup.string().max(12, warningLogin.max).required(warningLogin.required),
   // oldPassword: yup.string().required(warningOldPassword.required),
   password: yup.string()
-    // .matches(regexPassword, warningPassword.matches)
-    // .min(6, warningPassword.min)
-    .required(warningPassword.required)
-    ,
+  // .matches(regexPassword, warningPassword.matches)
+  // .min(6, warningPassword.min)
+  .required(warningPassword.required)
+  ,
   replay: yup.string().oneOf([yup.ref('password'), null], 'Пароли не совпадают'),
+  authority: yup.string().required(warningAuthority.required),
 });
 
 const EditUser = () => {
@@ -54,15 +55,15 @@ const EditUser = () => {
   useEffect(() => {
     (async () => {
       try {
-          const response = await getUserByName(paramsName);
-          console.log('Get user >> ', response.data); 
-          setUserName(response.data.userName)
-          setValue('userName', response.data.userName)
-          setValue('authority', response.data.authority)
+          // const response = await getUserByName(paramsName);
+          // console.log('Get user >> ', response.data); 
+          // setUserName(response.data.userName)
+          // setValue('userName', response.data.userName)
+          // setValue('authority', response.data.authority)
       } catch (e) {
-          console.error('Error getUser >> ', e)
+        console.error('Error Edit User Admin >>> ', e)
       } finally {
-          setReady(true);
+        setReady(true);
       }
     })()
   }, [])
@@ -70,14 +71,12 @@ const EditUser = () => {
   const {
     handleSubmit,
     register,
-    control,
     formState: { errors },
     setValue,
   } = useForm({
     resolver: yupResolver(signupSchema),
     defaultValues: {
       userName: '',
-      // oldPassword: '',
       password: '',
       replay: '',
       authority: ''
@@ -86,156 +85,101 @@ const EditUser = () => {
 
   const onSubmit = async (data) => {
     try {
-      // console.log('New user >> ', data)
-      if (data.password !== data.replay) return;
+      console.log('New user >>> ', data)
       const { replay, ...rest } = data;
-      console.log(rest)
-      console.log('userName', userName);
+      console.log('userName >>> ', userName);
 
-      const newNameData = {
+      const newData = {
         userName: userName,
         newName: rest.userName,
         password: rest.password,
         authority: rest.authority,
       }
 
-      console.log('newName', newNameData)
+      console.log('newData >>> ', newData)
       // console.log(newRole)
 
-      const resLogin = await changeUser(newNameData);
+      // const resLogin = await changeUser(newData);
       // const resPassword = await updateUserPassword(newPassword);
       // const response = await createUser(rest);
       // dispatch(putUser(response.data.user));
       // console.log('RESPONSE', response);
-      // navigate('/adminpanel');
+      navigate('/adminpanel');
     } catch (e) {
-      console.error('Error Add User >>> ', e);
+      console.error('Error Edit User Admin >>> ', e);
     }
   };
 
   return (
     <>
-      {ready ? 
-      <Body>
-        <Header/>
+      <Header/>
 
+      {ready ? 
         <Main>
           <AdminNavBar/>
 
           <Form onSubmit={handleSubmit(onSubmit)}>
             <h2 className="title">Редактирование пользователя</h2>
 
-            <Controller control={control} render={({ field: { onChange, value } }) => (
-              <FormWrapper errorState={!!errors.userName}>
-                <label className="form-label">{errors.userName ? <ErrMessage>{errors.userName.message}</ErrMessage> : 'Введите логин' }</label>
+              <FormWrapper >
+                <label className="form-label">
+                  {errors.userName ? <ErrMessage>{errors.userName.message}</ErrMessage> : 'Введите логин' }
+                </label>
                 <div className="input-wrapper">
                   <PersonIcon/>
                   <input 
                     className="login-input" 
                     placeholder="Логин"
-                    type="text"
-                    id="input-userName"
-                    value={value}
-                    onChange={setValue}
                     {...register('userName')}
                   />
                 </div>
               </FormWrapper>
-            )}
-              name="userName"
-              rules={{ required: true }}
-            />
 
-            {/* <Controller control={control} render={({ field: { onChange, value } }) => (
-              <FormWrapper errorState={!!errors.oldPassword}>
-                <label className="form-label">{errors.oldPassword ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите старый пароль' }</label>
-                <div className="input-wrapper">
-                  <LockIcon/>
-                  <input 
-                    className="password-input" 
-                    placeholder="Старый пароль"
-                    type="text"
-                    id="input-password"
-                    value={value}
-                    onChange={onChange}
-                    {...register('oldPassword')}
-                  />
-                </div>
-              </FormWrapper>
-              )}
-              name="oldPassword"
-              rules={{ required: true }}
-            /> */}
-
-            <Controller control={control} render={({ field: { onChange, value } }) => (
-              <FormWrapper errorState={!!errors.password}>
-                <label className="form-label">{errors.password ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите новый пароль' }</label>
+           
+              <FormWrapper >
+                <label className="form-label">
+                  {errors.password ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите новый пароль' }
+                </label>
                 <div className="input-wrapper">
                   <LockIcon/>
                   <input 
                     className="password-input" 
                     placeholder="Новый пароль"
-                    type="text"
-                    id="input-password"
-                    value={value}
-                    onChange={onChange}
                     {...register('password')}
                   />
                 </div>
               </FormWrapper>
-              )}
-              name="password"
-              rules={{ required: true }}
-              />
 
-            <Controller control={control} render={({ field: { onChange, value } }) => (
-              <FormWrapper errorState={!!errors.replay}>
-                <label className="form-label">{errors.replay ? <ErrMessage>{errors.replay.message}</ErrMessage> : 'Введите новый пароль еще раз' }</label>
+            
+              <FormWrapper >
+                <label className="form-label">
+                  {errors.replay ? <ErrMessage>{errors.replay.message}</ErrMessage> : 'Введите новый пароль еще раз' }
+                </label>
                 <div className="input-wrapper">
                   <LockIcon/>
                   <input 
                     className="password-input" 
                     placeholder="Повторите пароль"
-                    type="text"
-                    id="input-replay"
-                    value={value}
-                    onChange={onChange}
                     {...register('replay')}
                   />
                 </div>
               </FormWrapper>
-              )}
-              name="replay"
-              rules={{ required: true }}
-            />
 
-            <Controller control={control} render={({ field: { onChange, value } }) => (
-              <FormWrapperSelect >
-                <label className="form-label">Выберете роль</label>
 
-                <select 
-                  className="select-input"
-                  value={value}
-                  onChange={onChange}
-                  {...register('authority')}
-                >
+              <FormWrapperSelect>
+                <label className="form-label">
+                  {errors.authority ? <ErrMessage>{errors.authority.message}</ErrMessage> : 'Выберете роль' }
+                </label>
+
+                <select className="select-input" {...register('authority')}>
                   <option value='ADMIN'>Администратор</option>
                   <option value='USER'>Пользователь</option>
                 </select>
               </FormWrapperSelect>
-              )}
-              name="authority"
-              rules={{ required: true }}
-            />
+
             <button className="button" type='submit'>Add</button>
           </Form>
-        </Main>
-
-        <Footer>
-          Фууутер
-        </Footer>
-      </Body>
-    : <Loader/>}
+        </Main> : <Loader/>}
     </>
   )
 }
@@ -341,28 +285,13 @@ const Form = styled.form`
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus, 
   input:-webkit-autofill:active{
-      -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
   }
 `;
 
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-  padding: 10px;
-`;
-
-const Footer = styled.footer`
-  display: flex;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  height: calc(100vh - 50px);
   background: ${mainBackground};
 `;

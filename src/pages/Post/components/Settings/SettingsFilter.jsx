@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
-import ModalWindow from './ModalWindow'
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { putSettingsFilter, putSettingsFilterDefault,defaultSettings } from "../../../store/reducers/settings";
+import ModalWindow from '../ModalWindow'
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsFilter, putSettingsFilterDefault,defaultSettings } from "../../../../store/reducers/settings";
 
 const SettingsFilter = () => {
     const [settings,setSettings] = useState('')

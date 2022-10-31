@@ -15,16 +15,15 @@ import Media from './pages/Post/Media';
 import Map from './pages/Post/Map';
 import Analitic from './pages/Post/Analitic';
 
-import LoadData from './pages/History/HistoryLoad';
+import LoadData from './pages/Upload/UploadHistory';
 import Database from './pages/Database/Database';
 
 import AdminPanel from './pages/AdminPanel/AdminPanel';
 import LogsAdmin from './pages/AdminPanel/LogsAdmin';
 import AddUser from './pages/AdminPanel/AddUser';
 import EditUser from './pages/AdminPanel/EditUser';
-import Queque from './pages/History/components/QueueLoad';
+import Queque from './pages/Upload/UploadQueue';
 import SettingsReport from './pages/AdminPanel/SettingsReports';
-
 
 const App = () => {
 
@@ -40,10 +39,10 @@ const App = () => {
       <Route path='/post/media' element={<Media/>}/>
       <Route path='/post/maps' element={<Map/>}/>
       <Route path='/post/analitic' element={<Analitic/>}/>
-    
 
       <Route path='/upload' element={<LoadData/>}/>
       <Route path='/upload/queue' element={<Queque/>}/>
+
       <Route path='/database' element={<Database/>}/>
 
       <Route path='/adminpanel' element={<AdminPanel/>}/>

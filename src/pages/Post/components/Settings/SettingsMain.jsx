@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { putSettingsMain } from "../../../store/reducers/settings";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsMain } from "../../../../store/reducers/settings";
 
 const SettingsMain =()=>{
   const dispatch = useAppDispatch();
