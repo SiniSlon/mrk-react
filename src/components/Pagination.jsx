@@ -21,7 +21,7 @@ const theme = createTheme({
   },
 });
 
-const PaginationBlock = ({data, changePage, page, prefixUrl}) => {
+const PaginationBlock = ({ data, changePage, page, prefixUrl }) => {
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,7 +36,7 @@ const PaginationBlock = ({data, changePage, page, prefixUrl}) => {
               component={Link}
               // to={`${fUrl}/${item.page}/${limit}`}
               // to = {`/${prefixUrl}/${item.page}`}
-              to = {`/post`}
+              to = {prefixUrl}
               {...item}
             />
           )}

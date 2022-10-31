@@ -1,25 +1,24 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import { mainBackground } from '../../utils/stylesSettings';
 import Header from '../../components/Header';
-import AdminTable from './components/AdminTable';
-import AdminNavBar from './components/AdminNavBar';
+import LoadNavBar from "./components/UploadNavBar";
+import TableQueue from "./components/TableQueue";
 
-const AdminPanel = () => {
+const UploadQueue = () => {
 
   return (
     <>
       <Header/>
-
+      
       <Main>
-        <AdminNavBar/>
-
-        <AdminTable/>      
+        <LoadNavBar/>
+        <TableQueue/>
       </Main>
     </>
   )
 }
 
-export default AdminPanel;
+export default UploadQueue;
 
 const Main = styled.main`
   display: flex;

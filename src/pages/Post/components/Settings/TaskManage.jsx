@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import { useState } from "react";
-import ModalWindow from "./ModalWindow";
+import ModalWindow from "../ModalWindow";
 
 
 const TaskManage =()=>{
@@ -14,7 +14,8 @@ const TaskManage =()=>{
 	const [viewTable, setViewTable] = useState(true); 
     
 	return(
-			<Body><Side>
+			<Body>
+				<Side>
 				<OneStr>
 					<button className="task-btn" title='Свернуть таблицу оповещений' onClick={()=>setViewTable(s=>!s)}><CloseFullscreenIcon/></button>
 					<button className="task-btn" title='Добавить задание'  onClick={()=>setAddModule(s=>!s)}><AddIcon/></button>

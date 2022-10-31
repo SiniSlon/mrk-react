@@ -5,6 +5,7 @@ import { useAppSelector } from "../../../store/hooks";
 import * as func from '../../../utils/formFunctions';
 
 const Filters = (props) => {
+  const set = useAppSelector(store => store.settingsSlice.settings)
  
   return (
     

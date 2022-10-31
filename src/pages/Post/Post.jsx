@@ -11,6 +11,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import TaskIcon from '@mui/icons-material/Task';
 import { Bar } from "react-chartjs-2";
+
 const Post = () => {
   const [ready, setReady] = useState(false);
   const [filter, setFilter] = useState(false);
@@ -65,10 +66,7 @@ const Post = () => {
 
   const [imeiValue, setImeiValue] = useState('');
 
-
-
-
-
+  
   const handleResetFilters = () => {
     setFilterTime('');
     setIdentif('imei');
@@ -224,7 +222,7 @@ const Post = () => {
   }
 
   return (
-    <Body>
+    <>
       <Header/>
 
       <Main>
@@ -329,23 +327,18 @@ const Post = () => {
           setImeiValue={setImeiValue}
         />}
       </Main>
-      
-      {/* <Footer> */}
-        {/* Фууутер */}
-      {/* </Footer> */}
-    </Body>
+    </>
   )
 }
 
 export default Post;
 
-const Main = styled.div`
+const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  /* height: calc(100vh - 100px); */
-  /* padding: 10px; */
+  height: calc(100vh - 50px);
   position: relative;
+  background: ${mainBackground};
 
   .filter-bar{
     display: flex;
@@ -354,7 +347,6 @@ const Main = styled.div`
   .filter-btn {
     display: flex;
     align-items: center;
-    /* width: 100px; */
     margin: 10px 0 0 10px;
     background-color: white;
     border-radius: 5px;
@@ -371,19 +363,4 @@ const Main = styled.div`
     background-color: #0054bd;
     color: white;
   }
-`;
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  background: ${mainBackground};
-`;
-
-const Footer = styled.div`
-  display: flex;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
 `;

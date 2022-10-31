@@ -1,25 +1,24 @@
-import { useState } from 'react';
 import styled from 'styled-components';
+import { mainBackground } from '../../utils/stylesSettings';
 import Header from '../../components/Header';
-import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
-import PostNavBar from './components/PostNavBar';
+import LoadNavBar from './components/UploadNavBar';
+import TableUpload from './components/TableUpload';
 
-const ConnectDB = () => {
-  const [filter, setFilter] = useState(false);
+const UploadHistory = () => {
 
   return (
     <>
       <Header/>
 
       <Main>
-        <PostNavBar/>
-        ConnectDB
+        <LoadNavBar/>
+        <TableUpload/>
       </Main>
     </>
   )
 }
 
-export default ConnectDB;
+export default UploadHistory;
 
 const Main = styled.main`
   display: flex;

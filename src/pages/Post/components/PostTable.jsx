@@ -5,7 +5,6 @@ import Loader from "../../../components/Loader";
 
 const PostTable = (props) => {
 
-  // console.log(props.postList)
   return (
     <>
       <Table>
@@ -18,19 +17,13 @@ const PostTable = (props) => {
           <div className="table-title__name">Формат данных</div>
           <div className="table-title__name">Трафик</div>
           <div className="table-title__name">Коммент</div>
-
           <div className="table-title__name">IMEI</div>
           <div className="table-title__name">IMSI</div>
           <div className="table-title__name">TMSI</div>
           <div className="table-title__name">ТФОП аб.</div>
           <div className="table-title__name">Направление</div>
           <div className="table-title__name">ТФОП коор</div>
-
-          {/* <div className="table-title__name">Уст-во аб.</div> */}
-          {/* <div className="table-title__name">Уст-во кор.</div> */}
-          {/* <div className="table-title__name">Тип</div> */}
           <div className="table-title__name">Координаты</div>
-          {/* <div className="table-title__name">Point2</div> */}
           <div className="table-title__name">Пост регистрации</div>
         </div>
         
@@ -44,25 +37,19 @@ const PostTable = (props) => {
             <div className="table-info__name">{item.type}</div>
             <div className="table-info__name">{item.traffic !== 0 && '+'}</div>
             <div className="table-info__name">{item.comment}</div>
-
             <div className="table-info__name">{item.cc3}</div>
             <div className="table-info__name">{item.cc4}</div>
             <div className="table-info__name">{item.cc5}</div>
             <div className="table-info__name">{item.cx1}</div>
             <div className="table-info__name">{item.direction}</div>
             <div className="table-info__name">{item.cx1b}</div>
-
-            {/* <div className="table-info__name">{item.cx2}</div> */}
-            {/* <div className="table-info__name">{item.cx2b}</div> */}
-            {/* <div className="table-info__name">{item.ot}</div> */}
             <div className="table-info__name">{item.coordinates[0].point1}</div>
-            {/* <div className="table-info__name">{item.coordinates[0].point2}</div> */}
             <div className="table-info__name">{item.regStation}</div>
           </div>
         )) : <Loader/>}
-
       </Table>
-      <PaginationBlock />
+
+      <PaginationBlock prefixUrl={'/post'}/>
     </>
   )
 }
@@ -74,7 +61,6 @@ const Table = styled.div`
   height: 100%;
   background-color: #ffffff;
   border-radius: 10px;
-  /* padding: 10px; */
   box-sizing: border-box;
   margin: 10px 10px 0 10px;
   overflow-x: scroll;
@@ -86,7 +72,6 @@ const Table = styled.div`
 
   .table-item {
     display: flex;
-    /* border-bottom: 1px solid #00000050; */
     height: 50px;
     font-family: ${mainFontFamily};
   }
@@ -100,7 +85,6 @@ const Table = styled.div`
     font-size: 16px;
     font-weight: 500;
     border-bottom: 1px solid #00000050;
-
   }
 
   .table-info__name {

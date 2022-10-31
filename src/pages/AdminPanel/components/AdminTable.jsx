@@ -6,6 +6,7 @@ import { mainFontFamily } from '../../../utils/stylesSettings';
 import PaginationBlock from '../../../components/Pagination';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Loader from '../../../components/Loader';
 
 const AdminTable = () => {
   const [ready, setReady] = useState(false);
@@ -14,9 +15,9 @@ const AdminTable = () => {
   useEffect(() => {
     (async () => {
       try {
-        const responseUsers = await getUsers();
-        setSetUsersList(responseUsers.data);
-        console.log('Response Admins Users >> ', responseUsers.data);
+        // const responseUsers = await getUsers();
+        // setSetUsersList(responseUsers.data);
+        // console.log('Response Admins Users >> ', responseUsers.data);
 
       } catch (e) {
         console.error('Error Users Table >>> ', e.response);
@@ -27,55 +28,56 @@ const AdminTable = () => {
   }, []);
 
   const handleDelete = async(e) => {
-      try {
+    try {
 
-        let question = prompt('Удалить пользователя?', 'Да');
+      let question = prompt('Удалить пользователя?', 'Да');
 
-        if (question !== 'Да') return;
+      if (question !== 'Да') return;
 
-        if (e.target.dataset.testid == 'DeleteIcon') {
-          const deletedUser = e.target.id;
-          const del = await deleteUser({userName: deletedUser});
-          console.log(del);
-          const responseUsers = await getUsers();
-          setSetUsersList(responseUsers.data);
-        } else {
-          const deletedUser = e.target.parentElement.id;
-          const del = await deleteUser({userName: deletedUser});
-          console.log(del);
-          const responseUsers = await getUsers();
-          setSetUsersList(responseUsers.data);
-        }
-      } catch (e) {
-        console.error('Delete User >>> ', e);
+      if (e.target.dataset.testid == 'DeleteIcon') {
+        const deletedUser = e.target.id;
+        const del = await deleteUser({userName: deletedUser});
+        console.log(del);
+        const responseUsers = await getUsers();
+        setSetUsersList(responseUsers.data);
+      } else {
+        const deletedUser = e.target.parentElement.id;
+        const del = await deleteUser({userName: deletedUser});
+        console.log(del);
+        const responseUsers = await getUsers();
+        setSetUsersList(responseUsers.data);
       }
+    } catch (e) {
+      console.error('Delete User >>> ', e);
+    }
   }
 
   return (
     <>
-    {ready && <Table>
-      <div className="table-item">
-        <div className="tabe-title__id">ID</div>
-        <div className="tabe-title__name">Имя пользователя</div>
-        <div className="tabe-title__name">Права</div>
-        <div className="tabe-title__name">Редактировать</div>
-        <div className="tabe-title__delete">Удалить</div>
-      </div>
-
-      {usersList.map((item) => (
-        <div className="table-item" key={item.id}>
-          <div className="table-info__id">{item.id}</div>
-          <div className="table-info__name">{item.userName}</div>
-          <div className="table-info__name">{item.authority}</div>
-          <Link to={`edituser/${item.userName}`} className="table-info__name"><EditIcon/></Link>
-          <div className="table-info__delete"><DeleteIcon onClick={handleDelete} id={item.userName} style={{cursor: 'pointer', width: '27px'}}/></div>
+      <Table>
+        <div className="table-item">
+          <div className="tabe-title__id">ID</div>
+          <div className="tabe-title__name">Имя пользователя</div>
+          <div className="tabe-title__name">Права</div>
+          <div className="tabe-title__name">Редактировать</div>
+          <div className="tabe-title__delete">Удалить</div>
         </div>
-      ))}
 
-      <PaginationBlock/>
+        {!ready ?
+          usersList.map((item) => (
+            <div className="table-item" key={item.id}>
+              <div className="table-info__id">{item.id}</div>
+              <div className="table-info__name">{item.userName}</div>
+              <div className="table-info__name">{item.authority}</div>
+              <Link to={`edituser/${item.userName}`} className="table-info__name"><EditIcon/></Link>
+              <div className="table-info__delete"><DeleteIcon onClick={handleDelete} id={item.userName} style={{cursor: 'pointer', width: '27px'}}/></div>
+            </div>
+          )) : <Loader/>
+        }
+      </Table>
 
-    </Table>}
-  </>
+      <PaginationBlock prefixUrl={'/adminpanel'}/>
+    </>
   )
 }
 
@@ -88,7 +90,9 @@ const Table = styled.div`
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
+  height: 100%;
   margin: 10px;
+  margin-bottom: 0;
 
   .table-item {
     display: flex;

@@ -156,11 +156,13 @@ const Map = () => {
   };
 
   return (
-    <Body>
+    <>
       <Header/>
-      <PostNavBar/>
 
       <Main>
+      <PostNavBar/>
+
+        <MapWrapper>
         <AsideMap 
           polygones={polygones}
           rectangles={rectangles}
@@ -184,30 +186,29 @@ const Map = () => {
             />
           </FeatureGroup>
         </MapContainer>
+        </MapWrapper>
       </Main>
-    </Body>
+    </>
   )
 }
 
 export default Map;
 
-const Main = styled.div`
+const Main = styled.main`
   display: flex;
-  height: calc(100vh - 100px);
+  flex-direction: column;
+  height: calc(100vh - 50px);
+  background: ${mainBackground};
+`;
+
+const MapWrapper = styled.div`
+  display: flex;
   padding: 10px;
-  position: relative;
+  height: 100%;
 
   .map {
     height: 100%;
     border-radius: 5px;
     width: 100vw;
   }
-`;
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  background: ${mainBackground};
 `;

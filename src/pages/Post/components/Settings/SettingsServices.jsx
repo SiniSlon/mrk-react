@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { putSettingsServices } from "../../../store/reducers/settings";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsServices } from "../../../../store/reducers/settings";
 
 const SettingsServices =()=>{
 

@@ -13,7 +13,7 @@ const Header = () => {
   const user = useAppSelector((state) => state.userSlice.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const path = window.location.pathname;
+  const path = window.location.pathname.split('/')[1];
 
   // console.log('Header in');
 
@@ -24,28 +24,17 @@ const Header = () => {
   }
 
   return (
-      <Body>
-        <div className="header__wrapper">
-          <Link to='/post' 
-            className={
-              path == '/post' || 
-              path == '/post/sessions' || 
-              path == '/post/database' ||
-              path == '/post/settings' || 
-              path == '/post/media' || 
-              path == '/post/maps' ||
-              path == '/post/analitic' ? 'active-link' : 'link'
-            }
-          >Пост обработки
-          </Link>
-          <Link to='/upload' className={path == '/upload' || path == '/upload/queue'  ? 'active-link' : 'link'}>Загрузка данных</Link>
-          <Link to='/database' className={path == '/database'  ? 'active-link' : 'link'}>Настройка БД</Link>
-          <Link to='/adminpanel' className={path == '/adminpanel' || path == '/adminpanel/logs' || path == '/adminpanel/adduser' ? 'active-link' : 'link'}>Панель администратора</Link>
-        </div>
+    <Body>
+      <nav className="header__wrapper">
+        <Link to='/post' className={path == 'post' ? 'active-link' : 'link'}>Пост обработки</Link>
+        <Link to='/upload' className={path == 'upload' || path == '/upload/queue'  ? 'active-link' : 'link'}>Загрузка данных</Link>
+        <Link to='/database' className={path == 'database'  ? 'active-link' : 'link'}>Настройка БД</Link>
+        <Link to='/adminpanel' className={ path == 'adminpanel' ? 'active-link' : 'link'}>Панель администратора</Link>
+      </nav>
 
-        <div className='username'>{user?.userName}</div>
-        <div className="logout" onClick={handleLogout}><span>Выйти</span><LogoutIcon/></div>
-      </Body>
+      {user && <div className='username'>{user?.userName}</div>}
+      <div className="logout" onClick={handleLogout}><span>Выйти</span><LogoutIcon/></div>
+    </Body>
   )
 }
 
