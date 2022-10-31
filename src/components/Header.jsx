@@ -1,13 +1,26 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { mainFontFamily } from '../utils/stylesSettings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { logoutUser, putUser } from '../store/reducers/user';
+
+// console.log('Header out');
 
 const Header = () => {
+  const user = useAppSelector((state) => state.userSlice.user);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const path = window.location.pathname;
+
+  // console.log('Header in');
 
   const handleLogout = () => {
     console.log('Log out');
+    dispatch(logoutUser())
+    navigate('/login')
   }
 
   return (
@@ -29,7 +42,9 @@ const Header = () => {
           <Link to='/database' className={path == '/database'  ? 'active-link' : 'link'}>Настройка БД</Link>
           <Link to='/adminpanel' className={path == '/adminpanel' || path == '/adminpanel/logs' || path == '/adminpanel/adduser' ? 'active-link' : 'link'}>Панель администратора</Link>
         </div>
-          <div className="logout" onClick={handleLogout}><span>Выйти</span><LogoutIcon/></div>
+
+        <div className='username'>{user?.userName}</div>
+        <div className="logout" onClick={handleLogout}><span>Выйти</span><LogoutIcon/></div>
       </Body>
   )
 }
@@ -60,6 +75,12 @@ const Body = styled.header`
     }
   }
 
+  .username {
+    font-size: 18px;
+    font-family: ${mainFontFamily};
+    margin-left: auto;
+  }
+
   .header__wrapper {
     display: flex;
     width: 100%;
@@ -69,7 +90,7 @@ const Body = styled.header`
     .link {
       font-family: ${mainFontFamily};
       font-size: 18px;
-      color: #005affb2;
+      color: #0059ffc1;
       text-decoration: none;
 
       :hover {

@@ -10,7 +10,6 @@ const user = createSlice({
   reducers: {
     putUser(state, action) {
       state.user = action.payload;
-      console.log(state.user);
     },
     logoutUser(state) {
       state.user = null;
