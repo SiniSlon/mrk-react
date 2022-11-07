@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import {mainButtonDiv, mainButtonsHoverColor, mainButtonsColor} from '../../../utils/stylesSettings'
 
-
 const Labels = () => {
     const [views,setViews]=useState('creates')
     const [create,setCreate]=useState('')

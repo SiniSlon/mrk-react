@@ -8,7 +8,7 @@ const ConnectDB = () => {
   const [filter, setFilter] = useState(false);
 
   return (
-    <Body>
+    <>
       <Header/>
 
       <Main>
@@ -16,17 +16,13 @@ const ConnectDB = () => {
         <input type='file' accept='.sql, .dump'  id="files"/>
        <label htmlFor='files'></label>
       </Main>
-
-      <Footer>
-        Фууутер
-      </Footer>
-    </Body>
+    </>
   )
 }
 
 export default ConnectDB;
 
-const Main = styled.div`
+const Main = styled.main`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 100px);
@@ -43,11 +39,4 @@ const Body = styled.div`
   width: 100%;
   height: 100vh;
   background: ${mainBackground};
-`;
-
-const Footer = styled.div`
-  display: flex;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
 `;

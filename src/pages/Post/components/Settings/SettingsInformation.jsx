@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
+<<<<<<< HEAD:src/pages/Post/components/SettingsInformation.jsx
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { putSettingsInfo } from "../../../store/reducers/settings";
 import {mainButtonsHoverColor,mainButtonDiv} from '../../../utils/stylesSettings'
+=======
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsInfo } from "../../../../store/reducers/settings";
+>>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/SettingsInformation.jsx
 
 const SettingsInformation = ()=>{
 

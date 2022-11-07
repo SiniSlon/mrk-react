@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
+<<<<<<< HEAD:src/pages/Post/components/SettingsMain.jsx
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { putSettingsMain } from "../../../store/reducers/settings";
 import {mainButtonsHoverColor,mainButtonsColor} from '../../../utils/stylesSettings'
+=======
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsMain } from "../../../../store/reducers/settings";
+>>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/SettingsMain.jsx
 
 const SettingsMain =()=>{
   const dispatch = useAppDispatch();

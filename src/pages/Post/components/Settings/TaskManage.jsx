@@ -5,8 +5,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import { useState } from "react";
+<<<<<<< HEAD:src/pages/Post/components/TaskManage.jsx
 import ModalWindow from "./ModalWindow";
 import {headerTh} from '../../../utils/stylesSettings'
+=======
+import ModalWindow from "../ModalWindow";
+>>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/TaskManage.jsx
 
 
 const TaskManage =()=>{
@@ -15,7 +19,8 @@ const TaskManage =()=>{
 	const [viewTable, setViewTable] = useState(true); 
     
 	return(
-			<Body><Side>
+			<Body>
+				<Side>
 				<OneStr>
 					<button className="task-btn" title='Свернуть таблицу оповещений' onClick={()=>setViewTable(s=>!s)}><CloseFullscreenIcon/></button>
 					<button className="task-btn" title='Добавить задание'  onClick={()=>setAddModule(s=>!s)}><AddIcon/></button>

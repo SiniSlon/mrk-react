@@ -74,45 +74,55 @@ const initialState={
     }
 }
         
-const settings =createSlice({
-    name:'settings',
-    initialState,
-    reducers:{
-        putSettingsMain(state,action){
-            state.settings.settingsMain= {...state.settings.settingsMain,...action.payload};
-            console.log('Store settingsMain >> ', state.settings.settingsMain)
-        },
-        putSettingsSpr(state,action){
-            state.settings.settingsSpr= {...state.settings.settingsSpr,...action.payload};
-            console.log('Store settingsSpr >>', state.settingsSpr)
-        },
-        putSettingsInfo(state,action){
-            state.settings.settingsInfo= {...state.settings.settingsInfo,...action.payload};
-            console.log('Store settingsInfo >>', state.settings.settingsInfo)
-        },
-        putSettingsFilter(state,action){
-            state.settings.settingsFilter={...state.settings.settingsFilter,...action.payload};
-            console.log('Store settingsFilter >>', state.settings.settingsFilter)
-        },
-        putSettingsFilterDefault(state,action){
-            state.settings.settingsFilterDefault={...state.settings.settingsFilterDefault,...action.payload};
-            console.log('Store settingsFilterDefault >>', state.settings.settingsFilterDefault)
-        },
-        putSettingsServices(state,action){
-            state.settings.settingsServices={...state.settings.settingsServices,...action.payload};
-            console.log(state.settings.settingsServices)
-        },
-        putSettingsMap(state,action){
-            state.settings.settingsMap={...state.settings.settingsMap,...action.payload};
-            console.log(state.settings.settingsMap)
-        },
-        defaultSettings(state,action){
-            state.settings = initialState;
-        }
+const settings = createSlice({
+  name: 'settings',
+  initialState,
+  reducers:{
+    putSettingsMain(state,action){
+      state.settings.settingsMain= {...state.settings.settingsMain,...action.payload};
+      console.log('Store settingsMain >> ', state.settings.settingsMain)
     },
+    putSettingsSpr(state,action){
+      state.settings.settingsSpr= {...state.settings.settingsSpr,...action.payload};
+      console.log('Store settingsSpr >>', state.settingsSpr)
+    },
+    putSettingsInfo(state,action){
+      state.settings.settingsInfo= {...state.settings.settingsInfo,...action.payload};
+      console.log('Store settingsInfo >>', state.settings.settingsInfo)
+    },
+    putSettingsFilter(state,action){
+      state.settings.settingsFilter={...state.settings.settingsFilter,...action.payload};
+      console.log('Store settingsFilter >>', state.settings.settingsFilter)
+    },
+    putSettingsFilterDefault(state,action){
+      state.settings.settingsFilterDefault={...state.settings.settingsFilterDefault,...action.payload};
+      console.log('Store settingsFilterDefault >>', state.settings.settingsFilterDefault)
+    },
+    putSettingsServices(state,action){
+      state.settings.settingsServices={...state.settings.settingsServices,...action.payload};
+      console.log(state.settings.settingsServices)
+    },
+    putSettingsMap(state,action){
+      state.settings.settingsMap={...state.settings.settingsMap,...action.payload};
+      console.log(state.settings.settingsMap)
+    },
+    defaultSettings(state,action){
+      state.settings = initialState;
+    }
+  },
 });
 
   //  store.subscribe(console.log(settings))
 
-export const {putSettingsMain,putSettingsMap,putSettingsSpr,putSettingsServices,putSettingsInfo,putSettingsFilter,putSettingsFilterDefault,defaultSettings}=settings.actions;
+export const { 
+  putSettingsMain,
+  putSettingsMap,
+  putSettingsSpr,
+  putSettingsServices,
+  putSettingsInfo,
+  putSettingsFilter,
+  putSettingsFilterDefault,
+  defaultSettings 
+} = settings.actions;
+
 export default settings.reducer;

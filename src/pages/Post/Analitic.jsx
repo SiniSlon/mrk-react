@@ -120,7 +120,7 @@ const ChartDatas = {
   ]
 }
   return (
-    <Body>
+    <>
       <Header/>
       <Main>
         <PostNavBar/>
@@ -179,13 +179,13 @@ const ChartDatas = {
        data={value}
       /></TooMain>
       </Main>
-    </Body>
+    </>
   )
 }
 
 export default Analitic;
 
-const Main = styled.div`
+const Main = styled.main`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 100px);

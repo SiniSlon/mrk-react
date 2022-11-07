@@ -1,9 +1,15 @@
 import styled from "styled-components";
 import { useState } from "react";
+<<<<<<< HEAD:src/pages/Post/components/SettingsFilter.jsx
 import ModalWindow from './ModalWindow'
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { putSettingsFilter, putSettingsFilterDefault,defaultSettings } from "../../../store/reducers/settings";
 import {mainButtonsHoverColor,mainButtonDiv} from '../../../utils/stylesSettings'
+=======
+import ModalWindow from '../ModalWindow'
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsFilter, putSettingsFilterDefault,defaultSettings } from "../../../../store/reducers/settings";
+>>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/SettingsFilter.jsx
 
 const SettingsFilter = () => {
     const [settings,setSettings] = useState('')

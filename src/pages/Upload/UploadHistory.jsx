@@ -1,23 +1,24 @@
-import { useState } from 'react';
 import styled from 'styled-components';
+import { mainBackground } from '../../utils/stylesSettings';
 import Header from '../../components/Header';
-import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
+import LoadNavBar from './components/UploadNavBar';
+import TableUpload from './components/TableUpload';
 
-const Database = () => {
-  const [section, setSection] = useState('');
+const UploadHistory = () => {
 
   return (
     <>
       <Header/>
 
       <Main>
-        Настройка БД
+        <LoadNavBar/>
+        <TableUpload/>
       </Main>
     </>
   )
 }
 
-export default Database;
+export default UploadHistory;
 
 const Main = styled.main`
   display: flex;

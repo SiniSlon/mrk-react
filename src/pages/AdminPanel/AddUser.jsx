@@ -16,19 +16,22 @@ const warningLogin = {
   max: 'Слишком длинное имя',
   required: 'Введите логин',
 };
+
 const warningPassword = {
   matches: 'Password must contain at least 1 lowercase letter, at least 1 uppercase letter, and 1 special character',
   min: 'Пароль должен быть минимум 4 символа',
   required: 'Введите пароль',
 };
 
+const warningAuthority = {
+  required: 'Выберете роль',
+};
+
 const signupSchema = yup.object().shape({
   userName: yup.string().max(12, warningLogin.max).required(warningLogin.required),
-  password: yup.string()
-    .min(4, warningPassword.min)
-    .required(warningPassword.required)
-    ,
+  password: yup.string() .min(4, warningPassword.min) .required(warningPassword.required),
   replay: yup.string().oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
+  authority: yup.string().required(warningAuthority.required),
 });
 
 const AddUser = () => {
@@ -37,7 +40,6 @@ const AddUser = () => {
   const {
     handleSubmit,
     register,
-    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(signupSchema),
@@ -45,20 +47,17 @@ const AddUser = () => {
       userName: '',
       password: '',
       replay: '',
-      authority: 'ADMIN'
+      authority: ''
     },
   });
 
-
   const onSubmit = async (data) => {
     try {
-      // console.log('New user >> ', data)
-      if (data.password !== data.replay) return;
+      console.log(data);
       const { replay, ...rest } = data;
-      console.log(rest);
-      const response = await createUser(rest);
+      // const response = await createUser(rest);
       // dispatch(putUser(response.data.user));
-      console.log('RESPONSE', response);
+      // console.log('RESPONSE', response);
       navigate('/adminpanel');
     } catch (e) {
       console.error('Error Add User >>> ', e);
@@ -66,7 +65,7 @@ const AddUser = () => {
   };
 
   return (
-    <Body>
+    <>
       <Header/>
 
       <Main>
@@ -75,95 +74,65 @@ const AddUser = () => {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h2 className="title">Добавление пользователя</h2>
 
-          <Controller control={control} render={({ field: { onChange, value } }) => (
-              <FormWrapper errorState={!!errors.userName}>
-                <label className="form-label">{errors.userName ? <ErrMessage>{errors.userName.message}</ErrMessage> : 'Введите логин' }</label>
-                <div className="input-wrapper">
-                  <PersonIcon/>
-                  <input 
-                    className="login-input" 
-                    placeholder="Логин"
-                    type="text"
-                    id="input-userName"
-                    value={value}
-                    onChange={onChange}
-                    {...register('userName')}
-                  />
-                </div>
-              </FormWrapper>
-            )}
-            name="userName"
-            rules={{ required: true }}
-          />
+          <FormWrapper >
+            <label className="form-label">
+              {errors.userName ? <ErrMessage>{errors.userName.message}</ErrMessage> : 'Введите логин'}
+            </label>
+            <div className="input-wrapper">
+              <PersonIcon/>
+              <input 
+                className="login-input" 
+                placeholder="Логин"
+                id="input-userName"
+                {...register('userName')}
+              />
+            </div>
+          </FormWrapper>
 
-          <Controller control={control} render={({ field: { onChange, value } }) => (
-            <FormWrapper errorState={!!errors.password}>
-              <label className="form-label">{errors.password ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите пароль' }</label>
-              <div className="input-wrapper">
-                <LockIcon/>
-                <input 
-                  className="password-input" 
-                  placeholder="Пароль"
-                  type="text"
-                  id="input-password"
-                  value={value}
-                  onChange={onChange}
-                  {...register('password')}
-                />
-              </div>
-            </FormWrapper>
-            )}
-            name="password"
-            rules={{ required: true }}
-          />
+          <FormWrapper>
+            <label className="form-label">
+              {errors.password ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите пароль'}
+            </label>
+            <div className="input-wrapper">
+              <LockIcon/>
+              <input 
+                className="password-input" 
+                placeholder="Пароль"
+                id="input-password"
+                {...register('password')}
+              />
+            </div>
+          </FormWrapper>
 
-          <Controller control={control} render={({ field: { onChange, value } }) => (
-            <FormWrapper errorState={!!errors.replay}>
-              <label className="form-label">{errors.replay ? <ErrMessage>{errors.replay.message}</ErrMessage> : 'Введите пароль еще раз' }</label>
-              <div className="input-wrapper">
-                <LockIcon/>
-                <input 
-                  className="password-input" 
-                  placeholder="Повторите пароль"
-                  type="text"
-                  id="input-replay"
-                  value={value}
-                  onChange={onChange}
-                  {...register('replay')}
-                />
-              </div>
-            </FormWrapper>
-            )}
-            name="replay"
-            rules={{ required: true }}
-          />
+          <FormWrapper >
+            <label className="form-label">
+              {errors.replay ? <ErrMessage>{errors.replay.message}</ErrMessage> : 'Введите пароль еще раз'}
+            </label>
+            <div className="input-wrapper">
+              <LockIcon/>
+              <input 
+                className="password-input" 
+                placeholder="Повторите пароль"
+                id="input-replay"
+                {...register('replay')}
+              />
+            </div>
+          </FormWrapper>
 
-          <Controller control={control} render={({ field: { onChange, value } }) => (
-            <FormWrapperSelect >
-              <label className="form-label">Выберете роль</label>
-
-              <select 
-                className="select-input"
-                value={value}
-                onChange={onChange}
-                {...register('authority')}
-              >
-                <option value='ADMIN'>Администратор</option>
-                <option value='USER'>Пользователь</option>
-              </select>
-            </FormWrapperSelect>
-            )}
-            name="authority"
-            rules={{ required: true }}
-          />
+          <FormWrapperSelect>
+            <label className="form-label">
+              {errors.authority ? <ErrMessage>{errors.authority.message}</ErrMessage> : 'Выберете роль'}
+            </label>
+            <select className="select-input" {...register('authority')}>
+              <option value='ADMIN'>Администратор</option>
+              <option value='USER'>Пользователь</option>
+            </select>
+          </FormWrapperSelect>
+            
           <button className="button" type='submit'>Добавить</button>
         </Form>
       </Main>
-
-      <Footer>
-        Фууутер
-      </Footer>
-    </Body>
+    </>
   )
 }
 
@@ -235,6 +204,7 @@ const Form = styled.form`
     border-radius: 5px;
     font-family: ${mainFontFamily};
     font-size: 16px;
+    width: 100%;
   }
 
   .password-input {
@@ -244,6 +214,7 @@ const Form = styled.form`
     border-radius: 5px;
     font-family: ${mainFontFamily};
     font-size: 16px;
+    width: 100%;
   }
 
   .button {
@@ -275,20 +246,6 @@ const Form = styled.form`
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-`;
-
-const Footer = styled.footer`
-  display: flex;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   height: 100vh;
   background: ${mainBackground};
 `;
