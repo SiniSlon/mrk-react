@@ -1,91 +1,118 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ModalWindow from "../../Post/components/ModalWindow";
 import PaginationBlock from "../../../components/Pagination";
 import { mainFontFamily } from "../../../utils/stylesSettings";
+import { deleteUser, getUsers } from "../../../api/users";
 
 const TableQueue = ()=>{
 
     const [view,setView]=useState(false);
+    const [ready, setReady] = useState(false);
+    const [usersList, setSetUsersList] = useState([]);
+
+    useEffect(() => {
+      (async () => {
+        try {
+          const responseUsers = await getUsers();
+          setSetUsersList(responseUsers.data)
+          console.log('Response Users >> ', responseUsers.data);
+  
+        } catch (e) {
+          console.error('Error Users Table >>> ', e.response);
+        } finally {
+            setReady(true);
+        }
+      })();
+    }, []);
 
     return(
-    
-        <Table>
-            <thead>
-                <tr>
-                    <th>Исходный файл</th>
-                    <th>Размер файла</th>
-                    <th>Время начала загрузки</th>
-                    <th>Отменить загрузку</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>`11</td>
-                    <td>122</td>
-                    <td>33</td>
-                    <td><Buttons onClick={()=>setView(s=>!s)}>Cancel</Buttons></td>
-                </tr>
-            </tbody>
-            {view && <ModalWindow>
+      <>
+      {ready && <Table>
+      
+          <div className="table-item">
+            <div className="tabe-title__name">Исходный файл</div>
+            <div className="tabe-title__name">Размер файла</div>
+            <div className="tabe-title__name">Время начала загрузки</div>
+            <div className="tabe-title__name">Отменить загрузку</div>
+          </div>
+          {usersList.map((item) => (<div className="table-item" key={item.id}>
+            <div className="tabe-title__name">`11</div>
+            <div className="tabe-title__name">122</div>
+            <div className="tabe-title__name">333</div>
+            <div className="tabe-title__name"><button onClick={()=>setView(s=>!s)}>Cancel</button></div>
+          </div> ))}
+          {view && <ModalWindow>
                 <div>
                     <p>Cancel download?</p>
                 </div>
                 <div>
-                    <Buttons>Yes</Buttons>
-                    <Buttons onClick={()=>setView(s=>!s)}>No</Buttons>
+                    <button>Yes</button>
+                    <button onClick={()=>setView(s=>!s)}>No</button>
                 </div>
                 </ModalWindow>}
                 <PaginationBlock />
-        </Table>
-        
+      </Table>}</>
     )
 }
 export default TableQueue;
 
-const Table = styled.table`
-      display: flex;
-      flex-direction: column;
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 20px;
-      box-sizing: border-box;
-      border-collapse : collapse ;
-      font-weight: 300;
-      font-family: ${mainFontFamily};
-    th{
-      border-bottom: 1px solid black;
-      border-collapse : collapse ;
-      text-align: center ;
-      width: 450px;
-      font-size: 20px;
-      font-weight: 500  ;
-      height: 50px;
-
-    }
-    tbody:hover{
-      background-color: rgba(12,114,234,0.2);
-      cursor:pointer;
-    }
-    
-    td{
-      text-align: center  ;
-      width: 450px;
-      font-size: 20px;}
-
-    .pagination {
-      display: flex;
-      margin: 0 auto;
+const Table = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  /* height: 50%; */
+  /* width: min-content; */
+  background-color: #ffffff;
+  border-radius: 10px;
+  
+  box-sizing: border-box;
+  /* margin: 10px; */
+  /* box-sizing: border-box; */
+ 
+  .pagination {
+    display: flex;
+   
   }
-    `;
 
-  const Buttons = styled.button`
-      background-color: rgba(12,114,234,0.8);
-      color:white;
-      border-radius: 5px;
-      border:none;
-      :hover{
-        cursor:pointer;
-        background-color: rgba(12,114,234,0.6);
-      }
-    `;
+  .table-item {
+    display: flex;
+    border-bottom: 1px solid #00000050;
+    height: 50px;
+    font-family: ${mainFontFamily};
+  }
+
+  .tabe-title__id {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .tabe-title__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .table-info__id {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    font-size: 20px;
+  }
+
+  .table-info__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    font-size: 20px;
+  }
+`;

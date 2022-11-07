@@ -11,7 +11,8 @@ const initialState={
             stat:true,
             coder:false,
             exp:false,
-            keyw:true,},
+            keyw:true,
+            lan:'rus'},
         settingsSpr: {
             lspr:false,
             prab:false,

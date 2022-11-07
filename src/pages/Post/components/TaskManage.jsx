@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import { useState } from "react";
 import ModalWindow from "./ModalWindow";
+import {headerTh} from '../../../utils/stylesSettings'
 
 
 const TaskManage =()=>{
@@ -180,7 +181,7 @@ const Body = styled.div`
   
      th{border-bottom: 1px solid darkblue;
 	font-weight:300;
-	background-color:rgb(8, 79, 161);
+	background-color:${headerTh};
 color:white	}
     tbody{border-bottom: 1px solid gray;
 		text-align:center;

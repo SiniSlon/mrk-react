@@ -13,8 +13,8 @@ const ConnectDB = () => {
 
       <Main>
         <PostNavBar/>
-        ConnectDB
-
+        <input type='file' accept='.sql, .dump'  id="files"/>
+       <label htmlFor='files'></label>
       </Main>
 
       <Footer>
@@ -32,6 +32,9 @@ const Main = styled.div`
   height: calc(100vh - 100px);
   /* padding: 10px; */
   position: relative;
+   input{
+    margin:5px;
+   }
 `;
 
 const Body = styled.div`

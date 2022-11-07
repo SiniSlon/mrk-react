@@ -3,6 +3,7 @@ import { useState } from "react";
 import ModalWindow from './ModalWindow'
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { putSettingsFilter, putSettingsFilterDefault,defaultSettings } from "../../../store/reducers/settings";
+import {mainButtonsHoverColor,mainButtonDiv} from '../../../utils/stylesSettings'
 
 const SettingsFilter = () => {
     const [settings,setSettings] = useState('')
@@ -442,7 +443,7 @@ const CancelButton =styled.button`
     margin: auto;
     color:white;
     
-    background-color: #267bc5   ;
+    background-color: ${mainButtonDiv}   ;
     cursor:pointer;
     border-radius:12px;
     width: 75px;
@@ -461,14 +462,14 @@ const ButtonSet = styled.button`
     height: 30px;
     margin-top: 20px;
     margin-right: 10px;
-    background-color:#559ddb ;
+    background-color: ${mainButtonDiv} ;
     border-radius: 5px;
     border: none;
     color :white;
     text-align: center;
   :hover{
     cursor:pointer;
-    background-color: #5b93c5 ;
+    background-color: ${mainButtonsHoverColor} ;
     color:white;}
   `;
 

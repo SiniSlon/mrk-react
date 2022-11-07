@@ -19,7 +19,7 @@ const Body = styled.div`
   width: 100%;
   /* margin-bottom: 20px; */
   background-color: #00000050;
-  border-radius: 12px; 
+
 
   .button__active {
     color: #005aff;

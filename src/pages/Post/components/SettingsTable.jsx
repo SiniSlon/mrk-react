@@ -8,7 +8,7 @@ import SettingsInformation from "./SettingsInformation";
 import SettingsServices from "./SettingsServices";
 import SettingsSpr from "./SettingsSpr";
 import TaskManage from "./TaskManage";
-
+import {mainButtonsColor,mainButtonsHoverColor,mainButtonDiv} from '../../../utils/stylesSettings'
 
 const SettingsTable = (props) => {
   
@@ -80,12 +80,12 @@ const OneColumn = styled.div`
   padding-left: 2px;
  
   div:hover{
-    background-color:#023c88f6;
+    background-color:${mainButtonDiv};
     cursor:pointer;
     border-radius: 5px;;
   } 
     .active{
-      background-color:#4785d6;
+      background-color:${mainButtonsColor};
       border-radius: 5px;
       color:white;
       height:40px;
@@ -96,7 +96,7 @@ const OneColumn = styled.div`
       
     };
     .passive{
-      background-color:#0060dd;
+      background-color:${mainButtonsHoverColor};
       border-radius:5px;
       height:40px;
       width: 400px;

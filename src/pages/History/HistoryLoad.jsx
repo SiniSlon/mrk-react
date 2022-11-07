@@ -35,8 +35,7 @@ export default HistoryLoad;
 const Main = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-  padding: 20px;
+  height: calc(100vh - 100px);  
 `;
 
 const Footer = styled.div`

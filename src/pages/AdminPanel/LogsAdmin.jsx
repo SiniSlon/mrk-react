@@ -14,9 +14,7 @@ const LogsAdmin = () => {
         LogsAdmin
       </Main>
 
-      <Footer>
-        Фууутер
-      </Footer>
+     
     </Body>
   )
 }
@@ -27,13 +25,6 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 100px);
-`;
-
-const Footer = styled.footer`
-  display: flex;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
 `;
 
 const Body = styled.div`

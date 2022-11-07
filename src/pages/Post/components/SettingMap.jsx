@@ -3,6 +3,7 @@ import { useState } from "react";
 import ModalWindow from './ModalWindow'
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { putSettingsMap } from "../../../store/reducers/settings";
+import {mainButtonsHoverColor,mainButtonsColor} from '../../../utils/stylesSettings'
 
 const SettingMap =()=>{
 
@@ -195,14 +196,14 @@ const Checkbox = styled.div `
 `;
 const Buttons = styled.button`
     width: 80px;
-    background-color: rgb(12,114,234);
+    background-color: ${mainButtonsColor};
     color:white;
     cursor:pointer;
     margin-top: 20px;
     border:none;
     border-radius: 5px;
   :hover{
-    background-color: rgba(12,114,234,0.8);
+    background-color: ${mainButtonsHoverColor};
   }
 `;
 
@@ -221,13 +222,13 @@ const ButtonSet = styled.button`
   height: 30px;
   margin-top: 10px;
   margin-right: 10px;
-  background-color:#559ddb ;
+  background-color:${mainButtonsColor};
   border-radius: 5px;
   border: none;
   color :white;
   text-align: center;
 :hover{
   cursor:pointer;
-  background-color: #5b93c5 ;
+  background-color: ${mainButtonsHoverColor}  ;
   color:white;}
 `;

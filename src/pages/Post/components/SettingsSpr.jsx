@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { putSettingsSpr } from "../../../store/reducers/settings";
-
+import {mainButtonsHoverColor,mainButtonDiv} from '../../../utils/stylesSettings'
+    
 const SettingsSpr =()=>{
 
     const dispatch = useAppDispatch();
@@ -123,13 +124,13 @@ const ButtonSet = styled.button`
     height: 30px;
     margin-top: 20px;
     margin-right: 10px;
-    background-color:#559ddb ;
+    background-color:${mainButtonDiv};
     border-radius: 5px;
     border: none;
     color :white;
     text-align: center;
   :hover{
     cursor:pointer;
-    background-color: #5b93c5 ;
+    background-color: ${mainButtonsHoverColor} ;
     color:white;}
   `;
