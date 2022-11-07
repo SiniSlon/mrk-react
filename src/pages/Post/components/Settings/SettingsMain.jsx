@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
+<<<<<<< HEAD:src/pages/Post/components/SettingsMain.jsx
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { putSettingsMain } from "../../../store/reducers/settings";
+import {mainButtonsHoverColor,mainButtonsColor} from '../../../utils/stylesSettings'
+=======
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { putSettingsMain } from "../../../../store/reducers/settings";
+>>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/SettingsMain.jsx
 
 const SettingsMain =()=>{
   const dispatch = useAppDispatch();
@@ -16,6 +22,7 @@ const SettingsMain =()=>{
     const [coder,setCoder]=useState(set.settingsMain.coder);
     const [exp,setExp]=useState(set.settingsMain.exp);
     const [keyw,setKeyw]=useState(set.settingsMain.keyw);
+    const [lan,setLan] =useState(set.settingsMain.lan)
 
   
 		const SaveSettings = async (e) => {
@@ -28,7 +35,8 @@ const SettingsMain =()=>{
         stat,
         coder,
         exp,
-        keyw
+        keyw,
+        lan
 			}
       console.log(data)
 			dispatch(putSettingsMain(data))
@@ -66,6 +74,15 @@ const SettingsMain =()=>{
                 <Checkbox>
                   <input type='checkbox' id='keyw' checked={keyw} onChange={()=>setKeyw(s=>!s)}/>
                   <label htmlFor="keyw">Поиск по ключевым словам</label>
+                </Checkbox> 
+                <Checkbox>
+                  <select onChange={(e)=>setLan(e.target.value)}>
+                    <option value='-1' disabled selected></option>
+                    <option value='rus'>Russia</option>
+                    <option value='eng'>English</option>
+                  </select>
+                  <label>lang</label>
+                  {console.log(lan)}
                 </Checkbox>
 								<div>
 								<ButtonSet onClick={SaveSettings}>Сохранить</ButtonSet>
@@ -83,22 +100,24 @@ const Checkbox = styled.div `
     cursor:pointer;
     border-radius: 5px;
     padding-left: 5px;
+  };
+  input:checked{
+    background-color: ${mainButtonsColor} ;
   }
-
 `;
-
+  
 const ButtonSet = styled.button`
     width:110px;
     height: 30px;
     margin-top: 20px;
     margin-right: 10px;
-    background-color:#559ddb ;
+    background-color:${mainButtonsColor} ;
     border-radius: 5px;
     border: none;
     color :white;
     text-align: center;
   :hover{
     cursor:pointer;
-    background-color: #5b93c5 ;
+    background-color: ${mainButtonsHoverColor} ;
     color:white;}
   `;

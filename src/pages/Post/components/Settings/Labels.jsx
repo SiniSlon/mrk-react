@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import {mainButtonDiv, mainButtonsHoverColor, mainButtonsColor} from '../../../utils/stylesSettings'
 
 const Labels = () => {
     const [views,setViews]=useState('creates')
@@ -199,11 +200,11 @@ const LabelsA = styled.div`
 		border:none;
 	}
   :hover{
-		background-color: rgba(8, 79, 161,0.7);
+		background-color: ${mainButtonDiv};
 		border-radius: 5px;
   }
   .test{
-		background-color: rgba(8, 79, 161,0.6);
+		background-color: ${mainButtonsColor};
 		height:30px;
 		width   :100% ;
 		cursor:pointer;
@@ -211,7 +212,7 @@ const LabelsA = styled.div`
 		border-radius: 5px;
     }
 	.tests{
-		background-color: rgb(8, 79, 161); 
+		background-color: ${mainButtonsHoverColor}; 
 		height:30px;
 		cursor:pointer;
 		width   :100%  ;
@@ -228,11 +229,11 @@ const LabelsB = styled.div`
 		border:none;}
   	cursor:pointer;
   :hover{ 
-		background-color: rgba(8, 79, 161,0.7);
+		background-color: ${mainButtonDiv};
 		border-radius: 5px;
     }
 	.test{
-		background-color: rgba(8, 79, 161,0.6);
+		background-color: ${mainButtonsColor};
 		height:30px;
 		width   :100%  ;
 		cursor:pointer;
@@ -240,7 +241,7 @@ const LabelsB = styled.div`
 		border-radius: 5px;
     }
 	.tests{
-		background-color: rgb(8, 79, 161); 
+		background-color: ${mainButtonsHoverColor}; 
 		height:30px;
 		cursor:pointer;
 		width   :100%  ;
@@ -256,7 +257,7 @@ const Menu = styled.div`
 
 const Buttons = styled.button`
     width: 30%;
-    background-color: rgb(12,114,234);
+    background-color: ${mainButtonDiv};
     color:white;
     cursor:pointer;
     margin-top: 10px;
@@ -264,7 +265,7 @@ const Buttons = styled.button`
     border:none;
     border-radius: 5px;
   :hover{
-    background-color: rgba(12,114,234,0.8);
+    background-color: ${mainButtonDiv};
     }
 `;
 

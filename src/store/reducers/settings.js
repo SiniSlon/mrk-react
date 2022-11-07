@@ -1,80 +1,77 @@
 import { createSlice } from '@reduxjs/toolkit';
 import store from '../store';
 
-const initialState = {
-  settings: {
-    settingsMain: {
-      sorttime: true,
-      search: false,
-      obr: false,
-      obrIm: false,
-      stat: true,
-      coder: false,
-      exp: false,
-      keyw: true,
-    },
-    settingsSpr: {
-      lspr: false,
-      prab: false,
-      prcr: false,
-      imeiab: false,
-      imeicr: false,
-      imsiab: false,
-      imsicr: false,
-      ipab: true,
-      ipcr: true,
-      geoab: true,
-      geocr: true,
-      pl: true,
-    },       
-    settingsInfo: {
-      infAb: true,
-      infs: true,
-      inft: true,
-      infot: true,
-      infspr: true,
-    },        
-    settingsFilter: {
-      ir: true,
-      th: false,
-      gsm: false,
-      kv: false,
-      ykv: false,
-      ptt: false,
-      wifi: false,
-    },    
-    settingsFilterDefault:{
-      ird: true,
-      thd: false,
-      gsmd: false,
-      kvd: false,
-      ykvd: false,
-      pttd: false,
-      wifid: false
-    },
-    settingsMap: {
-      onMap: true,
-      searchMap: true,
-      def: true,
-      dir: true,
-      geo:'',
-      mar:'',
-      maxV:'35000',
-      decV:'0',
-      inV:'354',
-      len:'10000',
-      zoom:'',
-      quan:'',
-    },
-    settingsServices: {
-      exprt: true,
-      adr:'192.168.000.000',
-      rad:'',
-      ip:'192.168.000.000',
-      ipg:'',
-      radIr:'',
-    }    
-  }
+const initialState={
+    settings:{
+        settingsMain: {
+            sorttime:true,
+            search:false,
+            obr:false,
+            obrIm:false,
+            stat:true,
+            coder:false,
+            exp:false,
+            keyw:true,
+            lan:'rus'},
+        settingsSpr: {
+            lspr:false,
+            prab:false,
+            prcr:false,
+            imeiab:false,
+            imeicr:false,
+            imsiab:false,
+            imsicr:false,
+            ipab:true,
+            ipcr:true,
+            geoab:true,
+            geocr:true,
+            pl:true},       
+        settingsInfo:{
+            infAb:true,
+            infs:true,
+            inft:true,
+            infot:true,
+            infspr:true,},        
+        settingsFilter:{
+            ir:true,
+            th:false,
+            gsm:false,
+            kv:false,
+            ykv:false,
+            ptt:false,
+            wifi:false,},    
+        settingsFilterDefault:{
+            ird:true,
+            thd:false,
+            gsmd:false,
+            kvd:false,
+            ykvd:false,
+            pttd:false,
+            wifid:false
+        },
+        settingsMap:{
+            onMap:true,
+            searchMap:true,
+            def:true,
+            dir:true,
+            geo:'',
+            mar:'',
+            maxV:'35000',
+            decV:'0',
+            inV:'354',
+            len:'10000',
+            zoom:'',
+            quan:'',
+        },
+        settingsServices:{
+            exprt:true,
+            adr:'192.168.000.000',
+            rad:'',
+            ip:'192.168.000.000',
+            ipg:'',
+            radIr:''
+        }    
+    }
 }
         
 const settings = createSlice({

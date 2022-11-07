@@ -53,7 +53,7 @@ const Body = styled.header`
     border: 2px solid #005aff;
     border-radius: 7px;
     padding: 5px;
-    color: #005aff;
+    color: #0752a5;
     font-family: ${mainFontFamily};
     margin-left: auto;
     margin-right: 100px;

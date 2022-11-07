@@ -5,7 +5,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import { useState } from "react";
+<<<<<<< HEAD:src/pages/Post/components/TaskManage.jsx
+import ModalWindow from "./ModalWindow";
+import {headerTh} from '../../../utils/stylesSettings'
+=======
 import ModalWindow from "../ModalWindow";
+>>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/TaskManage.jsx
 
 
 const TaskManage =()=>{
@@ -181,7 +186,7 @@ const Body = styled.div`
   
      th{border-bottom: 1px solid darkblue;
 	font-weight:300;
-	background-color:rgb(8, 79, 161);
+	background-color:${headerTh};
 color:white	}
     tbody{border-bottom: 1px solid gray;
 		text-align:center;
