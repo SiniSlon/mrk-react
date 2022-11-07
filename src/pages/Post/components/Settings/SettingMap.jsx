@@ -1,15 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
-<<<<<<< HEAD:src/pages/Post/components/SettingMap.jsx
-import ModalWindow from './ModalWindow'
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { putSettingsMap } from "../../../store/reducers/settings";
-import {mainButtonsHoverColor,mainButtonsColor} from '../../../utils/stylesSettings'
-=======
 import ModalWindow from '../ModalWindow'
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { putSettingsMap } from "../../../../store/reducers/settings";
->>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/SettingMap.jsx
+import {mainButtonsHoverColor,mainButtonsColor} from '../../../../utils/stylesSettings'
 
 const SettingMap =()=>{
 

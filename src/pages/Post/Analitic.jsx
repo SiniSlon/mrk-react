@@ -188,18 +188,10 @@ export default Analitic;
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   position: relative;
-`;
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
   background: ${mainBackground};
 `;
-
 
 const TooMain =styled.div`
   background-color: aliceblue;

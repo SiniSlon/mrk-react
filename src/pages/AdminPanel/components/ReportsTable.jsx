@@ -12,7 +12,6 @@ import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import SettingsIcons  from '@mui/icons-material/Settings'
 
-<<<<<<< HEAD
 const ReportsTable =() =>{
 	const set = useAppSelector(state => state.settingsSlice.settings)
 	const [details,setDetails] =useState(false);
@@ -161,20 +160,3 @@ span {
     margin-right: 5px;
     }`
 		
-=======
-const ReportsTable = () => {
-  return (
-    <FormDiv>
-        
-    </FormDiv>
-  )
-}
-export default ReportsTable
-
-const FormDiv =styled.div `
-  display:flex;
-  flex-direction:column;
-  background-color:white;
-  border-radius:10px;
-`;
->>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0
