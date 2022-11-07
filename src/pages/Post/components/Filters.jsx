@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { mainFontFamily } from "../../../utils/stylesSettings";
-import ClearIcon from '@mui/icons-material/Clear';
 import { useAppSelector } from "../../../store/hooks";
 import * as func from '../../../utils/formFunctions';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const Filters = (props) => {
   const set = useAppSelector(store => store.settingsSlice.settings)

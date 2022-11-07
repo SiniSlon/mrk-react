@@ -3,15 +3,15 @@ import store from '../store';
 
 const initialState = {
   settings: {
-    settingsMain: {
-      sorttime: true,
-      search: false,
-      obr: false,
-      obrIm: false,
-      stat: true,
+    main: {
+      sortByTime: true,
+      sessionSearch: false,
+      handleSpeech: false,
+      handleImage: false,
+      statistic: true,
       coder: false,
-      exp: false,
-      keyw: true,
+      exportSession: false,
+      keyWord: true,
     },
     settingsSpr: {
       lspr: false,
@@ -82,8 +82,8 @@ const settings = createSlice({
   initialState,
   reducers:{
     putSettingsMain(state,action){
-      state.settings.settingsMain= {...state.settings.settingsMain,...action.payload};
-      console.log('Store settingsMain >> ', state.settings.settingsMain)
+      state.settings.main= {...state.settings.main,...action.payload};
+      console.log('Store settingsMain >> ', state.settings.main)
     },
     putSettingsSpr(state,action){
       state.settings.settingsSpr= {...state.settings.settingsSpr,...action.payload};

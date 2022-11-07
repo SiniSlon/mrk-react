@@ -1,6 +1,6 @@
 import axios from '../api';
 
-export const loginUser = (data)=> {
+export const loginUser = (data) => {
   return axios.post('/', data);
 };
 

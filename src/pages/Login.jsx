@@ -41,6 +41,7 @@ const Login = () => {
     handleSubmit,
     register,
     formState: { errors },
+    setError,
   } = useForm({
     resolver: yupResolver(loginSchema),
     defaultValues: {
@@ -52,18 +53,34 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       console.log('Login data >>> ', data);
-      dispatch(putUser(tempUser));
-      console.log('Response Login >> ', tempUser);
+      // dispatch(putUser(tempUser));
+      // console.log('Response Login >> ', tempUser);
 
-      // const response = await loginUser(data);
-      // dispatch(putUser(response.data[0]));
+      const response = await loginUser(data);
+      dispatch(putUser(response.data[0]));
       // dispatch(putSettings(response.data[1]));
 
-      // console.log('Response Login >> ', response);
+      console.log('Response Login >> ', response);
 
       navigate(from.from.pathname, { replace: true });
     } catch (e) {
-      console.error('Error Login >>> ', e.response);
+      console.error('Error Login >>> ', e);
+      const error = e.response.data.split(':')[1][0];
+      if (error == 'U') {
+        setError('userName', {
+          type: 'custom',
+          message: 'Пользователь не найден'
+        }, { 
+          shouldFocus: true 
+        })
+      } else if (error == 'I') {
+        setError('password', {
+          type: 'custom',
+          message: 'Неправильный пароль'
+        }, { 
+          shouldFocus: true 
+        })
+      }  
     }
   };
 
@@ -74,7 +91,7 @@ const Login = () => {
         
         <FormWrapper >
         <label className="form-label"> 
-          {errors.userName ? <ErrMessage>{errors.password.message}</ErrMessage> : 'Введите логин'}
+          {errors.userName ? <ErrMessage>{errors.userName.message}</ErrMessage> : 'Введите логин'}
         </label>
 
           <div className="input-wrapper">

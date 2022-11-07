@@ -13,8 +13,13 @@ const Sessions = () => {
       <Main>
         <PostNavBar/>
         Sessions
-      </Main>
+        <kbd/>
+        <ruby>
+        Some text <rp>(</rp><rt>suptitle</rt><rp>)</rp>
+        字 <rp>(</rp><rt>ji</rt><rp>)</rp>
+      </ruby>
 
+      </Main>
     </>
   )
 }

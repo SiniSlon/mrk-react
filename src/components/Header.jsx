@@ -26,13 +26,13 @@ const Header = () => {
   return (
     <Body>
       <nav className="header__wrapper">
-        <Link to='/post' className={path == 'post' ? 'active-link' : 'link'}>Пост обработки</Link>
-        <Link to='/upload' className={path == 'upload' || path == '/upload/queue'  ? 'active-link' : 'link'}>Загрузка данных</Link>
-        <Link to='/database' className={path == 'database'  ? 'active-link' : 'link'}>Настройка БД</Link>
-        <Link to='/adminpanel' className={ path == 'adminpanel' ? 'active-link' : 'link'}>Панель администратора</Link>
+        <Link to='/post' className={path == 'post' ? 'link active' : 'link'}>Пост обработки</Link>
+        <Link to='/upload' className={path == 'upload' || path == '/upload/queue'  ? 'link active' : 'link'}>Загрузка данных</Link>
+        <Link to='/database' className={path == 'database'  ? 'link active' : 'link'}>Настройка БД</Link>
+        <Link to='/adminpanel' className={ path == 'adminpanel' ? 'link active' : 'link'}>Панель администратора</Link>
       </nav>
 
-      {user && <div className='username'>{user?.userName}</div>}
+      {user && <div className='username'>{user.role}</div>}
       <div className="logout" onClick={handleLogout}><span>Выйти</span><LogoutIcon/></div>
     </Body>
   )
@@ -50,10 +50,10 @@ const Body = styled.header`
   .logout {
     display: flex;
     align-items: center;
-    border: 2px solid #005aff;
+    border: 2px solid #252f40;
     border-radius: 7px;
     padding: 5px;
-    color: #005aff;
+    color: #252f40;
     font-family: ${mainFontFamily};
     margin-left: auto;
     margin-right: 100px;
@@ -79,23 +79,19 @@ const Body = styled.header`
     .link {
       font-family: ${mainFontFamily};
       font-size: 18px;
-      color: #0059ffc1;
+      color: #252f40;
       text-decoration: none;
 
-      :hover {
+      /* :hover {
         color: #005aff;
-      }
+      } */
     }
 
-    .active-link {
-      font-family: ${mainFontFamily};
-      font-size: 18px;
-      color: #005aff;
-      font-weight: 500;
-      text-decoration: none;
-      position: relative;
+    .active {
+      color: #252f40;
+      font-weight: 600;
 
-      ::after {
+      /* ::after {
         position: absolute;
         display: flex;
         width: 100%;
@@ -103,7 +99,7 @@ const Body = styled.header`
         background-color: #005aff;
         top: 30px;
         content: '';
-      }
+      } */
     }
   }
 `;
