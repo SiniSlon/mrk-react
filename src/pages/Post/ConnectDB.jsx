@@ -25,18 +25,11 @@ export default ConnectDB;
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-  /* padding: 10px; */
+  height: calc(100vh - 50px);
+  background: ${mainBackground};
   position: relative;
-   input{
+
+   input {
     margin:5px;
    }
-`;
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  background: ${mainBackground};
 `;

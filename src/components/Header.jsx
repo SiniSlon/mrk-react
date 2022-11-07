@@ -28,7 +28,7 @@ const Header = () => {
       <nav className="header__wrapper">
         <Link to='/post' className={path == 'post' ? 'link active' : 'link'}>Пост обработки</Link>
         <Link to='/upload' className={path == 'upload' || path == '/upload/queue'  ? 'link active' : 'link'}>Загрузка данных</Link>
-        <Link to='/database' className={path == 'database'  ? 'link active' : 'link'}>Настройка БД</Link>
+        {/* <Link to='/database' className={path == 'database'  ? 'link active' : 'link'}>Настройка БД</Link> */}
         <Link to='/adminpanel' className={ path == 'adminpanel' ? 'link active' : 'link'}>Панель администратора</Link>
       </nav>
 

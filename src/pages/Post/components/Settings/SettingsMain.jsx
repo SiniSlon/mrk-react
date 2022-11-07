@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { putSettingsMain } from "../../../store/reducers/settings";
-import {mainButtonsHoverColor,mainButtonsColor} from '../../../utils/stylesSettings'
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsMain } from "../../../../store/reducers/settings";
+import {mainButtonsHoverColor,mainButtonsColor} from '../../../../utils/stylesSettings'
 
 const SettingsMain = () => {
   const dispatch = useAppDispatch();
-  const set = useAppSelector((state) => state.settingsSlice.settings.main); 
+  const set = useAppSelector((state) => state.settingsSlice.settings); 
   console.log(set)
 
 

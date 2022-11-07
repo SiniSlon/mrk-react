@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { putSettingsSpr } from "../../../store/reducers/settings";
-import {mainButtonsHoverColor,mainButtonDiv} from '../../../utils/stylesSettings'
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import { putSettingsSpr } from "../../../../store/reducers/settings";
+import {mainButtonsHoverColor,mainButtonDiv} from '../../../../utils/stylesSettings'
     
 
 const SettingsSpr =()=>{
