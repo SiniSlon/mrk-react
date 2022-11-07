@@ -62,13 +62,15 @@ const SettingsInformation = ()=>{
 export default SettingsInformation
 
 const Checkbox = styled.div `
-    padding-top:10px;
-    margin-left: 5px;
+  padding-top:10px;
+  margin-left: 5px;
+
   label,input:hover{
     cursor:pointer;
     border-radius: 5px;
     padding-left: 5px;
   }
+  
   textarea{
     width:100px;
     height: 10px; 

@@ -79,8 +79,8 @@ const settings = createSlice({
   initialState,
   reducers:{
     putSettingsMain(state,action){
-      state.settings.settingsMain= {...state.settings.settingsMain,...action.payload};
-      console.log('Store settingsMain >> ', state.settings.settingsMain)
+      state.settings.main= {...state.settings.main,...action.payload};
+      console.log('Store settingsMain >> ', state.settings.main)
     },
     putSettingsSpr(state,action){
       state.settings.settingsSpr= {...state.settings.settingsSpr,...action.payload};

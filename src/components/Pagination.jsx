@@ -21,22 +21,24 @@ const theme = createTheme({
   },
 });
 
-const PaginationBlock = ({ data, changePage, page, prefixUrl }) => {
+const PaginationBlock = ({ data, onChange, page, prefixUrl }) => {
 
   return (
     <ThemeProvider theme={theme}>
       <Body>
-        <Pagination count={data} page={page} onChange={changePage} 
+        <Pagination count={data} page={page} onChange={(e, value) => {onChange(value)}} 
+          
           size="large" 
           color='neutral'
           showFirstButton
           showLastButton
           renderItem={(item) => (
             <PaginationItem 
-              component={Link}
+              component='div'
+              // component={Link}
               // to={`${fUrl}/${item.page}/${limit}`}
               // to = {`/${prefixUrl}/${item.page}`}
-              to = {prefixUrl}
+              // to = {prefixUrl}
               {...item}
             />
           )}

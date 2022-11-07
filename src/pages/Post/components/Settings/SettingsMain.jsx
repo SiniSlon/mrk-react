@@ -1,17 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
-<<<<<<< HEAD:src/pages/Post/components/SettingsMain.jsx
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { putSettingsMain } from "../../../store/reducers/settings";
 import {mainButtonsHoverColor,mainButtonsColor} from '../../../utils/stylesSettings'
-=======
-import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
-import { putSettingsMain } from "../../../../store/reducers/settings";
->>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/SettingsMain.jsx
 
-const SettingsMain =()=>{
+const SettingsMain = () => {
   const dispatch = useAppDispatch();
-  const set = useAppSelector((state)=> state.settingsSlice.settings); 
+  const set = useAppSelector((state) => state.settingsSlice.settings.main); 
+  console.log(set)
 
 
     const [sorttime, setSorttime] = useState(set.settingsMain.sorttime);
@@ -91,12 +87,14 @@ const SettingsMain =()=>{
               </form>
 		)
 }
-export default SettingsMain
+
+export default SettingsMain;
 
 
 const Checkbox = styled.div `
   padding-top :10px;
-  label,input:hover{
+
+  label, input:hover{
     cursor:pointer;
     border-radius: 5px;
     padding-left: 5px;

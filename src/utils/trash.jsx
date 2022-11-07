@@ -193,3 +193,168 @@ const Body = styled.div`
   height: 100vh;
   background: ${mainBackground};
 `;
+
+<LabelsA >
+<button onClick={()=>setViews('creates')} className={views ==='creates'? 'test':'tests'}>Create labels</button>
+</LabelsA>
+
+<LabelsB >
+<button onClick={()=>setViews('uses')} className={views ==='uses'? 'test':'tests'}>Manage labels</button>
+</LabelsB>
+
+{delet === 'label' && 
+<Modals>
+  <ContentDelete>
+    <p>Удалить метку?</p>
+    <Buttons>Да</Buttons>
+    <Buttons onClick={()=>setDelet('')}>Нет</Buttons>
+  </ContentDelete>
+</Modals>
+}
+
+{delet === 'labelm' && 
+  <Modals>
+      <ContentDelete>
+          <p>Удалить шаблон метки</p>
+          <Buttons>Да</Buttons>
+          <Buttons onClick={()=>setDelet('')}>Нет</Buttons>
+      </ContentDelete>
+  </Modals>
+}
+
+{create === 'label' && 
+  <Modals>
+      <ContentLabel>
+          <ContentIn>
+              <label>Название</label>
+              <input type='text' value={nameLabel} onChange={(e)=>setNameLabel(e.target.value)}/>
+          </ContentIn>
+          <ContentIn>
+              <label>Комментарий</label>
+              <input type='text' value={commentLabel} onChange={(e)=>setCommentLabel(e.target.value)}/>
+          </ContentIn>
+          <ContentIn>
+              <label>Цвет</label>
+              <input type='color' value={colorLabel} onChange={(e)=>setColorLabel(e.target.value)}/>
+          </ContentIn>
+          <Buttons onClick={CreateLabel}>Save</Buttons>
+          <Buttons onClick={()=>setCreate('')}>Cancel</Buttons>
+      </ContentLabel>
+  </Modals>}
+{create === 'labelm' && 
+  <Modals>
+      <Content>
+          <ContentIn>
+              <label>Название</label>
+              <input type='text'/>
+          </ContentIn>
+          <ContentIn>
+              <label>Тип</label>
+              <select>
+                  <option></option>
+              </select>
+          </ContentIn>
+          <ContentIn>
+              <label>Номер приоритета</label>
+              <input type='text'/>
+          </ContentIn>
+          <ContentIn>
+              <label>Отмеченно</label>
+              <input type='checkbox'/>
+              <input type='checkbox'/>
+              <input type='checkbox'/>
+          </ContentIn>
+          <ContentIn>
+              <label>Метка</label>
+              <select>
+                  <option></option>
+              </select>
+          </ContentIn>
+          <ContentIn>
+              <label>Имя</label>
+              <input type='text'/>
+          </ContentIn>
+          <ContentIn>
+              <label>Комментарий</label>
+              <input type='text'/>
+          </ContentIn>
+          <Buttons>Создать</Buttons>
+          <Buttons onClick={()=>setCreate('')}>Удалить</Buttons>
+      </Content>
+  </Modals>}
+
+{views === 'creates' &&
+<Menu >
+  <div>
+      <div>
+          <Buttons onClick={()=>setCreate('label')}>Создать</Buttons>
+          <Buttons onClick={()=>setDelet('label')}>Удалить</Buttons>
+      </div>
+      <Table>
+          <HeadT>
+              <tr>
+                  <th>Автор</th>
+                  <th>Название</th>
+                  <th>Комментарий</th>
+                  <th>Отображение</th>
+                  <th>Цвет</th>
+              </tr>
+          </HeadT>
+          <BodyT>
+              <tr>
+                  <td>test</td>
+                  <td>Label1</td>
+                  <td>Commentss</td>
+                  <td>Local</td>
+                  <td>green</td>
+              </tr>
+          </BodyT>
+      </Table>
+  </div>
+</Menu>}    
+
+{views ==='uses' &&
+<Menu>
+  <div>
+      <div>
+          <Buttons onClick={()=>setCreate('labelm')}>Create</Buttons>
+          <Buttons onClick={()=>setDelet('labelm')}>Delete</Buttons>
+      </div>
+      <Table>
+          <HeadT>
+              <tr>
+                  <th>Автор</th>
+                  <th>Метка</th>
+                  <th>Тип</th>
+                  <th>Шаблон метки</th>
+                  <th>Название шаблона метки</th>
+                  <th>Имя абонента</th>
+                  <th>Комментарий</th>
+                  <th>Обозначение</th>
+              </tr>
+          </HeadT>
+          <BodyT>
+              <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+              </tr>
+              <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+              </tr>
+          </BodyT>
+      </Table>
+  </div>
+</Menu>}    

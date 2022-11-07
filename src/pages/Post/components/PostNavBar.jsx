@@ -7,13 +7,13 @@ const PostNavBar = () => {
 
   return (
     <Body>
-      <Link to='/post' className={path == '/post' ? 'button__active' : 'button'}>Пост</Link>
-      <Link to='/post/sessions' className={path == '/post/sessions' ? 'button__active' : 'button'}>Выгрузка сеансов</Link>
-      <Link to='/post/database' className={path == '/post/database' ? 'button__active' : 'button'}>Подключение БД</Link>
-      <Link to='/post/settings' className={path == '/post/settings' ? 'button__active' : 'button'}>Настройки</Link>
-      <Link to='/post/media' className={path == '/post/media' ? 'button__active' : 'button'}>Воспроизведение</Link>
-      <Link to='/post/maps' className={path == '/post/maps' ? 'button__active' : 'button'}>Карты</Link>
-      <Link to='/post/analitic' className={path == '/post/analitic' ? 'button__active' : 'button'}>Аналитика</Link>
+      <Link to='/post' className={path == '/post' ? 'button active' : 'button'}>Пост</Link>
+      <Link to='/post/sessions' className={path == '/post/sessions' ? 'button active' : 'button'}>Выгрузка сеансов</Link>
+      <Link to='/post/database' className={path == '/post/database' ? 'button active' : 'button'}>Подключение БД</Link>
+      <Link to='/post/settings' className={path == '/post/settings' ? 'button active' : 'button'}>Настройки</Link>
+      <Link to='/post/media' className={path == '/post/media' ? 'button active' : 'button'}>Воспроизведение</Link>
+      <Link to='/post/maps' className={path == '/post/maps' ? 'button active' : 'button'}>Карты</Link>
+      <Link to='/post/analitic' className={path == '/post/analitic' ? 'button active' : 'button'}>Аналитика</Link>
     </Body>
   )
 }
@@ -23,7 +23,7 @@ export default PostNavBar;
 const Body = styled.nav`
   display: flex;
   width: 100%;
-  background-color: #00000050;
+  background-color: #00000080;
 
   .button {
     color: white;
@@ -31,24 +31,18 @@ const Body = styled.nav`
     cursor: pointer;
     font-size: 18px; 
     padding: 10px 15px;
-    border-radius: 10px;
     text-decoration: none;
-
-    &__active {
-      color: #005aff;
-      font-family: ${mainFontFamily};
-      font-size: 18px; 
-      font-weight: 500;
-      cursor: pointer;
-      padding: 10px 15px;
-      border: 1px solid black;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      background-color: #ffffff;
-      border: none;
-      text-decoration: none;
-    }
   }
+
+  .active {
+    color: #181f2c;
+    font-weight: 500;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #ffffff;
+    border: none;
+  }
+
 
   .adduser-btn {
     display: flex;

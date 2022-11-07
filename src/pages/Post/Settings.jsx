@@ -13,7 +13,7 @@ const Settings = () => {
 
       <Main>
         <PostNavBar/>
-
+ 
         <SettingsTable/>
       </Main>
     </>
@@ -25,6 +25,7 @@ export default Settings;
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+  
   background: ${mainBackground};
 `;
