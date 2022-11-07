@@ -13,7 +13,8 @@ const ConnectDB = () => {
 
       <Main>
         <PostNavBar/>
-        ConnectDB
+        <input type='file' accept='.sql, .dump'  id="files"/>
+       <label htmlFor='files'></label>
       </Main>
     </>
   )
@@ -24,6 +25,18 @@ export default ConnectDB;
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
+  /* padding: 10px; */
+  position: relative;
+   input{
+    margin:5px;
+   }
+`;
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
   background: ${mainBackground};
 `;

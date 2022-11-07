@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
+<<<<<<< HEAD:src/pages/Post/components/SettingsServices.jsx
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { putSettingsServices } from "../../../store/reducers/settings";
+import {mainButtonsHoverColor,mainButtonsColor} from '../../../utils/stylesSettings'
+=======
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { putSettingsServices } from "../../../../store/reducers/settings";
+>>>>>>> 62aeead21b5ba916e81c1bf6d99db9638c7d9fe0:src/pages/Post/components/Settings/SettingsServices.jsx
 
 const SettingsServices =()=>{
 
@@ -83,13 +89,13 @@ const ButtonSet = styled.button`
     margin-top: 20px;
     margin-left: 5px;
     margin-right: 10px;
-    background-color:#559ddb ;
+    background-color:${mainButtonsColor} ;
     border-radius: 5px;
     border: none;
     color :white;
     text-align: center;
   :hover{
     cursor:pointer;
-    background-color: #5b93c5 ;
+    background-color: ${mainButtonsHoverColor} ;
     color:white;}
   `;

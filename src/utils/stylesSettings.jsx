@@ -2,4 +2,10 @@
 export const mainBackground = '#708bbd';
 export const mainFontFamily = 'Roboto, sans-serif';
 export const mainTableColor = '#ffffff';
+export const mainButtonsColor ='#008a29c0' ;
+export const mainButtonsHoverColor ='#1dca06';
+export const mainButtonDiv ='#00af00'
+export const headerTh ='#005218c0';
+export const hoverTr ='#ddf3f3f1'
 // export const mainTableFontsColor = 'Roboto, sans-serif';
+

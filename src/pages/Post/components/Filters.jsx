@@ -5,8 +5,7 @@ import * as func from '../../../utils/formFunctions';
 import ClearIcon from '@mui/icons-material/Clear';
 
 const Filters = (props) => {
-  const set = useAppSelector(store => store.settingsSlice.settings)
- 
+  const set = useAppSelector(state => state.settingsSlice.settings)
   return (
     
     <Body >
@@ -82,124 +81,124 @@ const Filters = (props) => {
       <SecondFilter>
         <fieldset className='filter'>
           <legend className='filter__title'>По системам связи</legend>
-          <div className='input-wrapper'>
-            <input id='irridium' type='checkbox' checked={props.iridium} 
+          {set.settingsFilter.ir &&<div className='input-wrapper'>
+            <input id='irridium' type='checkbox' checked={set.settingsFilter.ird} 
             onChange={() => props.setIridium(s => !s)}/><label htmlFor='irridium'>Irridium</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='thuraya' type='checkbox' checked={props.thuraya} 
+          {set.settingsFilter.th &&<div className='input-wrapper'>
+            <input id='thuraya' type='checkbox' checked={set.settingsFilter.thd} 
             onChange={() => props.setThuraya(s => !s)}/><label htmlFor='thuraya'>Thuraya</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='ptt' type='checkbox' checked={props.ptt} 
+          {set.settingsFilter.ptt &&<div className='input-wrapper'>
+            <input id='ptt' type='checkbox' checked={set.settingsFilter.pttd} 
             onChange={() => props.setPtt(s => !s)}/><label htmlFor='ptt'>PTT</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='gsm' type='checkbox' checked={props.gsm} 
+          {set.settingsFilter.gsm &&<div className='input-wrapper'>
+            <input id='gsm' type='checkbox' checked={set.settingsFilter.gsmd} 
             onChange={() => props.setGsm(s => !s)}/><label htmlFor='gsm'>GSM</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='kv' type='checkbox' checked={props.kv} 
+          {set.settingsFilter.kv &&<div className='input-wrapper'>
+            <input id='kv' type='checkbox' checked={set.settingsFilter.kvd} 
             onChange={() => props.setKv(s => !s)}/><label htmlFor='kv'>КВ</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='ukv' type='checkbox' checked={props.ukv} 
+          {set.settingsFilter.ykv && <div className='input-wrapper'>
+            <input id='ukv' type='checkbox' checked={set.settingsFilter.ykvd} 
             onChange={() => props.setUkv(s => !s)}/><label htmlFor='ukv'>УКВ</label>
-          </div>
+          </div>}
 
-          <div className='input-wrapper'>
-            <input id='wifi' type='checkbox' checked={props.wifi} 
+          {set.settingsFilter.wifi && <div className='input-wrapper'>
+            <input id='wifi' type='checkbox' checked={set.settingsFilter.wifid} 
             onChange={() => props.setWifi(s => !s)}/><label htmlFor='wifi'>Wi-Fi</label>
-          </div>
+          </div>}
         </fieldset>
 
         <fieldset className='filter' style={{overflowY: 'scroll'}}>
           <legend className='filter__title'>По идентификаторам абонентов</legend>
 
-          {(props.iridium || props.thuraya || props.gsm || props.ptt) && 
+          {(set.settingsFilter.ir || set.settingsFilter.th || set.settingsFilter.gsm || set.settingsFilter.ptt) && 
           <div vlaue={props.imeiValue} onChange={(e) => props.setImeiValue(e.target.value)} className="filter__string">IMEI<input type='text' placeholder="Значение"/></div>}
 
-          {(props.iridium || props.thuraya || props.gsm) && 
+          {(set.settingsFilter.ir || set.settingsFilter.th || set.settingsFilter.gsm) && 
           <div className="filter__string">IMSI <input type='text' placeholder="Значение"/></div>}
 
-          {(props.iridium || props.thuraya || props.gsm) && 
+          {(set.settingsFilter.ir || set.settingsFilter.th  || set.settingsFilter.gsm) && 
           <div className="filter__string">ТФОП <input type='text' placeholder="Значение"/></div>}
 
-          {(props.iridium || props.thuraya || props.gsm) && 
+          {(set.settingsFilter.ir  || set.settingsFilter.th || set.settingsFilter.gsm) && 
           <div className="filter__string">TMSI <input type='text' placeholder="Значение"/></div>}
 
-          {(props.wifi) && 
+          {(set.settingsFilter.wifi) && 
           <div className="filter__string">SSID <input type='text' placeholder="Значение"/></div>}
 
-          {(props.thuraya || props.gsm || props.wifi) && 
+          {(set.settingsFilter.th|| set.settingsFilter.gsm || set.settingsFilter.wifi) && 
           <div className="filter__string">Ключ шифр. <input type='text' placeholder="Значение"/></div>}
 
-          {(props.wifi) && 
+          {(set.settingsFilter.wifi) && 
           <div className="filter__string">BSSID <input type='text' placeholder="Значение"/></div>}
 
-          {(props.gsm) && 
+          {(set.settingsFilter.gsm) && 
           <div className="filter__string">Оператор <input type='text' placeholder="Значение"/></div>}
 
-          {(props.wifi) && 
+          {(set.settingsFilter.wifi) && 
           <div className="filter__string">Название аб. уст. <input type='text' placeholder="Значение"/></div>}
 
-          {(props.gsm) && 
+          {(set.settingsFilter.gsm) && 
           <div className="filter__string">Модель уст. <input type='text' placeholder="Значение"/></div>}
 
-          {(props.wifi) && 
+          {(set.settingsFilter.wifi) && 
           <div className="filter__string">DNS-имя аб. <input type='text' placeholder="Значение"/></div>}
 
-          {(props.gsm || props.ukv || props.kv) && 
+          {(set.settingsFilter.gsm || set.settingsFilter.ykv || set.settingsFilter.kv) && 
           <div className="filter__string">Номер аппар. част. <input type='text' placeholder="Значение"/></div>}
 
-          {(props.wifi) && 
+          {(set.settingsFilter.wifi) && 
           <div className="filter__string">Email <input type='text' placeholder="Значение"/></div>}
 
           {/* {(props.thuraya) && 
           <div className="filter__string">GPS-dis<input type='text' placeholder="Значение"/></div>} */}
 
-          {(props.wifi) && 
+          {(set.settingsFilter.wifi) && 
           <div className="filter__string">MAC-адрес <input type='text' placeholder="Значение"/></div>}
 
           {/* {(props.thuraya) && 
           <div className="filter__string">RAND <input type='text' placeholder="Значение"/></div>} */}
 
-          {(props.wifi) && 
+          {(set.settingsFilter.wifi) && 
           <div className="filter__string">Порт <input type='text' placeholder="Значение"/></div>}
 
-          {(props.thuraya || props.wifi) && 
+          {(props.thuraya || set.settingsFilter.wifi) && 
           <div className="filter__string">IP-адрес<input type='text' placeholder="Значение"/></div>}
 
-          {(props.ukv || props.kv) && 
+          {(set.settingsFilter.ykv || set.settingsFilter.kv) && 
           <div className="filter__string">Номер частот. канала <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ukv || props.kv) && 
+          {(set.settingsFilter.ykv|| set.settingsFilter.kv) && 
           <div className="filter__string">Позывной <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ukv || props.kv) && 
+          {(set.settingsFilter.ykv || set.settingsFilter.kv) && 
           <div className="filter__string">Позывной от <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ukv || props.kv) && 
+          {(set.settingsFilter.ykv || set.settingsFilter.kv) && 
           <div className="filter__string">Позывной кому <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ukv || props.kv) && 
+          {(set.settingsFilter.ykv|| set.settingsFilter.kv) && 
           <div className="filter__string">Приоритет  <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ukv || props.kv) && 
+          {(set.settingsFilter.ykv || set.settingsFilter.kv) && 
           <div className="filter__string">№ ЕРБД <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ptt) && 
+          {(set.settingsFilter.ptt) && 
           <div className="filter__string">Имя группы <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ptt) && 
+          {(set.settingsFilter.ptt) && 
           <div className="filter__string">ID группы <input type='text' placeholder="Значение"/></div>}
 
-          {(props.ptt) && 
+          {(set.settingsFilter.ptt) && 
           <div className="filter__string">Имя АТ <input type='text' placeholder="Значение"/></div>}
         </fieldset>
       </SecondFilter>
