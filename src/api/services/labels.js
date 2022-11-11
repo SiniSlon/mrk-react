@@ -1,4 +1,4 @@
-import axios from '../api';
+import axios from '..';
 
 export const createNewLabel = (data) => {
   return axios.post('/label/createNewLabel', data);
@@ -19,8 +19,3 @@ export const updateLabel = (data) => {
 export const deleteLabelByNumber = (data) => {
   return axios.post('/label/deleteLabelByNumber', data);
 };
-
-// String comment;
-// String name;
-// Integer number; @NotNull
-// String color;

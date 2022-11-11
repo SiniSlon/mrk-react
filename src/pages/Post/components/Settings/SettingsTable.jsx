@@ -1,42 +1,38 @@
 import styled from "styled-components";
 import { useState } from "react";
-import SettingsMain from "./SettingsMain";
+import SettingsCommon from "./SettingsCommon";
 import Labels from './SettingsLabels'
 import SettingsFilter from './SettingsFilter'
-import SettingMap from "./SettingMap";
+import SettingMap from "./SettingsMap";
 import SettingsInformation from "./SettingsInformation";
 import SettingsServices from "./SettingsServices";
-import SettingsSpr from "./SettingsSpr";
+import SettingsCatalog from "./SettingsCatalog";
 import TaskManage from "./TaskManage";
 import { mainFontFamily } from "../../../../utils/stylesSettings";
 
-
-const SettingsTable = (props) => {
-  const [section, setSection] = useState('main');
+const SettingsTable = () => {
+  const [section, setSection] = useState('common');
 
   return (
     <Body>
       <Aside>
-        <div onClick={() => setSection('main')} className={section === 'main' ? 'button active' : 'button'}>Общие настройки</div>
+        <div onClick={() => setSection('common')} className={section === 'common' ? 'button active' : 'button'}>Общие настройки</div>
         <div onClick={() => setSection('filter')} className={section === 'filter' ? 'button active' : 'button'}>Фильтр</div>
         <div onClick={() => setSection('info')} className={section === 'info' ? 'button active' : 'button'}>Информация</div>
-        <div onClick={() => setSection('spr')} className={section === 'spr' ? 'button active' : 'button'}>Справочники</div>
-        {/*<p onClick={() => setSection('geo')} className={section === 'geo' ? 'button active' : 'button'}>Геолокация</p>*/}
-        {/*<p onClick={() => setSection('view')} className={section === 'view' ? 'button active' : 'button'}>Отображение</p>*/}
+        <div onClick={() => setSection('catalog')} className={section === 'catalog' ? 'button active' : 'button'}>Справочники</div>
         <div onClick={() => setSection('map')} className={section === 'map' ? 'button active' : 'button'}>Картография</div>
-        {/*<p onClick={() => setSection('news')} className={section === 'news' ? 'button active' : 'button'}>Новостная лента</p>*/}
-        <div onClick={() => setSection('serv')} className={section === 'serv' ? 'button active' : 'button'}>Сервисы</div>
+        <div onClick={() => setSection('services')} className={section === 'services' ? 'button active' : 'button'}>Сервисы</div>
         <div onClick={() => setSection('labels')} className={section === 'labels' ? 'button active' : 'button'}>Метки</div>
         <div onClick={() => setSection('task')} className={section === 'task' ? 'button active' : 'button'}>Управление заданиями</div>
       </Aside>
  
-      {section === 'main' && <SettingsMain/>}
+      {section === 'common' && <SettingsCommon/>}
       {section === 'filter' && <SettingsFilter/>}
       {section === 'info' && <SettingsInformation/>}
+      {section === 'catalog' && <SettingsCatalog/>}
       {section === 'map' && <SettingMap/>}
-      {section === 'serv' && <SettingsServices/>}
+      {section === 'services' && <SettingsServices/>}
       {section === 'labels' && <Labels/>}
-      {section === 'spr' && <SettingsSpr/>}
       {section === 'task' && <TaskManage/>}
     </Body>
   )
@@ -57,7 +53,7 @@ const Body = styled.div`
 const Aside = styled.aside`
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
+  margin-right: 30px;
 
   .button {
     display: flex;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { mainFontFamily } from "../../../../utils/stylesSettings";
-import * as AxiosLabels from "../../../../api/labels";
+import * as AxiosLabels from "../../../../api/services/labels";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -98,7 +98,7 @@ const Lables = styled.div`
   }
 `;
 
-const Button = styled.button `
+const Button = styled.button`
   display: flex;
   align-items: center;
   margin-right: 10px;

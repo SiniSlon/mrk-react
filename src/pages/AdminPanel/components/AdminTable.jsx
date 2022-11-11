@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { deleteUser, getUsers } from '../../../api/users';
+import { deleteUser, getUsers } from '../../../api/services/users';
 import { mainFontFamily } from '../../../utils/stylesSettings';
 import PaginationBlock from '../../../components/Pagination';
 import DeleteIcon from '@mui/icons-material/Delete';

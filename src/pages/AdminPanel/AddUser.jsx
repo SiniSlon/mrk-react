@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
 import * as yup from 'yup';
-import { createUser } from '../../api/users';
+import { createUser } from '../../api/services/users';
 import Header from '../../components/Header';
 import AdminNavBar from './components/AdminNavBar';
 import PersonIcon from '@mui/icons-material/Person';

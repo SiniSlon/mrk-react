@@ -13,8 +13,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import SettingsIcons  from '@mui/icons-material/Settings'
 
 const ReportsTable =() =>{
-	const set = useAppSelector(state => state.settingsSlice.settings)
-	const [details,setDetails] =useState(false);
+	const set = useAppSelector(state => state.settingsSlice.common)
+	const [details, setDetails] = useState(false);
 
     return(  
 	<> 
@@ -42,14 +42,14 @@ const ReportsTable =() =>{
     <Table>
 		<thead>
             <tr>
-               <th> {set.settingsMain.lan =='eng' ? 'Number' :'Nomer' }</th>
-				<th> {set.settingsMain.lan =='eng' ? 'Name' :'Operator' }</th>
-				<th> {set.settingsMain.lan =='eng' ? 'Date start' :'Data' }</th>
-				<th> {set.settingsMain.lan =='eng' ? 'Date finish' :'Data end' }</th>
-				<th> {set.settingsMain.lan =='eng' ? 'Acces' :'Ytv' }</th>
-				<th> {set.settingsMain.lan =='eng' ? 'Date acces' :'Data ytv' }</th>
-				<th> {set.settingsMain.lan =='eng' ? 'Comment' :'Komment' }</th>
-				<th> {set.settingsMain.lan =='eng' ? 'Details' :'Detali' }</th>
+               <th> {set.language =='eng' ? 'Number' :'Nomer' }</th>
+				<th> {set.language =='eng' ? 'Name' :'Operator' }</th>
+				<th> {set.language =='eng' ? 'Date start' :'Data' }</th>
+				<th> {set.language =='eng' ? 'Date finish' :'Data end' }</th>
+				<th> {set.language =='eng' ? 'Acces' :'Ytv' }</th>
+				<th> {set.language =='eng' ? 'Date acces' :'Data ytv' }</th>
+				<th> {set.language =='eng' ? 'Comment' :'Komment' }</th>
+				<th> {set.language =='eng' ? 'Details' :'Detali' }</th>
 			</tr>
 		</thead>
 		<tbody>

@@ -39,7 +39,7 @@ const TableUpload = () => {
           <div className="table-title__item">Удалить</div>
         </div>
 
-        {!ready ?
+        {ready ?
           data.map((item) => (
             <div className="table-content" key={item.id}>
               <div className="table-content__item">1</div>

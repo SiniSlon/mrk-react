@@ -1,18 +1,20 @@
 import L from "leaflet";
-import { useState } from 'react';
+import { useState, useMemo, useRef, useCallback } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
 import { mainBackground } from '../../utils/stylesSettings';
 import PostNavBar from './components/PostNavBar';
 import { EditControl } from "react-leaflet-draw";
-import { MapContainer, TileLayer, FeatureGroup} from "react-leaflet";
+import { MapContainer, TileLayer, FeatureGroup, Marker, Popup, Polygon } from "react-leaflet";
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import AsideMap from './components/AsideMap';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
 import 'leaflet-draw';
+import Basemap from "./components/Map/Basemap";
 
 const mainMap = {
+
   osm:            '/Maps/OSM/{z}/{x}/{y}.png',
   // yandexSt:       '/Maps/Yandex/{z}/{x}/{y}.png',
   // yandexSputnik:  '/Maps/YandexSputnik/{z}/{x}/{y}.jpg',
@@ -47,7 +49,36 @@ L.Icon.Default.mergeOptions({
 });
 
 const Map = () => {
-  const map = useAppSelector((state) => state.mapsSlice.map);
+  const mapStore = useAppSelector((state) => state.settingsSlice.map);
+  console.log('mapStore >>> ', mapStore)
+  // const ssn = useAppSelector((state) => state.ssnSlice?.ssn[0]);
+  // console.log('Map SSN >>> ', ssn)
+  
+  // const coordsPoint = ssn.coordinates[0].point;
+  // const ssnPoint = coordsPoint.slice(1 , coordsPoint.length - 1).split(':');
+  
+  // const coordsPologones = ssn.polygonList;
+
+  const polygonesCoords = [];
+
+  // coordsPologones.forEach((item) => {
+  //   const ponigonString = item.polygon;
+  //   const pologonPoint = ponigonString.slice(1 , ponigonString.length - 1).split(',');
+  
+  //   const coordArray = [];
+  
+  //   pologonPoint.forEach((item) => {
+  //     const item2 = item.trim()
+  //     const poligonPoint = item2.slice(1 , item2.length - 1).split(':');
+  //     coordArray.push(poligonPoint)
+  //   })
+
+  //   polygonesCoords.push(coordArray);
+  // })
+
+
+  const [mapType, setMapType] = useState(mapStore.mapType)
+
   const center = [47.23728695323144, 39.59884643554688];
   const [position, setPosition] = useState(center);
 
@@ -155,6 +186,28 @@ const Map = () => {
 
   };
 
+  const [draggable, setDraggable] = useState(false)
+
+  const toggleDraggable = useCallback(() => {
+    setDraggable((d) => !d)
+  }, [])
+
+  const markerRef = useRef(null)
+
+  const eventHandlers = useMemo(
+    () => ({
+      dragend() {
+        const marker = markerRef.current
+        if (marker != null) {
+          setPosition(marker.getLatLng())
+        }
+      },
+    }),
+  [],)
+
+  const redOptions = { color: 'red' }
+
+
   return (
     <>
       <Header/>
@@ -163,29 +216,55 @@ const Map = () => {
       <PostNavBar/>
 
         <MapWrapper>
-        <AsideMap 
+        {/* <AsideMap 
           polygones={polygones}
           rectangles={rectangles}
           circles={circles}
           markers={markers}
-        /> 
+          mapType={mapType}
+          setMapType={setMapType}
+        />  */}
 
-        <MapContainer center={center} zoom={11} scrollWheelZoom={true} className="map">
-          <TileLayer
-            attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url={mainMap[map]} 
-            key={map}
-          />
-
-          <FeatureGroup>
-            <EditControl
-              position="topright"
-              onCreated={_created}
-              onEdited={_onEdited}
-              onDeleted={_onDeleted}
+          <MapContainer center={center} zoom={mapStore.zoom} scrollWheelZoom={true} className="map">
+            <TileLayer
+              attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url={mainMap[mapType]} 
+              key={mapType}
             />
-          </FeatureGroup>
-        </MapContainer>
+
+            <Basemap mapType={mapType} setMapType={setMapType}/>
+
+            <FeatureGroup>
+              <EditControl
+                position="topright"
+                onCreated={_created}
+                onEdited={_onEdited}
+                onDeleted={_onDeleted}
+              />
+            </FeatureGroup>
+
+            {/* <Polygon pathOptions={redOptions} positions={coordArray}/> */}
+
+
+            {polygonesCoords?.map((item, index) => (
+              <Polygon pathOptions={redOptions} positions={item} key={index}/>
+            ))}
+
+            <Marker
+              draggable={draggable}
+              eventHandlers={eventHandlers}
+              position={center}
+              ref={markerRef}>
+              <Popup minWidth={90}>
+                <span onClick={toggleDraggable}>
+                  {draggable
+                    ? <div style={{cursor:'pointer'}}>Нажмите чтобы заблокировать маркер</div>
+                    : <div style={{cursor:'pointer'}}>Нажмите чтобы разблокировать маркер</div>}
+                </span>
+              </Popup>
+            </Marker>
+            
+          </MapContainer>
         </MapWrapper>
       </Main>
     </>

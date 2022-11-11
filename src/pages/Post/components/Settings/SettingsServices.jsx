@@ -2,95 +2,98 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { putSettingsServices } from "../../../../store/reducers/settings";
-import {mainButtonsHoverColor,mainButtonsColor} from '../../../../utils/stylesSettings'
+import { mainButtonsHoverColor, mainButtonsColor, mainFontFamily } from '../../../../utils/stylesSettings'
 
-const SettingsServices =()=>{
+const SettingsServices = () => {
+  const dispatch = useAppDispatch();
+  const settings = useAppSelector((state) => state.settingsSlice.services);
 
-  const dispatch =useAppDispatch();
-  const set =useAppSelector((state)=>state.settingsSlice.settings);
+  const [exportSession, setExportSession] = useState(settings.exportSession);
+  const [addressExport, setAddressExport] = useState(settings.addressExport);
+  const [addressSputnuka, setAddressSputnuka] = useState(settings.addressSputnuka);
+  const [ipNominatium, setIpNominatium] = useState(settings.ipNominatium);
+  const [ipPologon, setIpPologon] = useState(settings.ipPologon);
+  const [rayIrridium, setRayIrridium] = useState(settings.rayIrridium)
 
-    const [exprt,setExprt]=useState(set.settingsServices.exprt);
-    const [adr,setAdr]=useState(set.settingsServices.adr);
-    const [rad,setRad]=useState(set.settingsServices.rad);
-    const [ip,setIp]=useState(set.settingsServices.ip);
-    const [ipg,setIpg]=useState(set.settingsServices.ipg);
-    const [radIr,setRadIr]=useState(set.settingsServices.radIr)
-
-    const SaveSettings = async(e)=>{
-      e.preventDefault();
-      const data ={
-        exprt,
-        adr,
-        ip,
-        ipg,
-        radIr
-      }
-      dispatch(putSettingsServices(data))
+  const SaveSettings = async(e) => {
+    e.preventDefault();
+    const data = {
+      exportSession,
+      addressExport,
+      addressSputnuka,
+      ipNominatium,
+      ipPologon,
+      rayIrridium,
     }
-
-    return(<form>
-        <Checkbox>
-            <input id='exprt' type='checkbox' checked={exprt} onChange={()=>setExprt(s=>!s)}/>
-            <label htmlFor='exprt'>Экспорт в ibs</label>
-        </Checkbox>
-        <Checkbox>
-            <input type='text' onChange={(e)=>setAdr(e.target.value)} value={adr}/>
-            <label >Адрес сервиса экспорта в ibs</label>
-        </Checkbox>
-        <Checkbox>
-            <input type='text' onChange={(e)=>setRad(e.target.value)} value={rad}/>
-            <label >Адрес сервиса лучей спутника</label>
-        </Checkbox>
-        <Checkbox>
-            <input type='text' onChange={(e)=>setIp(e.target.value)} value={ip}/>
-            <label >Ip-адрес сервиса Nominatim</label>
-        </Checkbox>
-        <Checkbox>
-          <input type='text' onChange={(e)=>setIpg(e.target.value)} value={ipg}/>
-            <label >Ip-адрес генерации полигонов</label>
-        </Checkbox>
-        <Checkbox>
-            <input id='radIr' type='checkbox' checked={radIr} onChange={()=>setRadIr(s=>!s)}/>
-            <label htmlFor='radIr'>Разрешить отображать лучи Irridium</label>
-        </Checkbox>
-        <div>
-								<ButtonSet onClick={SaveSettings} >Сохранить</ButtonSet>
-								<ButtonSet>По умолчанию</ButtonSet>
-								</div>
-      </form>)
-}
-export default SettingsServices
-
-const Checkbox = styled.div `
-  padding-top:10px;
-  margin-left: 5px;
-  label,input:hover{
-    cursor:pointer;
-    border-radius: 5px;
-    padding-left: 5px;
+    dispatch(putSettingsServices(data))
   }
-  textarea{
-    width:100px;
-    height: 10px; 
-    resize: none;
-    margin-left:3px;
-    padding-left: 5px;;
+
+  return (
+    <Section>
+      <WrapperInput>
+        <label htmlFor='exportSession'>Разрешить экспорт сеансов в формат IBS</label>
+        <input id='exportSession' type='checkbox' checked={exportSession} onChange={() => setExportSession(s => !s)}/>
+      </WrapperInput>
+      <WrapperInput>
+        <label>Адрес сервиса экспорта в IBS</label>
+        <input type='text' onChange={(e) => setAddressExport(e.target.value)} value={addressExport}/>
+      </WrapperInput>
+      <WrapperInput>
+        <label>Адрес сервиса лучей спутника</label>
+        <input type='text' onChange={(e) => setAddressSputnuka(e.target.value)} value={addressSputnuka}/>
+      </WrapperInput>
+      <WrapperInput>
+        <label>IP-адрес сервиса Nominatim</label>
+        <input type='text' onChange={(e) => setIpNominatium(e.target.value)} value={ipNominatium}/>
+      </WrapperInput>
+      <WrapperInput>
+        <label>IP-адрес сервиса генерации полигонов</label>
+        <input type='text' onChange={(e) => setIpPologon(e.target.value)} value={ipPologon}/>
+      </WrapperInput>
+      <WrapperInput>
+        <label htmlFor='radIr'>Разрешить отображать лучи Irridium</label>
+        <input id='radIr' type='checkbox' checked={rayIrridium} onChange={()=>setRayIrridium(s => !s)}/>
+      </WrapperInput>
+
+      <div>
+        <ButtonSet onClick={SaveSettings}>Сохранить</ButtonSet>
+        {/* <ButtonSet>По умолчанию</ButtonSet> */}
+      </div>
+    </Section>
+  )
+}
+export default SettingsServices;
+
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  font-family: ${mainFontFamily};
+`;
+
+const WrapperInput = styled.div`
+  display: flex;
+  width: 700px;  
+  justify-content: space-between;
+  margin: 10px 0 0 0;
+
+  label {
+    cursor: pointer;
   }
 `;
 
 const ButtonSet = styled.button`
-    width:110px;
-    height: 30px;
-    margin-top: 20px;
-    margin-left: 5px;
-    margin-right: 10px;
-    background-color:${mainButtonsColor} ;
-    border-radius: 5px;
-    border: none;
-    color :white;
-    text-align: center;
-  :hover{
+  padding: 10px 20px;
+  margin: 40px 40px 30px 0;
+  background-color: ${mainButtonsColor};
+  border-radius: 5px;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+
+  :hover {
     cursor:pointer;
-    background-color: ${mainButtonsHoverColor} ;
-    color:white;}
-  `;
+    background-color: ${mainButtonsHoverColor};
+    color:white;
+  }
+`;

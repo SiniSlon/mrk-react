@@ -27,4 +27,8 @@ const Main = styled.main`
   flex-direction: column;
   min-height: calc(100vh - 50px);
   background: ${mainBackground};
+
+  button, input, select, textarea {
+    font-family: ${mainFontFamily};
+  }
 `;
