@@ -12,10 +12,10 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import SettingsIcons  from '@mui/icons-material/Settings';
 import {hoverTr} from '../../../utils/stylesSettings'
 
-const ReportsTable =() =>{
+const ReportsTable = () => {
 
-	const set = useAppSelector(state => state.settingsSlice.settings)
-	const [details,setDetails] =useState(false);
+	const set = useAppSelector(state => state.settingsSlice.common)
+	const [details, setDetails] = useState(false);
     return(  
 	<> 
 		<ButtonSet>
@@ -43,14 +43,14 @@ const ReportsTable =() =>{
 		<thead>
             <tr>
 
-               <th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Number' :'Nomer' }</th>
-				<th className="header_mediumColumn"> {set.settingsMain.lan =='eng' ? 'Name' :'Operator' }</th>
-				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Date start' :'Data' }</th>
-				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Date finish' :'Data end' }</th>
-				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Acces' :'Ytv' }</th>
-				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Date acces' :'Data ytv' }</th>
-				<th className="header_largeColumn"> {set.settingsMain.lan =='eng' ? 'Comment' :'Komment' }</th>
-				<th className="header_mediumColumn"> {set.settingsMain.lan =='eng' ? 'Details' :'Detali' }</th>
+               <th className="header_smallColumn"> {set.language =='eng' ? 'Number' :'Nomer' }</th>
+				<th className="header_mediumColumn"> {set.language =='eng' ? 'Name' :'Operator' }</th>
+				<th className="header_smallColumn"> {set.language =='eng' ? 'Date start' :'Data' }</th>
+				<th className="header_smallColumn"> {set.language =='eng' ? 'Date finish' :'Data end' }</th>
+				<th className="header_smallColumn"> {set.language =='eng' ? 'Acces' :'Ytv' }</th>
+				<th className="header_smallColumn"> {set.language =='eng' ? 'Date acces' :'Data ytv' }</th>
+				<th className="header_largeColumn"> {set.language =='eng' ? 'Comment' :'Komment' }</th>
+				<th className="header_mediumColumn"> {set.language =='eng' ? 'Details' :'Detali' }</th>
 			</tr>
 		</thead>
 		<tbody>
