@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../../../store/hooks";
-import ModalWindow from "../../Post/components/ModalWindow";
 import ReportDetails from "./ReportDetails";
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import StopIcon from '@mui/icons-material/Stop';
@@ -10,88 +9,90 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import CheckIcon from '@mui/icons-material/Check';
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import SettingsIcons  from '@mui/icons-material/Settings'
+import SettingsIcons  from '@mui/icons-material/Settings';
+import {hoverTr} from '../../../utils/stylesSettings'
 
 const ReportsTable =() =>{
-	const set = useAppSelector(state => state.settingsSlice.common)
-	const [details, setDetails] = useState(false);
 
+	const set = useAppSelector(state => state.settingsSlice.settings)
+	const [details,setDetails] =useState(false);
     return(  
 	<> 
 		<ButtonSet>
-			<input type='datetime-local' title='Choose date start Reports'/>
-			<input type='datetime-local' title='Choose date closed Reports'/>
-			<input list='id' title='Choose users reports'/>
+			<input type='datetime-local' placeholder='Выберите дату создания отчета'/>
+			<input type='datetime-local' placeholder='Выберите дату закрытия отчета'/>
+			<input list='id' placeholder='Выберите пользователя'/>
 			<datalist id='id'>
 			<option>test</option>
 			<option>no test</option>
 			</datalist>
-			<input type='text' title='Write TFOP, IMEI,IMSI or another identificator'/>
-			<ButtonDiv onClick={()=>console.log('Search')} title='Click to search by choosen parametrs'><ManageSearchIcon/><span>Search</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Stop')} title='Stop search'><StopIcon/><span>Stop</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Close')} title='Clean filter'><CloseIcon/><span>Close</span></ButtonDiv>
+			<input type='text' placeholder='Введите идентификатор'/>
+			<button onClick={()=>console.log('Search')} title='Нажмите для начала поиска'><ManageSearchIcon/><span>Поиск</span></button>
+			<button onClick={()=>console.log('Stop')} title='Остановить поиск'><StopIcon/><span>Стоп</span></button>
+			<button onClick={()=>console.log('Close')} title='Очистить фильтр'><CloseIcon/><span>Очистить</span></button>
 		</ButtonSet>
 		<FormDiv>
 		<Bar>
-			<ButtonDiv onClick={()=>console.log("export")} title='Export choosen reports by text reports'><FileDownloadIcon/><span>Export</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log("Report main")} title='Make choosen reports actual'><CheckIcon/><span>Make report actual</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Close report')} title='Close choosen reports'><CloseIcon/><span>Close</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Accept report')} title='Accept choosen reports'><VisibilityIcon/><span>Accept</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Cancel Accept report')} title='Denied accept choosen report'><DoDisturbIcon/><span>Cancel accept</span></ButtonDiv>
+			<ButtonDiv onClick={()=>console.log("export")} ><FileDownloadIcon/><span>Экспорт</span></ButtonDiv>
+			<ButtonDiv onClick={()=>console.log("Report main")}><CheckIcon/><span>Сделать отчет текущим</span></ButtonDiv>
+			<ButtonDiv onClick={()=>console.log('Close report')} ><CloseIcon/><span>Закрыть отчет</span></ButtonDiv>
+			<ButtonDiv onClick={()=>console.log('Accept report')} ><VisibilityIcon/><span>Утвердить отчет</span></ButtonDiv>
+			<ButtonDiv onClick={()=>console.log('Cancel Accept report')} ><DoDisturbIcon/><span>Отменить утверждение отчета</span></ButtonDiv>
 	</Bar>
     <Table>
 		<thead>
             <tr>
-               <th> {set.language =='eng' ? 'Number' :'Nomer' }</th>
-				<th> {set.language =='eng' ? 'Name' :'Operator' }</th>
-				<th> {set.language =='eng' ? 'Date start' :'Data' }</th>
-				<th> {set.language =='eng' ? 'Date finish' :'Data end' }</th>
-				<th> {set.language =='eng' ? 'Acces' :'Ytv' }</th>
-				<th> {set.language =='eng' ? 'Date acces' :'Data ytv' }</th>
-				<th> {set.language =='eng' ? 'Comment' :'Komment' }</th>
-				<th> {set.language =='eng' ? 'Details' :'Detali' }</th>
+
+               <th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Number' :'Nomer' }</th>
+				<th className="header_mediumColumn"> {set.settingsMain.lan =='eng' ? 'Name' :'Operator' }</th>
+				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Date start' :'Data' }</th>
+				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Date finish' :'Data end' }</th>
+				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Acces' :'Ytv' }</th>
+				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Date acces' :'Data ytv' }</th>
+				<th className="header_largeColumn"> {set.settingsMain.lan =='eng' ? 'Comment' :'Komment' }</th>
+				<th className="header_mediumColumn"> {set.settingsMain.lan =='eng' ? 'Details' :'Detali' }</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>11</td>
-				<td>22</td>
-				<td>33</td>
-				<td>44</td>
-				<td>55</td>
-				<td>66</td>
-				<td>77</td>
-				<td><ButtonDiv onClick={()=>setDetails(s=>!s)} title='Click to see reports detail'><SettingsIcons/><span>Details</span></ButtonDiv></td>
+				<td className="body_smallColumn">11</td>
+				<td className="body_mediumColumn">22</td>
+				<td className="body_smallColumn">33</td>
+				<td className="body_smallColumn">44</td>
+				<td className="body_smallColumn">55</td>
+				<td className="body_smallColumn">66</td>
+				<td className="body_largeColumn">77</td>
+				<td className="body_mediumColumn"><ButtonDiv onClick={()=>setDetails(s=>!s)} title='Click to see reports detail'><SettingsIcons/><span>Детали</span></ButtonDiv></td>
 			</tr>
 			<tr>
-				<td>11</td>
-				<td>22</td>
-				<td>33</td>
-				<td>44</td>
-				<td>55</td>
-				<td>66</td>
-				<td>77</td>
-				<td><ButtonDiv onClick={()=>setDetails(s=>!s)}><SettingsIcons/><span>Details</span></ButtonDiv></td>
+				<td className="body_smallColumn">11</td>
+				<td className="body_mediumColumn">22</td>
+				<td className="body_smallColumn">33</td>
+				<td className="body_smallColumn">44</td>
+				<td className="body_smallColumn">55</td>
+				<td className="body_smallColumn">66</td>
+				<td className="body_largeColumn">77</td>
+				<td className="body_mediumColumn"><ButtonDiv onClick={()=>setDetails(s=>!s)}><SettingsIcons/><span>Детали</span></ButtonDiv></td>
 			</tr>
 			<tr>
-				<td>11</td>
-				<td>22</td>
-				<td>33</td>
-				<td>44</td>
-				<td>55</td>
-				<td>66</td>
-				<td>77</td>
-				<td><ButtonDiv onClick={()=>setDetails(s=>!s)}><SettingsIcons/><span>Details</span></ButtonDiv></td>
+				<td className="body_smallColumn">11</td>
+				<td className="body_mediumColumn">22</td>
+				<td className="body_smallColumn">33</td>
+				<td className="body_smallColumn">44</td>
+				<td className="body_smallColumn">55</td>
+				<td className="body_smallColumn">66</td>
+				<td className="body_largeColumn">77</td>
+				<td className="body_mediumColumn"><ButtonDiv onClick={()=>setDetails(s=>!s)}><SettingsIcons/><span>Детали</span></ButtonDiv></td>
 			</tr>
 			<tr>
-				<td>11</td>
-				<td>22</td>
-				<td>33</td>
-				<td>44</td>
-				<td>55</td>
-				<td>66</td>
-				<td>77</td>
-				<td><ButtonDiv onClick={()=>setDetails(s=>!s)}><SettingsIcons/><span>Details</span></ButtonDiv></td>
+				<td className="body_smallColumn">11</td>
+				<td className="body_mediumColumn">22</td>
+				<td className="body_smallColumn">33</td>
+				<td className="body_smallColumn">44</td>
+				<td className="body_smallColumn">55</td>
+				<td className="body_smallColumn">66</td>
+				<td className="body_largeColumn">77</td>
+				<td className="body_mediumColumn"><ButtonDiv onClick={()=>setDetails(s=>!s)}><SettingsIcons/><span>Детали</span></ButtonDiv></td>
 			</tr>
 		</tbody>
     </Table>
@@ -101,62 +102,95 @@ const ReportsTable =() =>{
 )}
 export default ReportsTable
 
-
 const Table =styled.table `
-	flex-direction: column;
-    background-color:#ffffff;
-    width:100%;
-	border-radius: 10px;
+  flex-direction: column;
+  background-color:#ffffff;
+  width:100%;
+  border-radius: 10px;
 	overflow-y: scroll;
-th{font-weight:450;
-	font-size:16pt;}
-td{font-size:14pt;}
-tr{
-	border-bottom:1px solid black;
 	border-collapse: collapse;
-	text-align: center;
-	}
-tbody tr:hover{
-	cursor:pointer;
-	}`;
+    .header{
+      font-weight:450;
+	    font-size:16pt;
+        &_mediumColumn{
+          width:150px;
+          justify-content: center};
+        &_smallColumn{
+          width:120px;
+          justify-content: center;};
+        &_largeColumn{
+          width: 450px;
+          justify-content: center;}}
+    .body{
+      font-size:14pt;
+        &_mediumColumn{
+          width:120px;
+          justify-content: center;};
+        &_smallColumn{
+          width:100px;
+          justify-content: center;};
+        &_largeColumn{
+          width: 450px;
+          justify-content: center;
+        }}
+    tr{
+      border-bottom:1px solid black;
+      text-align: center;}
+    tbody tr:hover{
+      cursor:pointer;
+      background-color:${hoverTr};}`;
 
 const ButtonSet =styled.div`
 	display:flex;
 	flex-direction:row;
-	margin: 5px;
+	margin: 10px;
 	width:100%;
-input{
-	border-radius: 10px;
-	outline	:none ;
-	height:50px;
-	}`;
+    input{
+      border-radius: 10px;
+      outline	:none ;
+      height:30px;
+      };
+    button{
+      display:flex;
+      border: 1px solid #00369b;
+      border-radius: 7px;
+      padding: 5px;
+      background-color: white;
+      width:100px;
+      align-items: center;
+      outline:none;
+      margin-left: 5px;
+      cursor: pointer;};
+	  button:hover{
+      background-color: ${hoverTr};};
+	  span{
+      margin-right: 5px;}`;
 
 const Bar =styled.div`
 	flex-direction: row;
 	justify-content: flex-end;
 	width: 120px;
-	margin-right: 10px;
-	border-radius: 5px;
-	`;
+	margin-right: 30px;
+	border-radius: 5px;`;
 
 const FormDiv =styled.div`
 	display:flex;
-	margin: 5px;`;
+	margin: 10px;`;
 
 const ButtonDiv =styled.div `
 	display: flex;
-    align-items: center;
-    border: 2px solid #005aff;
-    border-radius: 7px;
-    padding: 5px;
+  align-items: center;
+
+  border: 1px solid #00369b;
+  border-radius: 7px;
+  padding: 5px;
+  font-size:11pt;
 	background-color: white;
-    color: #0104a5;
-    width:100px;
-    cursor: pointer;
-:hover{
-	transform: scale(1.05);
-	opacity:0.6;}
-span {
-    margin-right: 5px;
-    }`
+  width:130px;
+	margin: auto;
+  cursor: pointer;
+    span {
+      margin-right: 5px;}
+	  :hover{
+		background-color:${hoverTr} ;}`
 		
