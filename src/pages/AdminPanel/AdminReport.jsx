@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import AdminNavBar from "./components/AdminNavBar";
 import ReportsTable from "./components/ReportsTable";
 
-const SettingsReport = () =>{
+const AdminReport = () =>{
   return( 
     <>
       <Header/>
@@ -17,7 +17,7 @@ const SettingsReport = () =>{
   )
 }
 
-export default SettingsReport
+export default AdminReport
 
 const Main = styled.main`
   display: flex;

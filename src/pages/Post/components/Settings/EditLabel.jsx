@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import styled from "styled-components";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as AxiosLabels from "../../../../api/labels";
+import * as AxiosLabels from "../../../../api/services/labels";
 import Loader from "../../../../components/Loader";
 import { mainFontFamily } from '../../../../utils/stylesSettings';
 

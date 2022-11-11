@@ -25,12 +25,12 @@ const AsideMap = (props) => {
   return (
 		<Aside> 
 			<div className='title'>Вид карты</div>
-			<button className={map == 'osm' ? 'button__active' : 'button'} onClick={() => dispatch(changeMap('osm'))}>OSM</button>
+			<button className={props.mapType == 'osm' ? 'button__active' : 'button'} onClick={() => props.setMapType('osm')}>OSM</button>
 			{/* <button className={map == 'yandexSt' ? 'button__active' : 'button'} onClick={() => dispatch(changeMap('yandexSt'))}>Yandex</button> */}
 			{/* <button className={map == 'yandexSputnik' ? 'button__active' : 'button'} onClick={() => dispatch(changeMap('yandexSputnik'))}>Yandex Sputnik</button> */}
-			<button className={map == 'googleSt' ? 'button__active' : 'button'} onClick={() => dispatch(changeMap('googleSt'))}>Google</button>
-			<button className={map == 'googleGeo' ? 'button__active' : 'button'} onClick={() => dispatch(changeMap('googleGeo'))}>Google Geo</button>
-			<button className={map == 'googleSputnik' ? 'button__active' : 'button'} onClick={() => dispatch(changeMap('googleSputnik'))}>Google Sputnik</button>
+			<button className={props.mapType == 'googleSt' ? 'button__active' : 'button'} onClick={() => props.setMapType('googleSt')}>Google</button>
+			<button className={props.mapType == 'googleGeo' ? 'button__active' : 'button'} onClick={() => props.setMapType('googleGeo')}>Google Geo</button>
+			<button className={props.mapType == 'googleSputnik' ? 'button__active' : 'button'} onClick={() => props.setMapType('googleSputnik')}>Google Sputnik</button>
 
 			{props.polygones.length !== 0 &&<div className='slash'/>}
       {props.polygones.length !== 0 && <div className='title'>Текущие полигоны</div>}

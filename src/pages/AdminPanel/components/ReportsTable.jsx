@@ -13,6 +13,7 @@ import SettingsIcons  from '@mui/icons-material/Settings';
 import {hoverTr} from '../../../utils/stylesSettings'
 
 const ReportsTable =() =>{
+
 	const set = useAppSelector(state => state.settingsSlice.settings)
 	const [details,setDetails] =useState(false);
     return(  
@@ -41,6 +42,7 @@ const ReportsTable =() =>{
     <Table>
 		<thead>
             <tr>
+
                <th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Number' :'Nomer' }</th>
 				<th className="header_mediumColumn"> {set.settingsMain.lan =='eng' ? 'Name' :'Operator' }</th>
 				<th className="header_smallColumn"> {set.settingsMain.lan =='eng' ? 'Date start' :'Data' }</th>

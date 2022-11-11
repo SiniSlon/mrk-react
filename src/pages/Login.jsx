@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { mainBackground, mainFontFamily } from '../utils/stylesSettings';
 import * as yup from 'yup';
-import { loginUser } from '../api/users';
+import { loginUser } from '../api/services/users';
 import { useAppDispatch } from '../store/hooks';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { putUser } from '../store/reducers/user';
@@ -41,7 +41,7 @@ const Login = () => {
     handleSubmit,
     register,
     formState: { errors },
-    setError,
+    setError
   } = useForm({
     resolver: yupResolver(loginSchema),
     defaultValues: {
@@ -66,6 +66,7 @@ const Login = () => {
     } catch (e) {
       console.error('Error Login >>> ', e);
       const error = e.response.data.split(':')[1][0];
+      
       if (error == 'U') {
         setError('userName', {
           type: 'custom',
@@ -97,8 +98,8 @@ const Login = () => {
           <div className="input-wrapper">
             <PersonIcon/>
 
-            <input className='login-input'
-              type="text"
+            <input 
+              className='login-input'
               placeholder='Логин'
               {...register('userName')}
             />
@@ -113,7 +114,8 @@ const Login = () => {
           <div className="input-wrapper">
             <LockIcon/>
 
-            <input className='password-input'
+            <input 
+              className='password-input'
               type="password"
               placeholder='Пароль'
               {...register('password')}

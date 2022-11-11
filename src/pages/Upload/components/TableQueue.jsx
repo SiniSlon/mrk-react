@@ -37,7 +37,7 @@ const TableQueue = () => {
           </tr>
         </thead>
 
-        {!ready ?
+        {ready ?
           <tbody>
             <tr>
               <td>11</td>

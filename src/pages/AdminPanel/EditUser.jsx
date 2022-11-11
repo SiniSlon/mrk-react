@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { getUserByName, changeUser } from '../../api/users'; 
+import { getUserByName, changeUser } from '../../api/services/users'; 
 import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
 import Header from '../../components/Header';
 import AdminNavBar from './components/AdminNavBar';

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router';
 import { Route, Routes } from 'react-router';
 import { putUser } from './store/reducers/user';
-import { getUser } from './api/users';
+import { getUser } from './api/services/users';
 import { useAppDispatch } from './store/hooks';
 import RequireAuth from './components/RequireAuth';
 import Login from './pages/Login';
@@ -16,14 +16,13 @@ import Map from './pages/Post/Map';
 import Analitic from './pages/Post/Analitic';
 import Search from './pages/Post/Search';
 import LoadData from './pages/Upload/UploadHistory';
-import Database from './pages/Database/Database';
 
 import AdminPanel from './pages/AdminPanel/AdminPanel';
 import LogsAdmin from './pages/AdminPanel/LogsAdmin';
 import AddUser from './pages/AdminPanel/AddUser';
 import EditUser from './pages/AdminPanel/EditUser';
 import Queque from './pages/Upload/UploadQueue';
-import SettingsReport from './pages/AdminPanel/SettingsReports';
+import AdminReport from './pages/AdminPanel/AdminReport';
 
 const App = () => {
 
@@ -44,13 +43,12 @@ const App = () => {
       <Route path='/upload' element={<LoadData/>}/>
       <Route path='/upload/queue' element={<Queque/>}/>
 
-      <Route path='/database' element={<Database/>}/>
 
       <Route path='/adminpanel' element={<AdminPanel/>}/>
       <Route path='/adminpanel/logs' element={<LogsAdmin/>}/>
       <Route path='/adminpanel/adduser' element={<AddUser/>}/>
       <Route path='/adminpanel/edituser/:userName' element={<EditUser/>}/>
-      <Route path='/adminpanel/reports' element={<SettingsReport/>}/>
+      <Route path='/adminpanel/reports' element={<AdminReport/>}/>
     </Routes>
   );
 }
