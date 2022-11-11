@@ -5,212 +5,251 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import { useState } from "react";
-import ModalWindow from "../ModalWindow";
-import {headerTh} from '../../../../utils/stylesSettings'
+import ModalWindow from "./ModalWindow";
+import {hoverTr} from '../../../../utils/stylesSettings';
+import AddTask from "./AddTask";
+import Pagination from "../../../../components/Pagination";
 
 
 const TaskManage =()=>{
 	const [addModule, setAddModule] = useState(false);
 	const [deleteModule, setDeleteModule] = useState(false);
 	const [viewTable, setViewTable] = useState(true); 
-    
+  const [page,setPage] =useState(1) 
+  
 	return(
 			<Body>
-				<Side>
-				<OneStr>
-					<button className="task-btn" title='Свернуть таблицу оповещений' onClick={()=>setViewTable(s=>!s)}><CloseFullscreenIcon/></button>
-					<button className="task-btn" title='Добавить задание'  onClick={()=>setAddModule(s=>!s)}><AddIcon/></button>
-					<button className="task-btn" title='Удалить задание' onClick={()=>setDeleteModule(s=>!s)}><CloseIcon/></button>
+        <Button>
+					<button onClick={()=>setViewTable(s=>!s)}><CloseFullscreenIcon/><span>{viewTable ? 'Свернуть таблицу': 'Развернуть таблицу'}</span></button>
+					<button  onClick={()=>setAddModule(s=>!s)}><AddIcon/><span>Добавить задание</span></button>
+					{/*<button className="task-btn" title='Удалить задание' onClick={()=>setDeleteModule(s=>!s)}><CloseIcon/></button>
 					<button className="task-btn" title='Запуск заданий'><PlayArrowIcon/></button>
 					<button className="task-btn" title='Остановка заданий'><StopIcon/></button>
 					<button className="task-btn"></button>
-					<button className="task-btn"></button>   
-				</OneStr>
-				<div>
+  <button className="task-btn"></button>   */}</Button>
 				<Table>
 					<thead> {/*table - Mining jobs*/}
 						<tr>
-							<th>Тип</th>
-							<th>Приоритет</th>
-							<th>Состояние</th>
-							<th>Автор</th>
-							<th>Название</th>
-							<th>Старт задания</th>
-							<th>Конец задания</th>
-							<th>Содержание</th>
-							<th>Время срабатывания</th>
-							<th>время последнего сраб</th>
-							<th>визуал</th>
-							<th>звук</th>
+							<th className="small">Тип</th>
+							<th className="small">Приоритет</th>
+							<th className="small">Состояние</th>
+							<th className="medium">Автор</th>
+							<th className="medium">Название</th>
+							<th className="small">Старт задания</th>
+							<th className="small">Конец задания</th>
+							<th className="large">Содержание</th>
+							<th className="small">Первое оповещение</th>
+							<th className="small">Последнее оповещение</th>
+							<th className="small">визуал</th>
+							<th className="small">звук</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td><input type='checkbox'/></td>
-							<td><input type='checkbox'/></td>
+							<td className="small">tetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etete</td>
+							<td className="medium">etetet</td>
+							<td className="medium">etetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etetet</td>
+							<td className="large">etet</td>
+							<td className="small">eett</td>
+							<td className="small">tetet</td>
+							<td className="small"><input type='checkbox'/></td>
+							<td className="small"><input type='checkbox'/></td>
 						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td><input type='checkbox'/></td>
-							<td><input type='checkbox'/></td>
+            <tr>
+							<td className="small">tetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etete</td>
+							<td className="medium">etetet</td>
+							<td className="medium">etetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etetet</td>
+							<td className="large">etet</td>
+							<td className="small">eett</td>
+							<td className="small">tetet</td>
+							<td className="small"><input type='checkbox'/></td>
+							<td className="small"><input type='checkbox'/></td>
 						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td><input type='checkbox'/></td>
-							<td><input type='checkbox'/></td>
+            <tr>
+							<td className="small">tetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etete</td>
+							<td className="medium">etetet</td>
+							<td className="medium">etetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etetet</td>
+							<td className="large">etet</td>
+							<td className="small">eett</td>
+							<td className="small">tetet</td>
+							<td className="small"><input type='checkbox'/></td>
+							<td className="small"><input type='checkbox'/></td>
+						</tr>
+            <tr>
+							<td className="small">tetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etete</td>
+							<td className="medium">etetet</td>
+							<td className="medium">etetet</td>
+							<td className="small">etetet</td>
+							<td className="small">etetet</td>
+							<td className="large">etet</td>
+							<td className="small">eett</td>
+							<td className="small">tetet</td>
+							<td className="small"><input type='checkbox'/></td>
+							<td className="small"><input type='checkbox'/></td>
 						</tr>
 					</tbody>
-				</Table></div>
-					{viewTable && 
-					<Bottom>
-						<TableTwo>
+				</Table>
+        <Pagination  data={10} onChange={setPage}/>
+					{viewTable && <TableTwo>
 							<thead>
 								<tr>
-									<th>Время оповещения</th>
-									<th>АПК</th>
-									<th>Сообщения</th>
-									<th>Статистика</th>
+									<th className="header_small">Время оповещения</th>
+									<th className="header_medium">АПК</th>
+									<th className="header_large">Сообщения</th>
+									<th className="header_medium">Статистика</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>1111</td>
-									<td>222</td>
-									<td>333</td>
-									<td>444</td>
+									<td className="body_small">1111</td>
+									<td className="body_medium">222</td>
+									<td className="body_large">333</td>
+									<td className="body_medium">444</td>
 								</tr>
-								<tr>
-									<td>1111</td>
-									<td>222</td>
-									<td>333</td>
-									<td>444</td>
+                <tr>
+									<td className="body_small">1111</td>
+									<td className="body_medium">222</td>
+									<td className="body_large">333</td>
+									<td className="body_medium">444</td>
 								</tr>
-								<tr>
-									<td>1111</td>
-									<td>222</td>
-									<td>333</td>
-									<td>444</td>
+                <tr>
+									<td className="body_small">1111</td>
+									<td className="body_medium">222</td>
+									<td className="body_large">333</td>
+									<td className="body_medium">444</td>
+								</tr>
+                <tr>
+									<td className="body_small">1111</td>
+									<td className="body_medium">222</td>
+									<td className="body_large">333</td>
+									<td className="body_medium">444</td>
+								</tr>
+                <tr>
+									<td className="body_small">1111</td>
+									<td className="body_medium">222</td>
+									<td className="body_large">333</td>
+									<td className="body_medium">444</td>
 								</tr>
 							</tbody>
-						</TableTwo>
-					</Bottom>}
-          {addModule && 
-					<ModalWindow>
-                <div>
-									<button onClick={()=>setAddModule(s=>!s)}>Отмена</button>
-								</div>
-          </ModalWindow>}
-          {deleteModule && 
-					<ModalWindow>
-                <div>
-									<button onClick={()=>setDeleteModule(s=>!s)}>Отмена</button>
-                </div></ModalWindow>}
-      </Side>    
+						</TableTwo>}
+          {addModule && <AddTask setAddModule={setAddModule}/>}    
     </Body>
   )
 }
 export default TaskManage
 
 const Body = styled.div`
-  position: absolute;
   display: flex;
-  flex-direction: row;
-  background-color: #ffffff;
-  top: 35px;
-  margin-top:30px;
-  margin-left:10px;
-	
-  padding: 10px;
+  flex-direction: column;
   border-radius: 10px;
-    .task-btn {
-    background-color: white;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  }
-
-  `;
+.task-btn {
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  }`;
 	
-  const Table =styled.div`
-    text-align:center;
-    margin-top: 10px;
+const Table =styled.table`
+	flex-direction: column;
+	width:100%;
+	text-align: center;
 	overflow-y: scroll;
-        th{padding:10px;
-            border-bottom: 1px solid darkblue;
-            font-weight: 300;
-        }
-        tbody{border-bottom: 1px solid gray;margin-bottom:5px;
-		height:360px;}
-        tbody tr:hover{
-            cursor:pointer;
-                background-color:rgba(150, 199, 241,0.2)}
-    `;
+  margin-top: 5px;
+	border-collapse: collapse;
+  .small{
+    width:90px;
+    justify-content:center};
+  .medium{
+    width:100px;
+    justify-content:center};
+  .large{
+    width:300px;
+    justify-content:center};
+  th{
+    font-weight: 350;
+    font-size: 14pt;
+    };
+  tbody tr{
+    border-bottom: 1px solid gray;};
+  td{
+    font-size:12pt;};
+    th td{margin-left:5px}
+  tbody tr:hover{
+    cursor:pointer;
+    background-color:${hoverTr}}
+  tbody{height:20px;
+  overflow-y:scroll}`;
 
-    const TableTwo =styled.table`
-    width:73vw;
-    margin-top: 30px;
-	overflow-y: scroll;
-		border-collapse: collapse;
+const TableTwo =styled.table`
+  flex-direction: column;
+	margin-top: 50px;
+	padding:10px;
+	text-align: center;
+	border-collapse: collapse;
+	width:100%;
+  th{
+    font-weight: 350;
+    font-size: 14pt;};
+  td{
+    font-size:12pt;};
+  tbody tr{
+    border-bottom: 1px solid gray;}	
+  .header{
+    &_small{
+      width:150px;
+      justify-content:center}
+    &_medium{
+      width:300px;
+      justify-content:center}
+    &_large{
+      width:500px;
+      justify-content:center}}
+  .body{
+    &_small{
+      width:150px;
+      justify-content:center}
+    &_medium{
+      width:300px;
+      justify-content:center}
+    &_large{
+      width:500px;
+      justify-content:center}}
+		tbody tr:hover{
+			cursor:pointer;
+			background-color:${hoverTr}};
+      tbody{
+        height:20px;
+        overflow-y:scroll ;
+      };`;
+
+const Button =styled.div`
+  display:flex;
+  button{
+    display:flex;
+    justify-content: center;
+    align-items: center ;
+    border: 1px solid #00369b;
+    border-radius: 7px;
+    background-color: white;
+    margin-right: 5px;
+    cursor: pointer;}
+	button:hover{
+		background-color:${hoverTr} ;}`;
   
-     th{border-bottom: 1px solid darkblue;
-	font-weight:300;
-	background-color:${headerTh};
-color:white	}
-    tbody{border-bottom: 1px solid gray;
-		text-align:center;
-	height:200px;}
-    tbody tr:hover{cursor:pointer;
-                background-color:rgba(150, 199, 241,0.2)}`;
-
-    const Side =styled.div`
-        display:grid;   
-        grid-template-areas:
-        "a"
-        "b"
-        "c";`;
-
-    const OneStr =styled.div`
-    grid-area:"a";
-        
-    `;
-
-		const Bottom=styled.div`
-			position:fixed;
-			bottom:150px;`;
-
-		const Top=styled.div`
-		position:fixed;
-		overflow-y:scroll`;
-   
-
   
 
   

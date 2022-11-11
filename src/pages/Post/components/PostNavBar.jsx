@@ -10,10 +10,12 @@ const PostNavBar = () => {
       <Link to='/post' className={path == '/post' ? 'button active' : 'button'}>Пост</Link>
       <Link to='/post/sessions' className={path == '/post/sessions' ? 'button active' : 'button'}>Выгрузка сеансов</Link>
       <Link to='/post/database' className={path == '/post/database' ? 'button active' : 'button'}>Подключение БД</Link>
+      <Link to='/post/search' className={path == '/post/search' ? 'button active' : 'button'}>Поиск</Link>
       <Link to='/post/settings' className={path == '/post/settings' ? 'button active' : 'button'}>Настройки</Link>
       <Link to='/post/media' className={path == '/post/media' ? 'button active' : 'button'}>Воспроизведение</Link>
       <Link to='/post/maps' className={path == '/post/maps' ? 'button active' : 'button'}>Карты</Link>
       <Link to='/post/analitic' className={path == '/post/analitic' ? 'button active' : 'button'}>Аналитика</Link>
+      
     </Body>
   )
 }

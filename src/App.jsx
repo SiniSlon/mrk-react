@@ -14,7 +14,7 @@ import Settings from './pages/Post/Settings';
 import Media from './pages/Post/Media';
 import Map from './pages/Post/Map';
 import Analitic from './pages/Post/Analitic';
-
+import Search from './pages/Post/Search';
 import LoadData from './pages/Upload/UploadHistory';
 import Database from './pages/Database/Database';
 
@@ -39,6 +39,7 @@ const App = () => {
       <Route path='/post/media' element={<Media/>}/>
       <Route path='/post/maps' element={<Map/>}/>
       <Route path='/post/analitic' element={<Analitic/>}/>
+      <Route path='/post/search' element={<Search/>} />
 
       <Route path='/upload' element={<LoadData/>}/>
       <Route path='/upload/queue' element={<Queque/>}/>

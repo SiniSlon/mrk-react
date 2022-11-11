@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import ModalWindow from "../../Post/components/ModalWindow";
+import ModalWindow from "../../Post/components/Settings/ModalWindow";
 import PaginationBlock from "../../../components/Pagination";
 import { mainFontFamily } from "../../../utils/stylesSettings";
 import Loader from "../../../components/Loader";
