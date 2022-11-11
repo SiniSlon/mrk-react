@@ -1,72 +1,68 @@
 import styled from "styled-components";
+import { hoverTr } from "../../../utils/stylesSettings";
 
 const ReportDetails =()=>{
     return(
         <Form>
             <FirstStr>
                 <DivOne>
+                    <legend>Отчет</legend>
                 <div>
-                    <label>Reports</label><label>1</label>
+                    <label>Статус:</label><label>1</label>
                 </div>
                 <div> 
-                    <label>Operator</label><label>2</label>
+                    <label>Оператор:</label><label>2</label>
                 </div>
                 <div>
-                    <label>Login</label><label>3</label>
+                    <label>Логин:</label><label>3</label>
                 </div>
                 <div>
-                    <label>Create date</label><label>4</label>
+                    <label>Дата создания отчета:</label><label>4</label>
                 </div>
                 <div>
-                    <label>Close date</label><label>5</label>
+                    <label>Обработано сеансов:</label><label>5</label>
                 </div>
                 <div>
-                    <label>Watched sessions</label><label>6</label>
+                    <label>Просмотрено сеансов:</label><label>6</label>
                 </div>
                 <div>
-                    <label>Watched abonents</label><label>7</label>
+                    <label>Просмотрено карточек абонентов:</label><label>7</label>
                 </div>
                 <div>
-                    <label>Status</label><label>8</label>
+                    <label>Построено сетей:</label><label>8</label>
                 </div>
                 <div>
-                    <label>Build nets</label><label>9</label>
-                </div>
-                <div>
-                    <label>Session in reports</label><label>10</label>
-                </div>
-                <div>
-                    <label></label>
+                    <label>Сеансов в отчете:</label><label>9</label>
                 </div>
                 </DivOne>
-            <table>
+            <Table>
                 <thead>
                     <tr>
-                        <th>N</th>
-                        <th>Key</th>
-                        <th>Values</th>
-                        <th>Counts</th>
+                        <th className='header_small'>№</th>
+                        <th className="header_medium">Критерий</th>
+                        <th className="header_medium">Значение</th>
+                        <th className="header-little">Количество</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td className='body_small'>tetet</td>
+                        <td className="body_medium">tetet</td>
+                        <td className="body_medium">etetet</td>
+                        <td className='body_little'>etetet</td>
                     </tr>
                 </tbody>
-            </table>
+            </Table>
             <CommentBlock>
-            <label>Comment</label>
+                <legend>Комментарий</legend>
             <p>test</p></CommentBlock>
             </FirstStr>
-            <div>
-                <p>table sessions</p>
-            </div>
-            <div>
-                <p>choosen session</p>
-            </div>
+                <fieldset>
+                    <legend>сеансы связи</legend>
+                </fieldset>
+                 <fieldset>
+                    <legend>сессии</legend>
+                </fieldset>
         </Form>
     )
 }
@@ -74,25 +70,66 @@ export default ReportDetails
 
 const Form =styled.div`
     background-color:white;
-    margin:5px;
-    border-radius:10px;`
+    border-radius:10px;
+    margin: 10px;
+    padding:10px;`
     
 const FirstStr = styled.div `
     display:flex;
-    flex-direction:row;
-    ;
-    table{
-        width:950px;
-    }
-    tr{
-        border-bottom: 1px solid gray;
-    }`
+    flex-direction:row;`
 
+const DivOne =styled.fieldset`
+    width:450px;
+    
+  label{
+    padding: 5px;
+    font-size: 11pt;}
+  ;`
 
-const DivOne =styled.div `
-    width:200px;
-    ;`
+const CommentBlock =styled.fieldset`
+    width:150px; `
 
-const CommentBlock =styled.div`
-    width:150px;
-    `;
+const Table =styled.table`
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    width:100%;
+    overflow-y: scroll;
+    border-collapse: collapse;
+    margin:5px;
+  .header{
+    font-size: 16pt;
+    font-weight:450;
+      &_small{
+        width: 100px;
+        justify-content: center;
+      }
+      &_medium{
+        width:450px;
+        justify-content: center;
+      }
+      &_little{
+        width:150px;
+        justify-content: center;
+      }
+  }
+  .body{
+    font-size:14px;
+      &_small{
+        width: 100px;
+        justify-content: center;
+      };
+      &_medium{
+        width:450px;
+        justify-content: center;
+      };
+      &_little{
+        width:150px;
+        justify-content: center;
+      }
+    };
+  tbody tr{
+    border-bottom: 1px solid gray;}
+  tbody tr:hover{
+    background-color: ${hoverTr};
+  }`;
