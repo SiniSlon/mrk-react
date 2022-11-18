@@ -136,18 +136,28 @@ const Table =styled.table `
     tr{
       border-bottom:1px solid black;
       text-align: center;}
+
+	tr:last-child{
+		border-bottom:none;
+      text-align: center;
+	}
+
     tbody tr:hover{
       cursor:pointer;
-      background-color:${hoverTr};}`;
+      background-color:${hoverTr};
+	  border-radius: 7px;}`;
 
 const ButtonSet =styled.div`
 	display:flex;
 	flex-direction:row;
 	margin: 10px;
-	width:100%;
+	
     input{
       border-radius: 10px;
-      outline	:none ;
+	  border:none;
+	  padding: 3px 10px;
+	  margin-right: 7px;
+      outline:none ;
       height:30px;
       };
     button{
@@ -192,5 +202,6 @@ const ButtonDiv =styled.div `
     span {
       margin-right: 5px;}
 	  :hover{
-		background-color:${hoverTr} ;}`
+		background-color:${hoverTr} ;
+		;}`
 		
