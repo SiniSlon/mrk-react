@@ -168,7 +168,7 @@ const Table =styled.table`
 	width:100%;
 	text-align: center;
 	overflow-y: scroll;
-  margin-top: 5px;
+ 	margin-top: 5px;
 	border-collapse: collapse;
   .small{
     width:90px;

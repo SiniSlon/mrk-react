@@ -306,11 +306,11 @@ const SearchText = (props) => {
    
     return(
 			<Main>
-					<div className="mainSearch">
+					<Aside >
 							<input placeholder="Введите слова для поиска" value={text} onChange={(e)=>setText(e.target.value)}/>
 							<button onClick={Search}><SearchIcon/><span>Поиск</span>
 							</button>
-					</div>
+					</Aside>
 					<div className="chooseFilter">
 							<input id='words' type='radio' name='text' value='words' onClick={(e)=>setWorldFilter(e.target.value)}/>
 							<label htmlFor="words">По словоформам</label>
@@ -477,24 +477,7 @@ const Main =styled.div`
 	label{
 		cursor:pointer;
 	}
-		.mainSearch{
-			display:flex;
-				input{
-					outline:none;
-					width:100%;
-					border: 1px solid #00369b;
-					border-radius: 7px;
-					height:25px;};
-				button{
-					text-align: center;
-					border: 1px solid #00369b;
-					border-radius: 7px;
-					background-color: white;
-					margin-right: 5px;
-					display:flex;
-					justify-content: center;
-					align-items: center ;}
-	}
+		
 	fieldset{
 		margin:10px 0 10px 0 ;
 			}
@@ -512,6 +495,25 @@ const Main =styled.div`
 	button:hover{
 		cursor:pointer;
 	}`;
+
+const Aside =styled.div`
+	display:flex;
+		input{
+			outline:none;
+			width:100%;
+			border: 1px solid #00369b;
+			border-radius: 7px;
+			height:25px;};
+		button{
+			text-align: center;
+			border: 1px solid #00369b;
+			border-radius: 7px;
+			background-color: white;
+			margin: 0 5px 0 5px;
+			display:flex;
+			justify-content: center;
+			align-items: center ;}
+`;	
 
 const AddVision =styled.div`
     display:flex;

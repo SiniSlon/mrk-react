@@ -50,17 +50,27 @@ const List =styled.div`
 	display:flex;
 	flex-direction:column;
 	padding:10px;
+	label:first-child{
+		border-top-left-radius:5px;
+		border-top-right-radius:5px;
+	}
+	
+	label:last-child{
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+
 	label	{
 		display:flex;
 		border:0.5px solid #0748c0;
-		border-radius: 5px;
+		
 		justify-content: center;
 		color:white;
 		align-items:center;
 		height: 70px;
 		font-family: ${mainFontFamily};
 		font-size:14pt;
-    width: 300px;
+    	width: 300px;
 	}
 	.active{
 		background-color: #4785d6;}

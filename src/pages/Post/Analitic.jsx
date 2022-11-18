@@ -213,11 +213,19 @@ tbody tr:hover{
   cursor:pointer;
   background-color:${hoverTr};
 }
+
+td:first-child{
+  font-size:12pt;
+  border-left: none;
+  padding:5px;
+}
+
 td{
   font-size:12pt;
   border-left: 1px solid gray;
   padding:5px;
   }
+ 
 tbody tr{
   border-bottom: 1px solid gray;
   }`;
