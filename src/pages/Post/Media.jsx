@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Header from '../../components/Header';
 import { mainBackground, mainFontFamily } from '../../utils/stylesSettings';
 import PostNavBar from './components/PostNavBar';
+import FileViewer from 'react-file-viewer';
+
 
 const Media = () => {
   const [radioInput, setRadioInput] = useState('one3')
@@ -14,6 +16,9 @@ const Media = () => {
     console.log('radioInput >> ', radioInput)
   } 
 
+  const file = '/11.csv'
+  const type = 'csv'
+
   return (
     <>
       <Header/>
@@ -21,7 +26,11 @@ const Media = () => {
       <Main>
         <PostNavBar/>
         Media
+        <FileViewer
+        fileType={type}
+        filePath={file}
 
+        />
         <form onSubmit={handleSubmit}>
           <label>One</label>
           <input type='radio' name='myradio' value='one' onClick={(e) => setRadioInput(e.target.value)}/>
