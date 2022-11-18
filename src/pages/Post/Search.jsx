@@ -32,21 +32,23 @@ const Search = () =>{
 }
 export default Search
 
-const Main =styled.div `
+const Main = styled.div `
 	display:flex;
 	flex-direction:column;
 	height: calc(100vh - 50px);
 	position: relative;
-	background: ${mainBackground};`;
+	background: ${mainBackground};
+	font-family: 'Roboto';
+`;
 
-const Basic =styled.div`
+const Basic = styled.div`
 	display:flex;
 	background-color:white;
 	margin:10px;
 	border-radius:12px;
-		`
+`
 	
-const List =styled.div`
+const List = styled.div`
 	display:flex;
 	flex-direction:column;
 	padding:10px;
@@ -62,24 +64,32 @@ const List =styled.div`
 
 	label	{
 		display:flex;
-		border:0.5px solid #0748c0;
+		/* border:0.5px solid #0748c0; */
 		
 		justify-content: center;
 		color:white;
 		align-items:center;
-		height: 70px;
+		height: 50px;
 		font-family: ${mainFontFamily};
 		font-size:14pt;
     	width: 300px;
+		cursor: pointer;
+		border-bottom: 1px solid #00000040;
 	}
+
+	label:last-child {
+		border-bottom: none;
+	}
+
 	.active{
 		background-color: #4785d6;}
 	.passive{
 		background-color: #186ddd;}
 	label:hover{
 		background-color: ${mainButtonsHoverColor} ;
-		cursor:pointer
-	}	`
+	}	
+	`
 
-const Choosen =styled.div`
-	width:100%`;
+const Choosen = styled.div`
+	width:100%
+`;
