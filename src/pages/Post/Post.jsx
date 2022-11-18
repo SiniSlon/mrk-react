@@ -13,6 +13,9 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import TaskIcon from '@mui/icons-material/Task';
 import { Bar } from "react-chartjs-2";
 import { changeSnn } from '../../store/reducers/ssn';
+import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
+import tempSnnArray from '../../utils/tempSnn';
+import PortalModal from './components/PortalModal';
 
 const Post = () => {
   const [ready, setReady] = useState(false);
@@ -159,7 +162,6 @@ const Post = () => {
     setSubtypeSignal('');
 
   }
-
   
   useEffect(() => {
     (async() => {
@@ -182,8 +184,8 @@ const Post = () => {
         //   trafficPresent: true
         // }
 
-      const firstResponse = await getPosts({processId: processID});
-      console.log('firstResponse >', firstResponse.data)
+      // const firstResponse = await getPosts({processId: processID});
+      // console.log('firstResponse >', firstResponse.data)
 
         const secondData = {
           sort: "DESC",
@@ -193,12 +195,14 @@ const Post = () => {
           pageRowsCount: 20,
         }
 
-        const secondResponse = await getPostsByID(secondData);
+        // const secondResponse = await getPostsByID(secondData);
 
-        console.log('secondResponse >', secondResponse.data)
-        setPostList(secondResponse.data)
+        // console.log('secondResponse >', secondResponse.data)
+        // setPostList(secondResponse.data)
+        setPostList(tempSnnArray)
 
-        dispatch(changeSnn(secondResponse.data))
+        // dispatch(changeSnn(secondResponse.data))
+        dispatch(changeSnn(tempSnnArray))
       } catch (e) {
         console.error(e)
       } finally {
@@ -292,19 +296,31 @@ const Post = () => {
     console.log('Submit!!! Sended data >> ', data);
   }
 
+  const [idArray, setIdArray] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  const handleDownload = () => {
+    console.log(idArray)
+    setOpen(true)
+  }
+
+
   return (
     <>
+
       <Header/>
 
       <Main>
         <PostNavBar filter={filter} setFilter={setFilter}/>
 
+        <PortalModal idArray={idArray} isOpen={open} onClose={() => setOpen(false)}/>
         <div className="filter-bar">
           <button className={filter ? 'filter-btn active-btn' : 'filter-btn'} onClick={() => setFilter(s => !s)}><FilterAltIcon/>Фильтры</button>
           <button className="filter-btn" onClick={handleResetFilters}><RestartAltIcon/>Сбросить все фильтры</button>
+          <button className="filter-btn" onClick={() => setOpen(true)}><BrowserUpdatedIcon/>Выгрузить сеансы</button>
         </div>
 
-        <PostTable postList={postList}/>
+        <PostTable postList={postList} idArray={idArray} setIdArray={setIdArray}/>
         
         {filter && <Filters
           findByFilter={findByFilter}
@@ -466,6 +482,11 @@ const Main = styled.main`
   height: calc(100vh - 50px);
   position: relative;
   background: ${mainBackground};
+  position: relative;
+  font-family: 'Roboto';
+  button {
+    font-family: 'Roboto';
+  }
 
   .filter-bar{
     display: flex;

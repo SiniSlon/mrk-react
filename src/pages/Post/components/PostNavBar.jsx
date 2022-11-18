@@ -8,7 +8,7 @@ const PostNavBar = () => {
   return (
     <Body>
       <Link to='/post' className={path == '/post' ? 'button active' : 'button'}>Пост</Link>
-      <Link to='/post/sessions' className={path == '/post/sessions' ? 'button active' : 'button'}>Выгрузка сеансов</Link>
+      {/* <Link to='/post/sessions' className={path == '/post/sessions' ? 'button active' : 'button'}>Выгрузка сеансов</Link> */}
       <Link to='/post/database' className={path == '/post/database' ? 'button active' : 'button'}>Подключение БД</Link>
       <Link to='/post/search' className={path == '/post/search' ? 'button active' : 'button'}>Поиск</Link>
       <Link to='/post/settings' className={path == '/post/settings' ? 'button active' : 'button'}>Настройки</Link>

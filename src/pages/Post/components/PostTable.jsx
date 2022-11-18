@@ -4,11 +4,19 @@ import PaginationBlock from "../../../components/Pagination";
 import Loader from "../../../components/Loader";
 
 const PostTable = (props) => {
+  const addSnnToCheck = (e) => {
+    if (!props.idArray.includes(e.target.id)) {
+      props.setIdArray(state => [...state, e.target.id])
+    } else {
+      props.setIdArray(state => (state.splice(props.idArray.indexOf(e.target.id), 1)))
+    }
+  }
 
   return (
     <>
       <Table>
         <div className="table-item">
+          <div className="table-title__name">Выбрать</div>
           <div className="table-title__name">Метки</div>
           <div className="table-title__name">АПК</div>
           <div className="table-title__name">Дата</div>
@@ -29,6 +37,8 @@ const PostTable = (props) => {
         
         {props.postList.length !== 0 ? props.postList.map((item) => (
           <div className="table-item" key={item.id}>
+            <div className="table-info__name"><input type='checkbox' id={item.id} onChange={addSnnToCheck}/></div>
+
             <div className="table-info__name">{item.labels.map((item, index) => (<div key={index}>{item.name}</div>))}</div>
             <div className="table-info__name">{item.origin}</div>
             <div className="table-info__name">{item.time}</div>
@@ -43,7 +53,7 @@ const PostTable = (props) => {
             <div className="table-info__name">{item.cx1}</div>
             <div className="table-info__name">{item.direction}</div>
             <div className="table-info__name">{item.cx1b}</div>
-            <div className="table-info__name">{item.coordinates[0].point1}</div>
+            <div className="table-info__name">{item.coordinates[0]?.point1}</div>
             <div className="table-info__name">{item.regStation}</div>
           </div>
         )) : <Loader/>}
