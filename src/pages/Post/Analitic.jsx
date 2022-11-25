@@ -6,97 +6,28 @@ import PostNavBar from "./components/PostNavBar";
 import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import {hoverTr} from '../../utils/stylesSettings'
-
-
+import * as js from '../../utils/analiticChart'
 
 const Analitic = () => {
- // const [filter, setFilter] = useState(false);
-  
-  
 
-  let data_pars ={
-    "ssn" : [
-      {   "id":1,
-          "file_name": 'ez051020221524',
-          "date_load":'2022-10-05 15:24',
-          "billing_count":124,
-          "trafic_count":0,
-          "first_session":'2022-10-05 06:14',
-          "last_session":'2022-10-06 16:14',
-          "status":'read',
-          "log":'none',
-          "personalization":'yes'},
-        {  "id":2,
-          "file_name": 'ez051020221124',
-          "date_load":'2022-10-05 11:24',
-          "billing_count":235,
-          "trafic_count":0,
-          "first_session":'2022-10-05 07:14',
-          "last_session":'2022-10-06 18:14',
-          "status":'none',
-          "log":'none',
-          "personalization":'yes'},
-        { "id":3,
-          "file_name": 'ez051020221125',
-          "date_load":'2022-10-05 19:24',
-          "billing_count":0,
-          "trafic_count":245,
-          "first_session":'2022-10-05 01:14',
-          "last_session":'2022-10-06 19:14',
-          "status":'yes',
-          "log":'yes',
-          "personalization":'no'},
-          {"id":4,
-          "file_name": 'ez051043221126',
-          "date_load":'2022-11-05 13:24',
-          "billing_count":215,
-          "trafic_count":101,
-          "first_session":'2022-10-01 01:14',
-          "last_session":'2022-10-02 19:14',
-          "status":'yes',
-          "log":'yes',
-          "personalization":'no'},
-          {"id":5,
-          "file_name": 'ez051043221127',
-          "date_load":'2022-11-05 15:24',
-          "billing_count":124,
-          "trafic_count":200,
-          "first_session":'2022-10-01 01:13',
-          "last_session":'2022-10-02 12:13',
-          "status":'yes',
-          "log":'yes',
-          "personalization":'no'},
-          {"id":6,
-          "file_name": 'ez051043221128',
-          "date_load":'2022-11-05 13:24',
-          "billing_count":2,
-          "trafic_count":293,
-          "first_session":'2022-10-01 04:14',
-          "last_session":'2022-10-02 15:14',
-          "status":'yes',
-          "log":'yes',
-          "personalization":'no'
-        },  
-        {
-          "id":7,
-          "file_name": 'ez051043221125',
-          "date_load":'2022-11-05 17:24',
-          "billing_count":2,
-          "trafic_count":293,
-          "first_session":'2022-10-01 06:14',
-          "last_session":'2022-10-02 17:14',
-          "status":'yes',
-          "log":'yes',
-          "personalization":'no'
-        },
-      ]
-    }
-
-let billing_info = data_pars.ssn.map(function(e){return e.billing_count;});
-let traffic_info = data_pars.ssn.map(function(e){return e.trafic_count;});
+let  datas = js.data_pars; 
+let ab_data = js.cards;
+let billing_info = datas.ssn.map(function(e){return e.billing_count;});
+let traffic_info = datas.ssn.map(function(e){return e.trafic_count;});
+let imsi =ab_data.abonents_data.map(function(e){return e.IMSI});
+let imei =ab_data.abonents_data.map(function(e){return e.IMEI});
+let country_ab =ab_data.abonents_data.map(function(e){return e.country})
 
 const test=billing_info.reduce((acc, el) => {acc[el] = (acc[el] || 0) + 1; return acc;}, {})
 const traf=traffic_info.reduce((acc,el)=> {acc[el]=(acc[el]|| 0)+1; return acc;},{})
+const ab_imsi=imsi.reduce((acc,el)=> {acc[el]=(acc[el]|| 0)+1; return acc;},{})
+const ab_imei=imei.reduce((acc,el)=>{acc[el]=(acc[el]|| 0)+1; return acc;},{})
+const countr_ab =country_ab.reduce((acc,el)=> {acc[el]=(acc[el]|| 0)+1; return acc;},{})
+const countrAsce = [...country_ab];
+const countrDesce = [...country_ab];
+const countrAsc = countrAsce.sort((a,b)=> a.localeCompare(b));
+const countrDesc = countrDesce.sort((a,b)=>b.localeCompare(a));
+
 
 const ChartData = {
     labels: Object.keys(test),
@@ -122,6 +53,43 @@ const ChartDatas = {
         lineTension: 0.8}
   ]
 }
+const ChartAbImsi = {
+  labels: Object.keys(ab_imsi),
+  datasets :[
+      { data: Object.values(ab_imsi),
+        label: "IMSI",
+        borderColor: "#ad33ff",
+        backgroundColor: "rgba(126, 15, 120, 0.8)",
+        fill: true,
+        lineTension: 0.8}
+  ]
+}
+
+const ChartAbImei = {
+  labels: Object.keys(ab_imei),
+  datasets :[
+      { data: Object.values(ab_imei),
+        label: "IMEI",
+        borderColor: "#d1930c",
+        backgroundColor: "rgba(196, 117, 0, 0.8)",
+        fill: true,
+        lineTension: 0.8}
+  ]
+}
+
+const ChartAbCountry = {
+  labels : Object.keys(countr_ab),
+  datasets :[
+    { data: Object.values(countr_ab),
+      label:'Country',
+      borderColor:'#032963',
+      backgroundColor:'rgba(4, 34, 133, 0.8)',
+      fill:true,
+      lineTension:0.8
+    }
+  ]
+}
+
   return (
     <>
       <Header/>
@@ -151,7 +119,7 @@ const ChartDatas = {
                 <td>{Math.max(...billing_info)}</td>
                 <td>{billing_info.join(", ")}</td>
               </tr>
-              <tr onClick={()=>setValue(ChartDatas)}>
+              <tr onClick={()=>setValue(ChartAbImsi)}>
                 <td>2</td>
                 <td>Traffic</td>
                 <td>{traffic_info.length}</td>
@@ -161,27 +129,57 @@ const ChartDatas = {
                 <td>{Math.max(...traffic_info)}</td>
                 <td>{traffic_info.join(", ")}</td>
               </tr>
+              <tr onClick={()=>setValue(ChartDatas)}>
+                <td>3</td>
+                <td>IMSI</td>
+                <td>{imsi.length}</td>
+                <td>{imsi.filter(x=>x!=0).length}</td>
+                <td>{imsi.filter(x=>x===0).length}</td>
+                <td>{Math.min(...imsi)}</td>
+                <td>{Math.max(...imsi)}</td>
+                <td>{imsi.join(", ")}</td>
+              </tr>
+              <tr onClick={()=>setValue(ChartAbImei)}>
+                <td>4</td>
+                <td>IMEI</td>
+                <td>{imei.length}</td>
+                <td>{imei.filter(x=>x!=0).length}</td>
+                <td>{imei.filter(x=>x===0).length}</td>
+                <td>{Math.min(...imei)}</td>
+                <td>{Math.max(...imei)}</td>
+                <td>{imei.join(", ")}</td>
+              </tr> 
+               <tr onClick={()=>setValue(ChartAbCountry)}>
+                <td>5</td>
+                <td>Country</td>
+                <td>{country_ab.length}</td>
+                <td>{country_ab.filter(x=>x!=0).length}</td>
+                <td>{country_ab.filter(x=>x===0).length}</td>
+                <td>{countrDesc[0]}</td>
+                <td>{countrAsc[0]}</td>
+                <td>{country_ab.join(", ")}</td>
+              </tr> 
             </tbody>
           </Table>
           <TooMain>
         <Bar
-          type="bar"
-          width={160}
-          height={60}
-          options={{
-            title: {
-              display: true,
-              text: "test1",
-              fontSize: 18
-            },
-            legend: {
-              display: false, //Is the legend shown?
-              position: "top" //Position of the legend.
-            }
-          }}
-        data={value}
-      />
-      </TooMain>
+
+        type="bar"
+        width={160}
+        height={50}
+        options={{
+          title: {
+            display: true,
+            text: "test1",
+            fontSize: 18
+          },
+          legend: {
+            display: false, //Is the legend shown?
+            position: "top" //Position of the legend.
+          }
+        }}
+       data={value}
+      /></TooMain>
       </Main>
     </>
   )
@@ -201,7 +199,6 @@ const TooMain =styled.div`
   background-color: aliceblue;
   margin:10px;
   border-radius: 5px;
-   
   `;
 
 const Table =styled.table`
@@ -216,6 +213,10 @@ tr{
 tbody tr:hover{
   cursor:pointer;
   background-color:${hoverTr};
+  tbody{
+    height :150px;
+    overflow-y: scroll;
+  }
 }
 
 td:first-child{

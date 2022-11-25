@@ -1,84 +1,108 @@
-
 import { useState } from "react";
 import * as yup from 'yup';
 import styled from "styled-components";
 import { mainFontFamily } from "../../../../utils/stylesSettings";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from 'react-hook-form';
 
-const warning = {
-	nameTask:'Enter correct name',
-	dateStart:'Enter start date',
-	apk:'Enter name apk'
+const warningNameTask = {
+	required: 'Введите name',
+};
+  
+const warningDateStart = {
+	required: 'Введите date',
+};
+const warningApk = {
+	required: 'Введите apk',
 };
 
-const test = yup.object({
-	nameTask: yup.string().required(warning.nameTask),
-	dateStart: yup.date().required(warning.dateStart),
-	apk: yup.string().required(warning.color)	
-})
+const addTasks = yup.object({
+	nameTask: yup.string().required(warningNameTask.required),
+	dateStart: yup.string().required(warningDateStart.required),
+	apk: yup.string().required(warningApk.required),
+});
 
-const AddTask=(props)=>{
+const AddTask = (props) => {
 	const [checkDate,setCheckDate]=useState(false);
-	const [nameTask,setNameTask] =useState('');
 	const [visual,setVisual] =useState(true);
 	const [sound,setSound] =useState(true);
-	const [dateStart,setDateStart] =useState('')
 	const [dateEnd,setDateEnd] =useState('')
-	const [apk,setApk] =useState('')
+	
+  const {
+    handleSubmit,
+    register,
+    formState:{ errors },
+  } = useForm({
+    resolver: yupResolver(addTasks),
+    defaultValues: {
+      nameTask: '',
+      dateStart: '',
+      apk: '',
+    },
+  });
 
-	const onSubmit= async(data)=>{
-			const datas ={
-			name: nameTask,
-			visual: visual,
-			sound: sound,
-			date_start: dateStart,
-			date_end:dateEnd,
-			apk:apk
-		}
-		console.log(datas)
-}
-	console.log(dateStart)
-    return(
-        <Body>
-					<Block>
-					<span onClick={()=>props.setAddModule(false)}>&times;</span>
-					<h2>Новое задание</h2>
-					<labe>Имя задания </labe>
-					<input placeholder="Имя задания" type='text' value={nameTask} onChange={(e)=>setNameTask(e.target.value)}/>
-					<label>Дата начала</label>
-					<input type='date' value={dateStart} onChange={(e)=>setDateStart(e.target.value)}/>
-					<div>
-						<label>Установить дату окончания</label>
-						<input type='checkbox'  checked={checkDate} onChange={()=>setCheckDate(s=>!s)}/>
-					</div>	
-					<label>Дата окончания</label>
-					<input type='date' value={dateEnd} title={checkDate ? '': 'Выберите активировать дату окончания'} onChange={(e)=>setDateEnd(e.target.value)} disabled={checkDate ? null: 'disabled'}/>
-					<label>АПК</label>
-					<input type='text' value={apk} onChange={(e)=>setApk(e.target.value)}/>
-					<div>
-						<label>Визуальное оповещение</label>
-						<input type='checkbox' checked={visual} onChange={()=>setVisual(s=>!s)}/>
-					</div>
-					<div>
-						<label>Звуковое оповещение</label>
-						<input type='checkbox' checked={sound} onChange={()=>setSound(s=>!s)}/>
-					</div>
-					<button onClick={onSubmit}>Отправить</button>
-					</Block>
-				</Body>
-    )
+
+	const onSubmit = async (data) => {
+    try {
+		console.log('Task data >>> ', data);
+		} catch (e) {
+			console.error('Error Add Task >>> ', e);
+			const error = e.response.data.split(':')[1][0];
+    }
+  }
+	
+  return(
+    <Body>		
+        <Form onSubmit={handleSubmit(onSubmit)}>
+         <span onClick={()=>props.setAddModule(false)}>&times;</span>
+        <h2>Новое задание</h2>
+		{errors.nameTask?<ErrMessage>{errors.nameTask.message}</ErrMessage> :<label>Имя задания </label>}
+        <input  type='text' {...register('nameTask')}/>
+		{errors.dateStart?<ErrMessage>{errors.dateStart.message}</ErrMessage> :<label>Дата начала</label>}
+        <input type='date' {...register('dateStart')}/>
+
+        <div>
+          <label>Установить дату окончания</label>
+          <input type='checkbox'  checked={checkDate} onChange={()=>setCheckDate(s=>!s)}/>
+        </div>	
+
+        <label>Дата окончания</label>
+        <input type='date' value={dateEnd} title={checkDate ? '': 'Выберите активировать дату окончания'} onChange={(e)=>setDateEnd(e.target.value)} disabled={checkDate ? null: 'disabled'}/>
+        
+        {errors.apk ? <ErrMessage>{errors.apk.message}</ErrMessage> : <label>АПК</label>}
+        <input type='text' {...register('apk')}/>
+
+        <div>
+          <label>Визуальное оповещение</label>
+          <input type='checkbox' checked={visual} onChange={()=>setVisual(s=>!s)}/>
+        </div>
+
+        <div>
+          <label>Звуковое оповещение</label>
+          <input type='checkbox' checked={sound} onChange={()=>setSound(s=>!s)}/>
+        </div>
+
+		<button type='submit'>Отправить</button>
+      </Form>
+	  
+    </Body>
+  )
 }
 export default AddTask
 
-const Body=styled.div`
+const Body = styled.div`
     display:flex;
 		height: 100%;
 		background-color: #0000005c;
 		width:100%;
 		position:fixed;
 		top: 0;
-		left:0;`;
-const Block=styled.div`
+		left:0;
+`;
+const ErrMessage = styled.label `
+  color: #ff0707;
+`;
+const Form=styled.form`
 		display:flex;
 		flex-direction:column;
 		background-color:white;

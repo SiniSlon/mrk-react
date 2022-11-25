@@ -139,7 +139,8 @@ const ControlPanel =styled.div`
 		  background-color:${hoverTr} ;};
     fieldset{
       border: 1px solid darkblue;
-      width:175px;};
+      width:195px;};
+      
     input:hover{
       cursor:pointer};`
 

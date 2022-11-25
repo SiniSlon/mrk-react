@@ -32,7 +32,7 @@ const TaskManage =()=>{
   <button className="task-btn"></button>   */}
   </Button>
 				<Table>
-					<thead> {/*table - Mining jobs*/}
+					<thead>
 						<tr>
 							<th className="small">Тип</th>
 							<th className="small">Приоритет</th>
