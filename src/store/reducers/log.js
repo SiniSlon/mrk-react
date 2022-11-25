@@ -10,7 +10,9 @@ const log = createSlice({
     reducers:{
         putLog(state, action) {
             state.logs = [...state.logs, action.payload]
+            {console.log({log})}
         }
+        
     },
 })
 export const {putLog, putDate} = log.actions;

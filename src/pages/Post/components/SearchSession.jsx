@@ -1,6 +1,8 @@
 const SearchSession =() =>{
     return(
-        <div><p>Coming soon</p></div>
+        <div>
+                
+        </div>
     )
 }
 export default SearchSession
