@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { putSettingsMap } from "../../../../store/reducers/settings";
 import {mainButtonsHoverColor,mainButtonsColor, mainFontFamily} from '../../../../utils/stylesSettings'
 import LayersIcon from '@mui/icons-material/Layers';
+import ButtonWhitIcon from "../../../../components/UI/BarButton/BarButton.tsx";
 
 const SettingMap = () => {
   const dispatch = useAppDispatch();
@@ -51,10 +52,8 @@ const SettingMap = () => {
   return (
     <Section>
       <div className="top__bar">
-        <button className="bar__button" onClick={() => setLayers('layer')}><LayersIcon/>Управление слоями</button>
-        <button className="bar__button" onClick={() => setLayers('usesLayer')}><LayersIcon/>Управление пользовательскими слоями</button>
-        {/* <button className="bar__button">Перезагрузить карту</button> */}
-        {/* <button className="bar__button">Очистить кэш карты</button> */}
+        <ButtonWhitIcon icon={<LayersIcon/>} title='Управление слоями' color='blue' size='small' func={() => setLayers('layer')} hover={true}/>
+        <ButtonWhitIcon icon={<LayersIcon/>} title='Управление пользовательскими слоями' color='blue' size='small' func={() => setLayers('usesLayer')}/>
       </div>
 
       <WrapperInput>
@@ -203,7 +202,6 @@ const Section = styled.section`
     cursor: pointer;
     display: flex;
     align-items: center;
-
   }
 `;
 
@@ -219,7 +217,6 @@ const WrapperInput = styled.div`
 `;
 
 const Buttons = styled.button`
-  /* width: 80px; */
   background-color: ${mainButtonsColor};
   color: white;
   cursor: pointer;

@@ -9,6 +9,7 @@ import AddLabel from "./AddLabel";
 import EditLabel from "./EditLabel";
 import Loader from "../../../../components/Loader";
 import Pagination from '../../../../components/Pagination';
+import ButtonWhitIcon from "../../../../components/UI/BarButton/BarButton.tsx";
 
 const Labels = () => {
   const [ready, setReady] = useState(false);
@@ -55,7 +56,8 @@ const Labels = () => {
   return (
     <Lables>
       <div className='top-block'>
-        <Button className='nav-button' onClick={() => setShowAddLabel(true)}><BookmarkAddIcon/>Добавить метку</Button>
+        {/* <Button className='nav-button' onClick={() => setShowAddLabel(true)}><BookmarkAddIcon/>Добавить метку</Button> */}
+        <ButtonWhitIcon icon={<BookmarkAddIcon/>} title='Добавить метку' color='blue' size='small' func={() => setShowAddLabel(true)}/>
       </div>
 
       <Table>

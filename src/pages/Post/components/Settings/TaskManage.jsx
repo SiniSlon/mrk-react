@@ -9,6 +9,7 @@ import ModalWindow from "./ModalWindow";
 import {hoverTr} from '../../../../utils/stylesSettings';
 import AddTask from "./AddTask";
 import Pagination from "../../../../components/Pagination";
+import ButtonWhitIcon from "../../../../components/UI/BarButton/BarButton.tsx";
 
 
 const TaskManage =()=>{
@@ -20,13 +21,16 @@ const TaskManage =()=>{
 	return(
 			<Body>
         <Button>
-					<button onClick={()=>setViewTable(s=>!s)}><CloseFullscreenIcon/><span>{viewTable ? 'Свернуть таблицу': 'Развернуть таблицу'}</span></button>
-					<button  onClick={()=>setAddModule(s=>!s)}><AddIcon/><span>Добавить задание</span></button>
+					{/* <button onClick={()=>setViewTable(s=>!s)}><CloseFullscreenIcon/><span>{viewTable ? 'Свернуть таблицу': 'Развернуть таблицу'}</span></button>
+					<button  onClick={()=>setAddModule(s=>!s)}><AddIcon/><span>Добавить задание</span></button> */}
+					<ButtonWhitIcon icon={<CloseFullscreenIcon/>} title={viewTable ? 'Свернуть таблицу': 'Развернуть таблицу'} color='blue' size='small' func={()=>setViewTable(s=>!s)}/>
+					<ButtonWhitIcon icon={<AddIcon/>} title='Добавить задание' color='blue' size='small' func={()=>setAddModule(s=>!s)}/>
 					{/*<button className="task-btn" title='Удалить задание' onClick={()=>setDeleteModule(s=>!s)}><CloseIcon/></button>
 					<button className="task-btn" title='Запуск заданий'><PlayArrowIcon/></button>
 					<button className="task-btn" title='Остановка заданий'><StopIcon/></button>
 					<button className="task-btn"></button>
-  <button className="task-btn"></button>   */}</Button>
+  <button className="task-btn"></button>   */}
+  </Button>
 				<Table>
 					<thead>
 						<tr>
@@ -238,7 +242,8 @@ const TableTwo =styled.table`
 
 const Button =styled.div`
   display:flex;
-  button{
+  
+  /* button{
     display:flex;
     justify-content: center;
     align-items: center ;
@@ -248,7 +253,11 @@ const Button =styled.div`
     margin-right: 5px;
     cursor: pointer;}
 	button:hover{
-		background-color:${hoverTr} ;}`;
+		background-color:${hoverTr} ;
+	} */
+		
+		
+`;
   
   
 

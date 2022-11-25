@@ -9,6 +9,7 @@ import {hoverTr} from '../../utils/stylesSettings'
 import * as js from '../../utils/analiticChart'
 
 const Analitic = () => {
+
 let  datas = js.data_pars; 
 let ab_data = js.cards;
 let billing_info = datas.ssn.map(function(e){return e.billing_count;});
@@ -16,6 +17,7 @@ let traffic_info = datas.ssn.map(function(e){return e.trafic_count;});
 let imsi =ab_data.abonents_data.map(function(e){return e.IMSI});
 let imei =ab_data.abonents_data.map(function(e){return e.IMEI});
 let country_ab =ab_data.abonents_data.map(function(e){return e.country})
+
 const test=billing_info.reduce((acc, el) => {acc[el] = (acc[el] || 0) + 1; return acc;}, {})
 const traf=traffic_info.reduce((acc,el)=> {acc[el]=(acc[el]|| 0)+1; return acc;},{})
 const ab_imsi=imsi.reduce((acc,el)=> {acc[el]=(acc[el]|| 0)+1; return acc;},{})
@@ -161,6 +163,7 @@ const ChartAbCountry = {
           </Table>
           <TooMain>
         <Bar
+
         type="bar"
         width={160}
         height={50}
