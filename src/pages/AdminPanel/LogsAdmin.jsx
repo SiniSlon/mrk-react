@@ -40,18 +40,37 @@ const Main = styled.main`
   flex-direction: column;
   height: calc(100vh - 50px);
   background: ${mainBackground};
-  label{flex-direction:row}
+    label{
+        flex-direction:row}
 `;
 
 const Table = styled.table`
+  display:flex;
   background-color: white;
   border-radius:5px;
   margin:10px;
-  height:150px;
   flex-direction:column;
-  justify-content:center;
-  text-align:center;
+  justify-content:space-around;
+  align-items: center;
   border-collapse:collapse;
+  th{
+    font-size: 20px;
+    font-weight: 600;
+    width:550px;
+    text-align: center;
+  };
+  td{
+    font-size: 18px;
+    width:550px;
+    text-align: center;
+  }
+tbody{
+  height: 250px;
+  overflow-y:scroll;}
+  tbody tr {border-bottom: 0.5px solid gray;
+  :last-child{
+    border-bottom: none;
+  }}
     tbody tr:hover{
       background-color:${hoverTr};
       cursor:pointer

@@ -16,6 +16,26 @@ const ReportsTable = () => {
 
 	const set = useAppSelector(state => state.settingsSlice.common)
 	const [details, setDetails] = useState(false);
+	const [ytv,setYtv] = useState(false);
+	const [closeReport, setCloseReport] = useState('') 
+
+	const handleApprove =() =>{
+		setYtv(true)
+	}
+
+	const handleCurrentReport =()=>{
+		setCloseReport('')
+	}
+
+	const handleCloseReport =()=>{
+		let today =new Date();
+		setCloseReport(today.getDate()+'-'+today.getMonth()+'-'+today.getFullYear());
+		//console.log(closeReport)
+	}
+
+	const handleRefuse =()=>{
+		setYtv(false)
+	}
     return(  
 	<> 
 		<ButtonSet>
@@ -34,15 +54,14 @@ const ReportsTable = () => {
 		<FormDiv>
 		<Bar>
 			<ButtonDiv onClick={()=>console.log("export")} ><FileDownloadIcon/><span>Экспорт</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log("Report main")}><CheckIcon/><span>Сделать отчет текущим</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Close report')} ><CloseIcon/><span>Закрыть отчет</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Accept report')} ><VisibilityIcon/><span>Утвердить отчет</span></ButtonDiv>
-			<ButtonDiv onClick={()=>console.log('Cancel Accept report')} ><DoDisturbIcon/><span>Отменить утверждение отчета</span></ButtonDiv>
-	</Bar>
+			<ButtonDiv onClick={handleCurrentReport}><CheckIcon/><span>Сделать отчет текущим</span></ButtonDiv>
+			<ButtonDiv onClick={handleCloseReport} ><CloseIcon/><span>Закрыть отчет</span></ButtonDiv>
+			<ButtonDiv onClick={handleApprove} disabled={ytv? "": "disabled"}><VisibilityIcon/><span>Утвердить отчет</span></ButtonDiv>
+			<ButtonDiv onClick={handleRefuse}  disabled={!ytv}><DoDisturbIcon/><span>Отменить утверждение отчета</span></ButtonDiv>
+	</Bar>	
     <Table>
 		<thead>
             <tr>
-
                <th className="header_smallColumn"> {set.language =='eng' ? 'Number' :'Nomer' }</th>
 				<th className="header_mediumColumn"> {set.language =='eng' ? 'Name' :'Operator' }</th>
 				<th className="header_smallColumn"> {set.language =='eng' ? 'Date start' :'Data' }</th>
@@ -58,8 +77,8 @@ const ReportsTable = () => {
 				<td className="body_smallColumn">11</td>
 				<td className="body_mediumColumn">22</td>
 				<td className="body_smallColumn">33</td>
-				<td className="body_smallColumn">44</td>
-				<td className="body_smallColumn">55</td>
+				<td className="body_smallColumn">{closeReport}</td>
+				<td className="body_smallColumn">{ytv ? 'yes' :'no'}</td>
 				<td className="body_smallColumn">66</td>
 				<td className="body_largeColumn">77</td>
 				<td className="body_mediumColumn"><ButtonDiv onClick={()=>setDetails(s=>!s)} title='Click to see reports detail'><SettingsIcons/><span>Детали</span></ButtonDiv></td>
@@ -200,6 +219,7 @@ const ButtonDiv =styled.div `
 	margin: auto;
   cursor: pointer;
     span {
+		text-align: center;
       margin-right: 5px;}
 	  :hover{
 		background-color:${hoverTr} ;
