@@ -28,25 +28,25 @@ import AdminReport from './pages/AdminPanel/AdminReport';
 const App = () => {
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const addZero=(i)=>{
-    if(i <10){
+  const addZero = (i) => {
+    if(i < 10) {
       i='0'+i
     }
     return i
   }
   
-  const date =  addZero(new Date().getDate())
-  const month =  addZero(new Date().getMonth())
   const year = new Date().getFullYear()
-  const secunds = addZero(new Date().getSeconds())
+  const date = addZero(new Date().getDate())
+  const month = addZero(new Date().getMonth())
   const hours = addZero(new Date().getHours())
+  const secunds = addZero(new Date().getSeconds())
   const minutes = addZero(new Date().getMinutes())
   const loc = location.pathname+" "
   const fullDate = date+'-'+month +'-'+year+' '+hours+':'+minutes+':'+secunds+' ';
 
   useEffect(() => {
     const log = {
-      location: loc, date:fullDate
+      location: loc, date: fullDate
     }
       dispatch(putLog(log))
   }, [loc])

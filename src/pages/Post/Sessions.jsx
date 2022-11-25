@@ -19,6 +19,8 @@ const Sessions = () => {
         字 <rp>(</rp><rt>ji</rt><rp>)</rp>
       </ruby>
 
+      <div draggable='true'>Drag</div>
+
       </Main>
     </>
   )

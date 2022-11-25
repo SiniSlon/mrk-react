@@ -16,77 +16,80 @@ const Analitic = () => {
 
   let data_pars ={
     "ssn" : [
-        {   "id":1,
-            "file_name": 'ez051020221524',
-            "date_load":'2022-10-05 15:24',
-            "billing_count":124,
-            "trafic_count":0,
-            "first_session":'2022-10-05 06:14',
-            "last_session":'2022-10-06 16:14',
-            "status":'read',
-            "log":'none',
-            "personalization":'yes'},
-         {  "id":2,
-            "file_name": 'ez051020221124',
-            "date_load":'2022-10-05 11:24',
-            "billing_count":235,
-            "trafic_count":0,
-            "first_session":'2022-10-05 07:14',
-            "last_session":'2022-10-06 18:14',
-            "status":'none',
-            "log":'none',
-            "personalization":'yes'},
-          { "id":3,
-            "file_name": 'ez051020221125',
-            "date_load":'2022-10-05 19:24',
-            "billing_count":0,
-            "trafic_count":245,
-            "first_session":'2022-10-05 01:14',
-            "last_session":'2022-10-06 19:14',
-            "status":'yes',
-            "log":'yes',
-            "personalization":'no'},
-           {"id":4,
-            "file_name": 'ez051043221126',
-            "date_load":'2022-11-05 13:24',
-            "billing_count":215,
-            "trafic_count":101,
-            "first_session":'2022-10-01 01:14',
-            "last_session":'2022-10-02 19:14',
-            "status":'yes',
-            "log":'yes',
-            "personalization":'no'},
-           {"id":5,
-            "file_name": 'ez051043221127',
-            "date_load":'2022-11-05 15:24',
-            "billing_count":124,
-            "trafic_count":200,
-            "first_session":'2022-10-01 01:13',
-            "last_session":'2022-10-02 12:13',
-            "status":'yes',
-            "log":'yes',
-            "personalization":'no'},
-            {"id":6,
-            "file_name": 'ez051043221128',
-            "date_load":'2022-11-05 13:24',
-            "billing_count":2,
-            "trafic_count":293,
-            "first_session":'2022-10-01 04:14',
-            "last_session":'2022-10-02 15:14',
-            "status":'yes',
-            "log":'yes',
-            "personalization":'no'},  
-            {"id":7,
-            "file_name": 'ez051043221125',
-            "date_load":'2022-11-05 17:24',
-            "billing_count":2,
-            "trafic_count":293,
-            "first_session":'2022-10-01 06:14',
-            "last_session":'2022-10-02 17:14',
-            "status":'yes',
-            "log":'yes',
-            "personalization":'no'},
-             ]
+      {   "id":1,
+          "file_name": 'ez051020221524',
+          "date_load":'2022-10-05 15:24',
+          "billing_count":124,
+          "trafic_count":0,
+          "first_session":'2022-10-05 06:14',
+          "last_session":'2022-10-06 16:14',
+          "status":'read',
+          "log":'none',
+          "personalization":'yes'},
+        {  "id":2,
+          "file_name": 'ez051020221124',
+          "date_load":'2022-10-05 11:24',
+          "billing_count":235,
+          "trafic_count":0,
+          "first_session":'2022-10-05 07:14',
+          "last_session":'2022-10-06 18:14',
+          "status":'none',
+          "log":'none',
+          "personalization":'yes'},
+        { "id":3,
+          "file_name": 'ez051020221125',
+          "date_load":'2022-10-05 19:24',
+          "billing_count":0,
+          "trafic_count":245,
+          "first_session":'2022-10-05 01:14',
+          "last_session":'2022-10-06 19:14',
+          "status":'yes',
+          "log":'yes',
+          "personalization":'no'},
+          {"id":4,
+          "file_name": 'ez051043221126',
+          "date_load":'2022-11-05 13:24',
+          "billing_count":215,
+          "trafic_count":101,
+          "first_session":'2022-10-01 01:14',
+          "last_session":'2022-10-02 19:14',
+          "status":'yes',
+          "log":'yes',
+          "personalization":'no'},
+          {"id":5,
+          "file_name": 'ez051043221127',
+          "date_load":'2022-11-05 15:24',
+          "billing_count":124,
+          "trafic_count":200,
+          "first_session":'2022-10-01 01:13',
+          "last_session":'2022-10-02 12:13',
+          "status":'yes',
+          "log":'yes',
+          "personalization":'no'},
+          {"id":6,
+          "file_name": 'ez051043221128',
+          "date_load":'2022-11-05 13:24',
+          "billing_count":2,
+          "trafic_count":293,
+          "first_session":'2022-10-01 04:14',
+          "last_session":'2022-10-02 15:14',
+          "status":'yes',
+          "log":'yes',
+          "personalization":'no'
+        },  
+        {
+          "id":7,
+          "file_name": 'ez051043221125',
+          "date_load":'2022-11-05 17:24',
+          "billing_count":2,
+          "trafic_count":293,
+          "first_session":'2022-10-01 06:14',
+          "last_session":'2022-10-02 17:14',
+          "status":'yes',
+          "log":'yes',
+          "personalization":'no'
+        },
+      ]
     }
 
 let billing_info = data_pars.ssn.map(function(e){return e.billing_count;});
@@ -162,22 +165,23 @@ const ChartDatas = {
           </Table>
           <TooMain>
         <Bar
-        type="bar"
-        width={160}
-        height={60}
-        options={{
-          title: {
-            display: true,
-            text: "test1",
-            fontSize: 18
-          },
-          legend: {
-            display: false, //Is the legend shown?
-            position: "top" //Position of the legend.
-          }
-        }}
-       data={value}
-      /></TooMain>
+          type="bar"
+          width={160}
+          height={60}
+          options={{
+            title: {
+              display: true,
+              text: "test1",
+              fontSize: 18
+            },
+            legend: {
+              display: false, //Is the legend shown?
+              position: "top" //Position of the legend.
+            }
+          }}
+        data={value}
+      />
+      </TooMain>
       </Main>
     </>
   )

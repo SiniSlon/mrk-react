@@ -10,7 +10,7 @@ import NotStartedIcon from '@mui/icons-material/NotStarted';
 import StopIcon from '@mui/icons-material/Stop';
 import * as Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor'
 
-const Waveform =()=>{
+const Waveform = () => {
 
   const waveSurfer = useRef(null);
   const [playing, setPlaying] = useState(false);
@@ -19,7 +19,7 @@ const Waveform =()=>{
   const [heightWave,setHeightWave] = useState(50);
   const [readyPlayer, setPlayerReady] = useState(false);
 
-useEffect(()=>{
+useEffect(() => {
  if(!waveSurfer.current) 
   { waveSurfer.current = WaveSurfer.create({
     barWidth: 2,
@@ -32,24 +32,28 @@ useEffect(()=>{
     waveColor: '#000000',
     cursorColor: "gray  ",
     audioContext: 'context.createMediaElementSource(audio)',
-      plugins: 
-        [WaveSurferTimeLinePlugin.create({
-          container:'#timeLine',
-          primaryFontColor:"black",
-          secondaryFontColor:'gray',}),
-        Cursor.create({
-          showTime:true,
-          opacity:1,
-          customShowTimeStyle: {
-            'background-color': '#ffffff',
-            color: '#000000',
-            padding: '2px',
-            'font-size': '14px'}
-    })],
+    plugins: 
+    [
+      WaveSurferTimeLinePlugin.create({
+        container:'#timeLine',
+        primaryFontColor:"black",
+        secondaryFontColor:'gray',
+      }),
+      Cursor.create({
+        showTime:true,
+        opacity:1,
+        customShowTimeStyle: {
+          'background-color': '#ffffff',
+          color: '#000000',
+          padding: '2px',
+          'font-size': '14px'
+        }
+      })
+    ],
   }); 
-      waveSurfer.current.load("/3.mp3")
-      waveSurfer.current.on("ready", () => {
-      setPlayerReady(true);
+    waveSurfer.current.load("/3.mp3")
+    waveSurfer.current.on("ready", () => {
+    setPlayerReady(true);
   });
 }
 },[])
