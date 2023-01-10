@@ -3,6 +3,7 @@ import { mainBackground } from '../../utils/stylesSettings';
 import Header from '../../components/Header';
 import AdminTable from './components/AdminTable';
 import AdminNavBar from './components/AdminNavBar';
+import Myclass from './myclass';
 
 const AdminPanel = () => {
 
@@ -12,8 +13,9 @@ const AdminPanel = () => {
 
       <Main>
         <AdminNavBar/>
-
+        <Myclass/>
         <AdminTable/>      
+
       </Main>
     </>
   )

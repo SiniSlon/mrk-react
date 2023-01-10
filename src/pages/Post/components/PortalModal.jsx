@@ -6,9 +6,9 @@ import { saveAs, imgData } from "file-saver";
 import ssnArray from '../../../utils/tempSnn';
 
 
-const PortalModal = ({ idArray, isOpen, onClose }) => {
+const PortalModal = ({ idArray, modalSessions, onClose }) => {
   const [path, setPath] = useState(`C:\Users\admin`)
-  if (!isOpen) return null;
+  if (!modalSessions) return null;
 
   const obj = {
     id: 1,

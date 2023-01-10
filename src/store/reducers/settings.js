@@ -109,7 +109,7 @@ const initialState = {
     zoom: '12',
     sessions: '1',
     sourceIrridium: true,
-    preventLocation: true,
+    preventLocation: true,  
   },
   services: {
     exportSession: true,

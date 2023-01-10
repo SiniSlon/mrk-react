@@ -3,15 +3,20 @@ import { mainFontFamily } from "../../../utils/stylesSettings";
 import PaginationBlock from "../../../components/Pagination";
 import Loader from "../../../components/Loader";
 
-const PostTable = (props) => {
+const PostTable = ({ postList, idArray, setIdArray }) => {
   const addSnnToCheck = (e) => {
-    if (!props.idArray.includes(e.target.id)) {
-      props.setIdArray(state => [...state, e.target.id])
+    const temp = [...idArray];
+    
+    if (temp.includes(e.target.id)) {
+      const index = temp.indexOf(e.target.id)
+      temp.splice(index, 1)
+      setIdArray(temp)
     } else {
-      props.setIdArray(state => (state.splice(props.idArray.indexOf(e.target.id), 1)))
+      temp.push(e.target.id)
+      setIdArray(temp)
     }
   }
-
+  
   return (
     <>
       <Table>
@@ -35,7 +40,7 @@ const PostTable = (props) => {
           <div className="table-title__name">Пост регистрации</div>
         </div>
         
-        {props.postList.length !== 0 ? props.postList.map((item) => (
+        {postList.length !== 0 ? postList.map((item) => (
           <div className="table-item" key={item.id}>
             <div className="table-info__name"><input type='checkbox' id={item.id} onChange={addSnnToCheck}/></div>
 

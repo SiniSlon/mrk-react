@@ -1,38 +1,43 @@
 import styled from "styled-components"
 import Header from "../../components/Header"
 import PostNavBar from "./components/PostNavBar"
-import { mainBackground,mainButtonsHoverColor,mainFontFamily  } from "../../utils/stylesSettings"
+import { mainBackground } from "../../utils/stylesSettings"
 import { useState } from "react"
-import SearchText from "./components/SearchText"
-import SearchAbonent from "./components/SearchAbonent"
-import SearchSession from "./components/SearchSession"
+import SearchText from "./components/Search/SearchText"
+import SearchAbonent from "./components/Search/SearchAbonent"
+import SearchSession from "./components/Search/SearchSession"
+import AsideMenu from "../../components/UI/AsideMenu/AsideMenu.tsx"
 
-const Search = () =>{
-	const [search,setSearch] = useState('text')
-    return(
-			<>
-			<Header/>
-			<Main>
-				<PostNavBar/>
-					<Basic>
-						<List>
-							<label className={search==='text' ? 'active' : 'passive'} onClick={()=>setSearch('text')}>Текстовый поиск</label>
-							<label className={search==='abonent' ? 'active' : 'passive'} onClick={()=>setSearch('abonent')}>Поиск по абонентам</label>
-							<label className={search==='sessions' ? 'active' : 'passive'} onClick={()=>setSearch('sessions')}>Поиск по сессиям</label>
-						</List>
-						<Choosen>
-						{search ==='text' && <SearchText/>}
-						{search ==='abonent' && <SearchAbonent/>}
-						{search ==='sessions' && <SearchSession/>}
-					</Choosen>
-					</Basic>
-				</Main>
-			</>
-    )
+const Search = () => {
+	const [section, setSection] = useState('Текстовый поиск')
+
+  return (
+    <>
+      <Header/>
+      <Main>
+        <PostNavBar/>
+        <Content>
+
+          <AsideMenu 
+            names={['Текстовый поиск', 'Поиск по абонентам', 'Поиск по сессиям']}
+            section={section}
+            setSection={setSection}
+          />
+          
+          <div>
+            {section ==='Текстовый поиск' && <SearchText/>}
+            {section ==='Поиск по абонентам' && <SearchAbonent/>}
+            {section ==='Поиск по сессиям' && <SearchSession/>}
+          </div>
+        </Content>
+      </Main>
+    </>
+  )
 }
-export default Search
 
-const Main = styled.div `
+export default Search;
+
+const Main = styled.div`
 	display:flex;
 	flex-direction:column;
 	height: calc(100vh - 50px);
@@ -41,55 +46,11 @@ const Main = styled.div `
 	font-family: 'Roboto';
 `;
 
-const Basic = styled.div`
-	display:flex;
-	background-color:white;
-	margin:10px;
-	border-radius:12px;
+const Content = styled.div`
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 10px;  
+  padding: 10px;
 `
-	
-const List = styled.div`
-	display:flex;
-	flex-direction:column;
-	padding:10px;
-	label:first-child{
-		border-top-left-radius:5px;
-		border-top-right-radius:5px;
-	}
-	
-	label:last-child{
-		border-bottom-left-radius: 5px;
-		border-bottom-right-radius: 5px;
-	}
-
-	label	{
-		display:flex;
-		/* border:0.5px solid #0748c0; */
-		
-		justify-content: center;
-		color:white;
-		align-items:center;
-		height: 50px;
-		font-family: ${mainFontFamily};
-		font-size:14pt;
-    	width: 300px;
-		cursor: pointer;
-		border-bottom: 1px solid #00000040;
-	}
-
-	label:last-child {
-		border-bottom: none;
-	}
-
-	.active{
-		background-color: #4785d6;}
-	.passive{
-		background-color: #186ddd;}
-	label:hover{
-		background-color: ${mainButtonsHoverColor} ;
-	}	
-	`
-
-const Choosen = styled.div`
-	width:100%
-`;

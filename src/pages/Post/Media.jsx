@@ -9,15 +9,17 @@ import * as WaveSurferTimeLinePlugin  from 'wavesurfer.js/dist/plugin/wavesurfer
 import NotStartedIcon from '@mui/icons-material/NotStarted';
 import StopIcon from '@mui/icons-material/Stop';
 import * as Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor'
-
-const Waveform = () => {
+import ssnArray from '../../utils/tempSnn';
+const Waveform = ({ idArray }) => {
 
   const waveSurfer = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
-  const [volume,setVolume] =useState(0.5);
+  const [volume,setVolume] =useState(0.3);
   const [heightWave,setHeightWave] = useState(50);
   const [readyPlayer, setPlayerReady] = useState(false);
+ 
+  
 
 useEffect(() => {
  if(!waveSurfer.current) 
@@ -51,10 +53,20 @@ useEffect(() => {
       })
     ],
   }); 
-    waveSurfer.current.load("/3.mp3")
-    waveSurfer.current.on("ready", () => {
-    setPlayerReady(true);
-  });
+    const array=[];
+    for (let i=0; i <ssnArray.length; i++){
+      if (idArray.includes(String(ssnArray[i].id))) {
+      array.push(ssnArray[i].file)
+      
+      if (array.length===0){
+      waveSurfer.current.load(array[i])}
+      else{waveSurfer.current.load(array[0])}
+      waveSurfer.current.on("ready", () => {
+      setPlayerReady(true); })
+    }
+  
+      };
+   
 }
 },[])
 
@@ -79,10 +91,8 @@ const handleStop = ()=>{
   setHeightWave(e.target.value)}
 
   return (
-    <>
-     <Header/>
+    <> 
       <WaveformContianer>
-        <PostNavBar/>
         <ControlPanel>
           <button onClick={handlePlay}><NotStartedIcon/><span>{playing ? 'Pause' : 'Play'}</span></button>
           <button onClick={handleStop}><StopIcon/><span>Stop</span></button>
@@ -100,9 +110,9 @@ const handleStop = ()=>{
           </fieldset>
         </ControlPanel>
         <WaveVision>
-        <div id="wave" style={{visibility: `{$readyPlayer ? 'visible' : 'hidden'}`}}></div>
-        <div id='timeLine'></div>
-        </WaveVision>
+          <div id="wave" style={{visibility: `{$readyPlayer ? 'visible' : 'hidden'}`}}></div>
+          <div id='timeLine'></div>
+        </WaveVision> 
       </WaveformContianer>
     </>
   );
@@ -112,7 +122,6 @@ export default Waveform;
 const WaveformContianer = styled.div`
   display: flex !important ;  
   flex-direction: column;  
-  height: calc(100vh - 50px);
   position: relative;
   background: ${mainBackground};  
 `;

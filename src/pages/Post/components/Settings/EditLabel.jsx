@@ -6,6 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as AxiosLabels from "../../../../api/services/labels";
 import Loader from "../../../../components/Loader";
 import { mainFontFamily } from '../../../../utils/stylesSettings';
+import Popup from "../Popup";
+
+
 
 const warning = {
   number: 'Введите номер',
@@ -25,12 +28,12 @@ const loginSchema = yup.object({
 
 const EditLabel = (props) => {
   const [ready, setReady] = useState(false);
-
+  const [popup,setPopup] = useState('')
   useEffect(() => {
     (async () => {
       try {
         const response = await AxiosLabels.getLabelByNumber({labelNumber: props.editingId});
-
+        setTimeout(()=>{setPopup('')},7000)
         setValue('number', response.data.number)
         setValue('title', response.data.name)
         setValue('comment', response.data.comment)
@@ -68,7 +71,7 @@ const EditLabel = (props) => {
         color: data.color,
       }
       console.log('Edit label >> ', payload)
-      
+      setPopup('ok')
       const response = await AxiosLabels.updateLabel(payload);
       props.setShowEditLabel(false)
     } catch (e) {
@@ -116,7 +119,7 @@ const EditLabel = (props) => {
         <button className='submit-btn' type="submit">Сохранить</button>
       </Form> : <Loader/>
       }
-
+    {popup !=='' ? <Popup style={popup}/>:null}
     </Body>
   )
 }

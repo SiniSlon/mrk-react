@@ -7,6 +7,7 @@ import { hoverTr } from '../../utils/stylesSettings';
 
 const LogsAdmin = () => {
  const logs = useAppSelector((state)=>state.logSlice.logs);
+
   return (
     <>
       <Header/>
@@ -15,7 +16,7 @@ const LogsAdmin = () => {
         <Table>
           <thead>
             <tr>
-            <th>Location user</th>
+              <th>Location user</th>
               <th>Time location</th>
             </tr>
           </thead>
@@ -26,6 +27,12 @@ const LogsAdmin = () => {
               <td>{item.date}</td>
             </tr>
             ))}
+
+            {/* {person.map((item, index, arr) => (
+              <div id={key}>
+                <></>
+              </div>
+            ))} */}
           </tbody>
         </Table>
       </Main>
@@ -40,38 +47,56 @@ const Main = styled.main`
   flex-direction: column;
   height: calc(100vh - 50px);
   background: ${mainBackground};
-    label{
-        flex-direction:row}
+  
+  label {
+    flex-direction:row
+  }
 `;
 
 const Table = styled.table`
   display:flex;
   background-color: white;
   border-radius:5px;
-  margin:10px;
+  margin: 10px;
   flex-direction:column;
   justify-content:space-around;
-  align-items: center;
+  // align-items: center;
   border-collapse:collapse;
-  th{
+  height: calc(100% - 50px - 10px);
+  // align-items: flex-top;
+  justify-content: flex-start;
+
+  th {
     font-size: 20px;
     font-weight: 600;
-    width:550px;
+    // width:550px;
+    width: 50vw;
     text-align: center;
   };
-  td{
+
+  td {
     font-size: 18px;
-    width:550px;
+    // width:550px;
+    width: 50vw;
     text-align: center;
   }
-tbody{
-  height: 250px;
-  overflow-y:scroll;}
-  tbody tr {border-bottom: 0.5px solid gray;
-  :last-child{
-    border-bottom: none;
-  }}
-    tbody tr:hover{
-      background-color:${hoverTr};
-      cursor:pointer
-      }`;
+
+  tbody {
+    // height: 80wh;
+    // height: calc(100wh - 300px);
+    overflow-y: scroll;
+    padding: 10px;
+  }
+
+  tbody tr { 
+    border-bottom: 0.5px solid #dddddd;
+    :last-child{
+      border-bottom: none;
+    }
+  }
+
+  tbody tr:hover{
+    background-color:${hoverTr};
+    cursor:pointer
+  }
+`;

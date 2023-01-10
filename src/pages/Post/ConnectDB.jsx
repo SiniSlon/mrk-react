@@ -26,14 +26,13 @@ const Main = styled.main`
   height: calc(100vh - 50px);
   background: ${mainBackground};
   position: relative;
-   input {
-    margin:5px;
-   }  
+
+  input {
+  margin:5px;
+  }  
   
   .Plays{
-    width:150px;  
+    width: 150px;  
     background-color: blue;
   }
 `;
-
-

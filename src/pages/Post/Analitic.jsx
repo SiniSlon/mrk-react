@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../../components/Header";
 import { mainBackground, mainFontFamily } from "../../utils/stylesSettings";
 import PostNavBar from "./components/PostNavBar";
-import { Bar } from "react-chartjs-2";
+// import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import {hoverTr} from '../../utils/stylesSettings'
 import * as js from '../../utils/analiticChart'
@@ -14,8 +14,8 @@ let  datas = js.data_pars;
 let ab_data = js.cards;
 let billing_info = datas.ssn.map(function(e){return e.billing_count;});
 let traffic_info = datas.ssn.map(function(e){return e.trafic_count;});
-let imsi =ab_data.abonents_data.map(function(e){return e.IMSI});
-let imei =ab_data.abonents_data.map(function(e){return e.IMEI});
+let imsi = ab_data.abonents_data.map(function(e){return e.IMSI});
+let imei = ab_data.abonents_data.map(function(e){return e.IMEI});
 let country_ab =ab_data.abonents_data.map(function(e){return e.country})
 
 const test=billing_info.reduce((acc, el) => {acc[el] = (acc[el] || 0) + 1; return acc;}, {})
@@ -161,25 +161,26 @@ const ChartAbCountry = {
               </tr> 
             </tbody>
           </Table>
+          
           <TooMain>
-        <Bar
-
-        type="bar"
-        width={160}
-        height={50}
-        options={{
-          title: {
-            display: true,
-            text: "test1",
-            fontSize: 18
-          },
-          legend: {
-            display: false, //Is the legend shown?
-            position: "top" //Position of the legend.
-          }
-        }}
-       data={value}
-      /></TooMain>
+            {/* <Bar
+              type="bar"
+              width={160}
+              height={50}
+              options={{
+                title: {
+                  display: true,
+                  text: "test1",
+                  fontSize: 18
+                },
+                legend: {
+                  display: false, //Is the legend shown?
+                  position: "top" //Position of the legend.
+                }
+              }}
+              data={value}
+            /> */}
+          </TooMain>
       </Main>
     </>
   )

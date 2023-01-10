@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as yup from 'yup';
 import styled from "styled-components";
 import { mainFontFamily } from "../../../../utils/stylesSettings";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from 'react-hook-form';
+import Popup from "../Popup";
 
 const warningNameTask = {
 	required: 'Введите name',
@@ -27,7 +28,13 @@ const AddTask = (props) => {
 	const [visual,setVisual] =useState(true);
 	const [sound,setSound] =useState(true);
 	const [dateEnd,setDateEnd] =useState('')
+	const [style, setStyle] = useState('');
 	
+	useEffect(()=>{
+		setTimeout(()=>{setStyle('')},7000)
+	},[])
+
+
   const {
     handleSubmit,
     register,
@@ -43,16 +50,20 @@ const AddTask = (props) => {
 
 
 	const onSubmit = async (data) => {
-    try {
+    try {setStyle('ok');
+		 
 		console.log('Task data >>> ', data);
 		} catch (e) {
 			console.error('Error Add Task >>> ', e);
 			const error = e.response.data.split(':')[1][0];
+			setStyle('not ok');
+		 
     }
   }
 	
   return(
-    <Body>		
+    <Body>
+				
         <Form onSubmit={handleSubmit(onSubmit)}>
          <span onClick={()=>props.setAddModule(false)}>&times;</span>
         <h2>Новое задание</h2>
@@ -60,7 +71,7 @@ const AddTask = (props) => {
         <input  type='text' {...register('nameTask')}/>
 		{errors.dateStart?<ErrMessage>{errors.dateStart.message}</ErrMessage> :<label>Дата начала</label>}
         <input type='date' {...register('dateStart')}/>
-
+		
         <div>
           <label>Установить дату окончания</label>
           <input type='checkbox'  checked={checkDate} onChange={()=>setCheckDate(s=>!s)}/>
@@ -84,7 +95,7 @@ const AddTask = (props) => {
 
 		<button type='submit'>Отправить</button>
       </Form>
-	  
+	  {style !=='' ? <Popup style={style}/>:null}
     </Body>
   )
 }

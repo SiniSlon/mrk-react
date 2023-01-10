@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { mainFontFamily } from '../utils/stylesSettings';
@@ -25,11 +25,11 @@ const Header = () => {
 
   return (
     <Body>
-      <nav className="header__wrapper">
-        <Link to='/post' className={path == 'post' ? 'link active' : 'link'}>Пост обработки</Link>
-        <Link to='/upload' className={path == 'upload' || path == '/upload/queue'  ? 'link active' : 'link'}>Загрузка данных</Link>
-        {/* <Link to='/database' className={path == 'database'  ? 'link active' : 'link'}>Настройка БД</Link> */}
-        <Link to='/adminpanel' className={ path == 'adminpanel' ? 'link active' : 'link'}>Панель администратора</Link>
+      <nav className="nav">
+        <NavLink to='/post' className={({isActive}) => isActive ? 'link active' : 'link'}>Пост обработки</NavLink>
+        <NavLink to='/upload' className={({isActive}) => isActive ? 'link active' : 'link'}>Загрузка данных</NavLink>
+        <NavLink to='/adminpanel' className={({isActive}) => isActive ? 'link active' : 'link'}>Панель администратора</NavLink>
+        <NavLink to='/handbooks' className={({isActive}) => isActive ? 'link active' : 'link'}>Справочник</NavLink>
       </nav>
 
       {user && <div className='username'>{user.role}</div>}
@@ -46,6 +46,31 @@ const Body = styled.header`
   height: 50px;
   align-items: center;
   background-color: #ffffff;
+  
+  .nav {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    justify-content: space-around;
+
+    .link {
+      font-family: ${mainFontFamily};
+      font-size: 18px;
+      color: #252f40;
+      text-decoration: none;
+    }
+
+    .active {
+      color: #252f40;
+      font-weight: 600;
+    }
+  }
+  
+  .username {
+    font-size: 18px;
+    font-family: ${mainFontFamily};
+    margin-left: auto;
+  }
 
   .logout {
     display: flex;

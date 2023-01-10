@@ -11,11 +11,11 @@ import IdInput from "./UI/IdInput";
 
 const Filters = (props) => {
   const set = useAppSelector(state => state.settingsSlice.filter)
+
+  if (!props.filter) return null;
   
   return (
-    
     <Body >
-
       <MiniFilter>
         <fieldset className='filter'>
           <legend className='filter__title'>По дате и времени</legend>

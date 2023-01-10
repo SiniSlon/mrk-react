@@ -17,7 +17,7 @@ export default UploadNavBar
 const Body = styled.nav`
   display: flex;
   width: 100%;
-  background-color: #00000050;
+  background-color: #00000080;
 
   .button {
     color: white;

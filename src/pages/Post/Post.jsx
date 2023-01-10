@@ -11,11 +11,20 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import TaskIcon from '@mui/icons-material/Task';
-import { Bar } from "react-chartjs-2";
 import { changeSnn } from '../../store/reducers/ssn';
 import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
 import tempSnnArray from '../../utils/tempSnn';
 import PortalModal from './components/PortalModal';
+
+import NetAbonents from './components/NetAbonents';
+import LeakAdd from '@mui/icons-material/LeakAdd';
+import MusicVideo from '@mui/icons-material/MusicVideo';
+import Media  from './Media';
+import Label from '@mui/icons-material/LabelOutlined';
+// import NetTest from './components/CanvaTest';
+import PostButtonsBar from './components/PostButtonsBar';
+import NetTest from './components/NetTest';
+
 
 const Post = () => {
   const [ready, setReady] = useState(false);
@@ -167,7 +176,7 @@ const Post = () => {
     (async() => {
       try {
         const processID = new Date().valueOf();
-        console.log('processID', processID);
+        // console.log('processID', processID);
 
         // const firstData = {
         //   ssnFilterMap: null,
@@ -297,32 +306,56 @@ const Post = () => {
   }
 
   const [idArray, setIdArray] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [modalSessions, setModalSessions] = useState(false);
 
+  const [net,setNet] =useState(false);
+  const [media,setMedia] =useState(false);
+  const [open, setOpen] = useState(false)
+  
   const handleDownload = () => {
     console.log(idArray)
-    setOpen(true)
+    setModalSessions(true)
   }
 
 
   return (
     <>
-
       <Header/>
-
+     
       <Main>
-        <PostNavBar filter={filter} setFilter={setFilter}/>
-
+        <PostNavBar 
+          filter={filter} 
+          setFilter={setFilter}
+        />
+     
         <PortalModal idArray={idArray} isOpen={open} onClose={() => setOpen(false)}/>
-        <div className="filter-bar">
-          <button className={filter ? 'filter-btn active-btn' : 'filter-btn'} onClick={() => setFilter(s => !s)}><FilterAltIcon/>Фильтры</button>
-          <button className="filter-btn" onClick={handleResetFilters}><RestartAltIcon/>Сбросить все фильтры</button>
-          <button className="filter-btn" onClick={() => setOpen(true)}><BrowserUpdatedIcon/>Выгрузить сеансы</button>
-        </div>
 
-        <PostTable postList={postList} idArray={idArray} setIdArray={setIdArray}/>
+        <PostButtonsBar
+          filter={filter}
+          setFilter={setFilter}
+          handleResetFilters={handleResetFilters}
+          setModalSessions={setModalSessions}
+          setNet={setNet}
+          setMedia={setMedia}
+        />
+
+        {media && <Media idArray={idArray}/>}
         
-        {filter && <Filters
+        <PortalModal 
+          idArray={idArray} 
+          modalSessions={modalSessions} 
+          onClose={() => setModalSessions(false)}
+        />
+
+        <PostTable 
+          postList={postList} 
+          idArray={idArray} 
+          setIdArray={setIdArray}
+        />
+
+        {/* {net && <NetAbonents idArray={idArray}  net={net} onClose={()=>setNet(false)}/>} */}
+        <Filters
+          filter={filter}
           findByFilter={findByFilter}
           setFilter={setFilter}
 
@@ -468,7 +501,8 @@ const Post = () => {
           setTypeSignal={setTypeSignal}
           subtypeSignal={subtypeSignal}
           setSubtypeSignal={setSubtypeSignal}
-        />}
+        />
+        {net && <NetTest idArray={idArray}/>}
       </Main>
     </>
   )
@@ -502,6 +536,8 @@ const Main = styled.main`
     cursor: pointer;
     font-family: ${mainFontFamily};
 
+    text-decoration:none;
+    color: black;
     :hover {
       /* background-color: #f1f1f1; */
     }

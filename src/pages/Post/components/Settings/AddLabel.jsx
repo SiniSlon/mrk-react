@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 import styled from "styled-components";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as AxiosLabels from "../../../../api/services/labels";
 import { mainFontFamily } from '../../../../utils/stylesSettings';
+import Popup from '../Popup';
 
 const warning = {
   number: 'Введите номер',
@@ -23,6 +25,14 @@ const loginSchema = yup.object({
 });
 
 const AddLabel = (props) => {
+
+  useEffect(()=>{
+		setTimeout(()=>{setPopup('')},7000)
+	},[])
+
+
+  const [popup,setPopup] =useState('');
+
   const {
     handleSubmit,
     register,
@@ -47,7 +57,7 @@ const AddLabel = (props) => {
         color: data.color,
       }
       console.log('Create label >> ', payload)
-      
+      setPopup('ok')
       const response = await AxiosLabels.createNewLabel(payload);
       
       props.setShowAddLabel(false)
@@ -92,6 +102,7 @@ const AddLabel = (props) => {
 
         <button className='submit-btn' type="submit">Добавить метку</button>
       </Form>
+      {popup !=='' ? <Popup style={popup}/>:null}
     </Body>
   )
 }

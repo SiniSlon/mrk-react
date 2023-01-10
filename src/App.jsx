@@ -8,6 +8,24 @@ import { useAppDispatch } from './store/hooks';
 import RequireAuth from './components/RequireAuth';
 import Login from './pages/Login';
 
+import Handbook from './pages/Handbook/Handbook'
+import HandbooksRegions from './pages/Handbook/Handbooks/HandbooksRegions';
+import HandbooksPhones from './pages/Handbook/Handbooks/HandbooksPhones';
+import HandbookImport from './pages/Handbook/Import/HandbookImport';
+import HandbookSettings from './pages/Handbook/Settings/HandbookSettings';
+import Handbooks from './pages/Handbook/Handbooks/Handbooks';
+import HandbooksSystem from './pages/Handbook/Handbooks/HandbooksSystem';
+import HandbooksOperator from './pages/Handbook/Handbooks/HandbooksOperator';
+import HandbooksImsi from './pages/Handbook/Handbooks/HandbooksImsi';
+import HandbooksImei from './pages/Handbook/Handbooks/HandbooksIemi';
+import HandbooksIspc from './pages/Handbook/Handbooks/HandbooksIspc';
+import HandbooksIp from './pages/Handbook/Handbooks/HandbooksIp';
+import HandbooksOrientir from './pages/Handbook/Handbooks/HandbooksOrientir';
+import HandbooksStation from './pages/Handbook/Handbooks/HandbooksStation';
+import HandbooksCalendar from './pages/Handbook/Handbooks/HandbooksCalendar';
+import NetAbonents from './pages/Post/components/NetAbonents';
+import Catalog from './pages/Catalog/Catalog'
+
 import Post from './pages/Post/Post';
 import Sessions from './pages/Post/Sessions';
 import ConnectDB from './pages/Post/ConnectDB';
@@ -24,32 +42,20 @@ import AddUser from './pages/AdminPanel/AddUser';
 import EditUser from './pages/AdminPanel/EditUser';
 import Queque from './pages/Upload/UploadQueue';
 import AdminReport from './pages/AdminPanel/AdminReport';
+import getFullDate from './utils/getFullDate';
 
 const App = () => {
   const location = useLocation();
+  const locate = location.pathname + " "
+
   const dispatch = useAppDispatch();
-  const addZero = (i) => {
-    if(i < 10) {
-      i='0'+i
-    }
-    return i
-  }
-  
-  const year = new Date().getFullYear()
-  const date = addZero(new Date().getDate())
-  const month = addZero(new Date().getMonth())
-  const hours = addZero(new Date().getHours())
-  const secunds = addZero(new Date().getSeconds())
-  const minutes = addZero(new Date().getMinutes())
-  const loc = location.pathname+" "
-  const fullDate = date+'-'+month +'-'+year+' '+hours+':'+minutes+':'+secunds+' ';
 
   useEffect(() => {
     const log = {
-      location: loc, date: fullDate
+      location: locate, date: getFullDate()
     }
       dispatch(putLog(log))
-  }, [loc])
+  }, [locate])
 
   return (
     <Routes>
@@ -59,14 +65,34 @@ const App = () => {
       <Route path='/post' element={<Post/>}/>
       <Route path='/post/sessions' element={<Sessions/>}/>
       <Route path='/post/database' element={<ConnectDB/>}/>
+      <Route path='/post/search' element={<Search/>} /> 
       <Route path='/post/settings' element={<Settings/>}/>
       <Route path='/post/media' element={<Media/>}/>
       <Route path='/post/maps' element={<Map/>}/>
+      
+      <Route path='/post/net' element={<NetAbonents/>}/>
       <Route path='/post/analitic' element={<Analitic/>}/>
-      <Route path='/post/search' element={<Search/>} /> 
 
       <Route path='/upload' element={<LoadData/>}/>
       <Route path='/upload/queue' element={<Queque/>}/>
+
+      <Route path='/handbook' element={<Handbook/>}/>
+      <Route path='/handbooks' element={<Handbooks/>}/>
+      <Route path='/handbooks/regions' element={<HandbooksRegions/>}/>
+      <Route path='/handbooks/phones' element={<HandbooksPhones/>}/>
+      <Route path='/handbooks/system' element={<HandbooksSystem/>}/>
+      <Route path='/handbooks/operator' element={<HandbooksOperator/>}/>
+      <Route path='/handbooks/imsi' element={<HandbooksImsi/>}/>
+      <Route path='/handbooks/imei' element={<HandbooksImei/>}/>
+      <Route path='/handbooks/ispc' element={<HandbooksIspc/>}/>
+      <Route path='/handbooks/ip' element={<HandbooksIp/>}/>
+      <Route path='/handbooks/orientir' element={<HandbooksOrientir/>}/>
+      <Route path='/handbooks/station' element={<HandbooksStation/>}/>
+      <Route path='/handbooks/calendar' element={<HandbooksCalendar/>}/>
+
+      <Route path='/handbook/import' element={<HandbookImport/>}/>
+      <Route path='/handbook/settings' element={<HandbookSettings/>}/>
+      <Route path='/catalog' element={<Catalog/>}/>
 
       <Route path='/adminpanel' element={<AdminPanel/>}/>
       <Route path='/adminpanel/logs' element={<LogsAdmin/>}/>

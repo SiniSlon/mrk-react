@@ -25,13 +25,13 @@ const ButtonWhitIcon: React.FC<IProps> = ({ icon, title, size, color, hover, fun
 
 export default ButtonWhitIcon;
 
-type StylesProps = {
+interface IStylesProps {
   color?: ButtonColor,
   size?: ButtonSize,
   hover: boolean,
 }
 
-const Body = styled.button<StylesProps>`
+const Body = styled.button<IStylesProps>`
   display: flex;
   align-items: center;
   padding: 0.3em 0.6em;

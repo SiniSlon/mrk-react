@@ -10,7 +10,7 @@ const ssn = createSlice({
   reducers: {
     changeSnn(state, action) {
       state.ssn = action.payload;
-      console.log(state.ssn);
+      // console.log(state.ssn);
     }
   },
 

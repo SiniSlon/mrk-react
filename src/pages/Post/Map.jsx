@@ -226,8 +226,11 @@ const Map = () => {
         />  */}
 
           <MapContainer center={center} zoom={mapStore.zoom} scrollWheelZoom={true} className="map">
+            {/* attributionControl={false}  */}
             <TileLayer
-              attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              // attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              
+
               url={mainMap[mapType]} 
               key={mapType}
             />
